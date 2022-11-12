@@ -20,4 +20,11 @@ class PagesController extends Controller
     {
         return view('frontend.pages.contact');
     }
+    
+  
+
+    public function upload()
+    {
+        return view('frontend.pages.upload');
+    }
 }

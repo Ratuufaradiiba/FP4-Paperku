@@ -6,19 +6,19 @@
     </svg>
 
     <div class="instafeed text-center mb-5">
-        <h2 class="h3 mb-4">INSTAGRAM POST</h2>
+        <h2 class="h3 mb-4">BEST JURNAL</h2>
 
         <div class="instagram-slider">
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/1.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/2.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/4.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/3.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/2.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/1.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/3.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/4.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/2.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/4.jpg') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/5.jpg') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/2.png') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/7.jpg') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/3.png') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/2.png') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/5.jpg') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/3.png') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/7.jpg') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/2.png') }}"></div>
+            <div class="instagram-post"><img src="{{ asset('landingpage/images/instagram/7.jpg') }}"></div>
         </div>
     </div>
 
@@ -32,8 +32,8 @@
             </div>
             <div class="col-md-2 text-center mb-4">
                 <a href="index.html"><img class="img-fluid" width="100px"
-                        src="{{ asset('landingpage/images/logo.png') }}"
-                        alt="Reader | Hugo Personal Blog Template"></a>
+                        src="{{ asset('landingpage/images/1.png') }}"
+                        alt="Paperku | Jurnal Profesional"></a>
             </div>
             <div class="col-md-5 text-md-right text-center mb-4">
                 <ul class="list-inline footer-list mb-0">

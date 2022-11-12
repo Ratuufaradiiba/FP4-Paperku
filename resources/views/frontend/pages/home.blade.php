@@ -84,9 +84,9 @@
                     <h2 class="h5 section-title">Recent Post</h2>
                     <article class="card mb-4">
                         <div class="post-slider">
-                            <img src="{{ asset('landingpage/images/post/post-10.jpg') }}" class="card-img-top"
+                            <img src="{{ url('landingpage/images/post/2.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
-                            <img src="{{ asset('landingpage/images/post/post-1.jpg') }}" class="card-img-top"
+                            <img src="{{ url('landingpage/images/post/4.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
                         </div>
                         <div class="card-body">
@@ -120,7 +120,7 @@
 
                     <article class="card mb-4">
                         <div class="post-slider">
-                            <img src="{{ asset('landingpage/images/post/post-3.jpg') }}" class="card-img-top"
+                            <img src="{{ asset('landingpage/images/post/1.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
                         </div>
                         <div class="card-body">
@@ -155,7 +155,7 @@
 
                     <article class="card mb-4">
                         <div class="post-slider">
-                            <img src="{{ asset('landingpage/images/post/post-7.jpg') }}" class="card-img-top"
+                            <img src="{{ url('landingpage/images/post/3.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
                         </div>
 
@@ -165,7 +165,7 @@
                             <ul class="card-meta list-inline">
                                 <li class="list-inline-item">
                                     <a href="author-single.html" class="card-meta-author">
-                                        <img src="{{ asset('landingpage/images/john-doe.jpg') }}">
+                                        <img src="{{ url('landingpage/images/john-doe.jpg') }}">
                                         <span>Charls Xaviar</span>
                                     </a>
                                 </li>
@@ -223,7 +223,7 @@
 
                     <article class="card mb-4">
                         <div class="post-slider">
-                            <img src="{{ asset('landingpage/images/post/post-5.jpg') }}" class="card-img-top"
+                            <img src="{{ asset('landingpage/images/post/5.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
                         </div>
                         <div class="card-body">
@@ -259,9 +259,9 @@
 
                     <article class="card mb-4">
                         <div class="post-slider">
-                            <img src="{{ asset('landingpage/images/post/post-8.jpg') }}" class="card-img-top"
+                            <img src="{{ asset('landingpage/images/post/6.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
-                            <img src="{{ asset('landingpage/images/post/post-9.jpg') }}" class="card-img-top"
+                            <img src="{{ asset('landingpage/images/post/7.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
                         </div>
                         <div class="card-body">
@@ -295,25 +295,15 @@
                         </div>
                     </article>
 
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item page-item active ">
-                            <a href="#!" class="page-link">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#!" class="page-link">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#!" class="page-link">&raquo;</a>
-                        </li>
-                    </ul>
+                    
                 </div>
                 <aside class="col-lg-4 @@sidebar">
                     <!-- Search -->
                     <div class="widget">
                         <h4 class="widget-title"><span>Search</span></h4>
                         <form action="#!" class="widget-search">
-                            <input class="mb-3" id="search-query" name="s" type="search"
-                                placeholder="Type &amp; Hit Enter...">
+                            <input class="mb-3" id="search-query" name="proses" type="search"
+                                placeholder="search  your jurnal">
                             <i class="ti-search"></i>
                             <button type="submit" class="btn btn-primary btn-block">Search</button>
                         </form>

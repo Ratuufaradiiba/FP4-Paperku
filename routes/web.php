@@ -21,8 +21,17 @@ use App\Http\Controllers\PenggunaController;
 //     return view('frontend.pages.home');
 // })->name('home');
 Route::get('/', [PagesController::class, 'index'])->name('home');
+Route::get('/home', [PagesController::class, 'index'])->name('home');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
+Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
+
+
+
+
+
+
+
 Route::get('/backend', function () {
     return view('admin.home', [
         "title" => "Dashboard Admin",

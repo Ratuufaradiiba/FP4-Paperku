@@ -1,0 +1,16 @@
+body{ 
+    padding: 20px;
+ }
+ #drop_zone {
+    background-color: #FFE3E3;
+    border: #B980F0 5px dashed;
+    width: 100%;
+    padding : 60px 0;
+ }
+ #drop_zone p {
+    font-size: 20px;
+    text-align: center;
+ }
+ #btn_upload, #selectfile {
+    display: none;
+ }

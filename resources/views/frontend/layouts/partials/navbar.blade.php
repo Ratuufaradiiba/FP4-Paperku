@@ -2,36 +2,13 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-white">
             <a class="navbar-brand order-1" href="{{ route('home') }}">
-                <img class="img-fluid" width="100px" src="{{ asset('landingpage/images/logo.png') }}"
+                <img class="img-fluid" width="100px" src="{{ asset('landingpage/images/1.png') }}"
                     alt="Reader | Hugo Personal Blog Template">
             </a>
             <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            homepage <i class="ti-angle-down ml-1"></i>
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Homepage Full Width</a>
-
-                            <a class="dropdown-item" href="#">Homepage Full With Left Sidebar</a>
-
-                            <a class="dropdown-item" href="#">Homepage Full With Right Sidebar</a>
-
-                            <a class="dropdown-item" href="#">Homepage List Style</a>
-
-                            <a class="dropdown-item" href="#">Homepage List With Left Sidebar</a>
-
-                            <a class="dropdown-item" href="#">Homepage List With Right Sidebar</a>
-
-                            <a class="dropdown-item" href="#">Homepage Grid Style</a>
-
-                            <a class="dropdown-item" href="#">Homepage Grid With Left Sidebar</a>
-
-                            <a class="dropdown-item" href="#">Homepage Grid With Right Sidebar</a>
-
-                        </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('about') }}">About</a>
@@ -69,7 +46,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Upload</a>
+                        <a class="nav-link" href="{{url('/upload')}}">Upload</a>
                     </li>
 
 

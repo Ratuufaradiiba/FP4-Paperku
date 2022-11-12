@@ -3,24 +3,24 @@
 <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
         <div class="page-header min-height-300 border-radius-xl mt-4"
-            style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+            style="background-image: url('assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
             <span class="mask bg-gradient-primary opacity-6"></span>
         </div>
         <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="../assets/img/bruce-mars.jpg" alt="profile_image"
+                        <img src="{{url('assets/img/bruce-mars.jpg')}}" alt="profile_image"
                             class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
                     <div class="h-100">
                         <h5 class="mb-1">
-                            Alec Thompson
+                            KELOMPOK 4
                         </h5>
                         <p class="mb-0 font-weight-bold text-sm">
-                            CEO / Co-Founder
+                            Pencipta Website
                         </p>
                     </div>
                 </div>
@@ -195,10 +195,8 @@
                         </div>
                     </div>
                     <div class="card-body p-3">
-                        <p class="text-sm">
-                            Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally
-                            difficult paths, choose the one more painful in the short term (pain avoidance is
-                            creating an illusion of equality).
+                        <p class="text-sm" nama="profile">
+                            Kami adalah kelompok 4 yang s
                         </p>
                         <hr class="horizontal gray-light my-4">
                         <ul class="list-group">
@@ -235,7 +233,7 @@
                         <ul class="list-group">
                             <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                 <div class="avatar me-3">
-                                    <img src="../assets/img/kal-visuals-square.jpg" alt="kal"
+                                    <img src="{{url('assets/img/kal-visuals-square.jpg')}}" alt="kal"
                                         class="border-radius-lg shadow">
                                 </div>
                                 <div class="d-flex align-items-start flex-column justify-content-center">
@@ -246,7 +244,7 @@
                             </li>
                             <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                 <div class="avatar me-3">
-                                    <img src="../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
+                                    <img src="{{url('assets/img/marie.jpg')}}" alt="kal" class="border-radius-lg shadow">
                                 </div>
                                 <div class="d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm">Anne Marie</h6>
