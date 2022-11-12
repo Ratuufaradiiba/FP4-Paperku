@@ -74,8 +74,8 @@
                 </div>
                 <div class="col-lg-5 col-md-6">
                     <div class="content pl-lg-3 pl-0">
-                        <h2 id="what-is-the-main-mission-of-mine-and-what-i-wanna-do">Apa misi utama kami dan apa yang ingin kami lakukan?</h2>
-                        <p>Misi kami adalah untuk mempercepat penelitian dunia</p>
+                        <h3 id="what-is-the-main-mission-of-mine-and-what-i-wanna-do">What is our main mission and what do
+                            we want to do?</h3>
                     </div>
                 </div>
             </div>
@@ -88,27 +88,29 @@
             <div class="row justify-content-around align-items-center">
                 <div class="col-12 mb-5 text-center">
                     <h2>MISSION</h2>
-                    <h5>The mission of Paperku is to accelerate the world’s research. Our goal is to speed up 
-                        research in every domain - finding a solution to climate change; finding cures for diseases; 
+                    <h5>The mission of Paperku is to accelerate the world’s research. Our goal is to speed up
+                        research in every domain - finding a solution to climate change; finding cures for diseases;
                         evolving artificial intelligence.
                         We want to accelerate research in all these fields, and others too.</h5>
                 </div>
 
                 <div class="col-lg-4 col-md-6 text-center">
                     <h4 class="mission-name mb-4">Distribution</h4>
-                    <p class="mx-lg-3">Paperku goal is to build the fastest and most relevant paper distribution system in the world. 
+                    <p class="mx-lg-3">Paperku goal is to build the fastest and most relevant paper distribution system in
+                        the world.
                         Today Paperku algorithms make about 20 million paper recommendations a day.</p>
                 </div>
 
                 <div class="col-lg-4 col-md-6 text-center">
                     <h4 class="mission-name mb-4">Peer Review</h4>
-                    <p class="mx-lg-3">Paperku goal is to provide signals regarding the trustworthiness of papers, 
+                    <p class="mx-lg-3">Paperku goal is to provide signals regarding the trustworthiness of papers,
                         and the trustworthiness of individual claims within papers, on Paperku.</p>
                 </div>
 
                 <div class="col-lg-4 col-md-6 text-center">
                     <h4 class="mission-name mb-4">Formats</h4>
-                    <p class="mx-lg-3">Paperku goal is to enable the sharing of knowledge in novel and effective formats - video, 
+                    <p class="mx-lg-3">Paperku goal is to enable the sharing of knowledge in novel and effective formats -
+                        video,
                         short-form content, data-sets, code.</p>
                 </div>
 

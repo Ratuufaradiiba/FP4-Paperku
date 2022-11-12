@@ -20,14 +20,11 @@
 <link rel="stylesheet" href="{{ asset('landingpage/css/css.css') }}" media="screen">
 
 <!--Favicon-->
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="{{ asset('landingpage/images/favicon.png') }}" type="image/x-icon">
+<link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
 
-<meta property="og:title" content="Reader | Hugo Personal Blog Template" />
+<meta property="og:title" content="Paperku" />
 <meta property="og:description" content="This is meta description" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="" />
 <meta property="og:updated_time" content="2020-03-15T15:40:24+06:00" />
-
-
-

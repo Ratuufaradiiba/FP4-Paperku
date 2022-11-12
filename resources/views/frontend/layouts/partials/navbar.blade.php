@@ -2,7 +2,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-white">
             <a class="navbar-brand order-1" href="{{ route('home') }}">
-                <img class="img-fluid" width="100px" src="{{ asset('landingpage/images/1.png') }}"
+                <img class="img-fluid" width="60%" src="{{ asset('landingpage/images/1.png') }}"
                     alt="Reader | Hugo Personal Blog Template">
             </a>
             <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
@@ -46,22 +46,22 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/upload')}}">Upload</a>
+                        <a class="nav-link" href="{{ url('/upload') }}">Upload</a>
                     </li>
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/login') }}">Login</a>
+
                     </li>
                 </ul>
             </div>
 
             <div class="order-2 order-lg-3 d-flex align-items-center">
-
                 <!-- search -->
                 <form class="search-bar">
                     <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
                 </form>
+                <a class="nav-link text-success" href="{{ url('/login') }}"><b>Login</b></a>
 
                 <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse"
                     data-target="#navigation">

@@ -84,10 +84,8 @@
                     <h2 class="h5 section-title">Recent Post</h2>
                     <article class="card mb-4">
                         <div class="post-slider">
-                            <img src="{{ url('landingpage/images/post/2.jpg') }}" class="card-img-top"
-                                alt="post-thumb">
-                            <img src="{{ url('landingpage/images/post/4.jpg') }}" class="card-img-top"
-                                alt="post-thumb">
+                            <img src="{{ url('landingpage/images/post/2.jpg') }}" class="card-img-top" alt="post-thumb">
+                            <img src="{{ url('landingpage/images/post/4.jpg') }}" class="card-img-top" alt="post-thumb">
                         </div>
                         <div class="card-body">
                             <h3 class="mb-3"><a class="post-title" href="post-elements.html">Elements That You Can
@@ -122,6 +120,7 @@
                         <div class="post-slider">
                             <img src="{{ asset('landingpage/images/post/1.jpg') }}" class="card-img-top"
                                 alt="post-thumb">
+                            {{-- tinggal copas gambar untuk menambah slider  --}}
                         </div>
                         <div class="card-body">
                             <h3 class="mb-3"><a class="post-title" href="post-details.html">Advice From a Twenty
@@ -155,8 +154,7 @@
 
                     <article class="card mb-4">
                         <div class="post-slider">
-                            <img src="{{ url('landingpage/images/post/3.jpg') }}" class="card-img-top"
-                                alt="post-thumb">
+                            <img src="{{ url('landingpage/images/post/3.jpg') }}" class="card-img-top" alt="post-thumb">
                         </div>
 
                         <div class="card-body">
@@ -295,7 +293,7 @@
                         </div>
                     </article>
 
-                    
+
                 </div>
                 <aside class="col-lg-4 @@sidebar">
                     <!-- Search -->
@@ -303,7 +301,7 @@
                         <h4 class="widget-title"><span>Search</span></h4>
                         <form action="#!" class="widget-search">
                             <input class="mb-3" id="search-query" name="proses" type="search"
-                                placeholder="search  your jurnal">
+                                placeholder="Search someone's journal..">
                             <i class="ti-search"></i>
                             <button type="submit" class="btn btn-primary btn-block">Search</button>
                         </form>
