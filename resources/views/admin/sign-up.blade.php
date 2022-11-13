@@ -79,7 +79,7 @@
                             Sign In
                         </a>
                     </li>
-                    </ul>
+                </ul>
                 </ul>
             </div>
         </div>
@@ -94,7 +94,8 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-5 text-center mx-auto">
                             <h1 class="text-white mb-2 mt-5">Selamat Datang</h1>
-                            <p class="text-lead text-white">Gunakan formulir luar biasa ini untuk masuk atau membuat akun baru </p>
+                            <p class="text-lead text-white">Gunakan formulir luar biasa ini untuk masuk atau membuat
+                                akun baru </p>
                         </div>
                     </div>
                 </div>
