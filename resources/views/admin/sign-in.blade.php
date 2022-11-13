@@ -18,8 +18,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ url('assets/img/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('assets/img/12.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('assets/img/12.png') }}">
     <title>
         Login Paperku
     </title>
@@ -43,8 +43,9 @@
                 <nav
                     class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid pe-0">
+        
                         <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
-                            Soft UI Dashboard
+                            Paperku
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -83,16 +84,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <li class="nav-item d-flex align-items-center">
-                                <a class="btn btn-round btn-sm mb-0 btn-outline-primary me-2" target="_blank"
-                                    href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard">Online
-                                    Builder</a>
-                            </li>
-                            <ul class="navbar-nav d-lg-block d-none">
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/product/soft-ui-dashboard"
-                                        class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Free download</a>
-                                </li>
+                    
                             </ul>
                         </div>
                     </div>
@@ -147,7 +139,7 @@
                         <div class="col-md-6">
                             <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
                                 <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                    style="background-image:url('assets/img/curved-images/curved7.jpg')"></div>
+                                    style="background-image:url('../assets/img/curved-images/12.png)"></div>
                             </div>
                         </div>
                     </div>
