@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\JurnalController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,16 +29,10 @@ Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 
-
-
-
-
-
-
 Route::get('/backend', function () {
     return view('admin.home', [
         "title" => "Dashboard Admin",
-        "active" => "home"
+        "active" => "Home"
     ]);
 });
 
@@ -56,8 +53,11 @@ Route::get('/tables', function () {
 Route::get('/profile', function () {
     return view('admin.profile', [
         "title" => "Users",
-        "active" => "profile"
+        "active" => "Profile"
     ]);
 });
 // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
 Route::resource('pengguna', PenggunaController::class);
+Route::resource('kategori', KategoriController::class);
+Route::resource('author', ProfileController::class);
+Route::resource('jurnal', JurnalController::class);

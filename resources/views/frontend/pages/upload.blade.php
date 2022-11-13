@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <div class="py-4"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<div class="py-4">
     <section class="section">
         <div class="container">
 
@@ -28,7 +28,8 @@
                                     <input class="form-control shadow-none" type="text" placeholder="Title" required>
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <input class="form-control shadow-none" type="text" placeholder="Your Name" required>
+                                    <input class="form-control shadow-none" type="text" placeholder="Your Name"
+                                        required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <input class="form-control shadow-none" type="email" placeholder="Email">
@@ -36,7 +37,8 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <h5 class="mb-4">Description</h5>
-                                    <textarea class="form-control shadow-none" name="comment" rows="7" required></textarea>
+                                    <textarea class="form-control shadow-none" name="comment" rows="7"
+                                        required></textarea>
                                 </div>
                             </div>
                         </form>
@@ -50,83 +52,85 @@
                 <p id="message_info"></p>
             </div>
             <script>
-                var fileobj;
-                $(document).ready(function() {
-                    $("#drop_zone").on("dragover", function(event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        return false;
-                    });
-                    $("#drop_zone").on("drop", function(event) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        fileobj = event.originalEvent.dataTransfer.files[0];
+            var fileobj;
+            $(document).ready(function() {
+                $("#drop_zone").on("dragover", function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return false;
+                });
+                $("#drop_zone").on("drop", function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    fileobj = event.originalEvent.dataTransfer.files[0];
+                    var fname = fileobj.name;
+                    var fsize = fileobj.size;
+                    if (fname.length > 0) {
+                        document.getElementById('file_info').innerHTML = "File name : " + fname +
+                            ' <br>File size : ' + bytesToSize(fsize);
+                    }
+                    document.getElementById('selectfile').files[0] = fileobj;
+                    document.getElementById('btn_upload').style.display = "inline";
+                });
+                $('#btn_file_pick').click(function() {
+                    /*normal file pick*/
+                    document.getElementById('selectfile').click();
+                    document.getElementById('selectfile').onchange = function() {
+                        fileobj = document.getElementById('selectfile').files[0];
                         var fname = fileobj.name;
                         var fsize = fileobj.size;
                         if (fname.length > 0) {
-                            document.getElementById('file_info').innerHTML = "File name : " + fname +
+                            document.getElementById('file_info').innerHTML = "File name : " +
+                                fname +
                                 ' <br>File size : ' + bytesToSize(fsize);
                         }
-                        document.getElementById('selectfile').files[0] = fileobj;
                         document.getElementById('btn_upload').style.display = "inline";
-                    });
-                    $('#btn_file_pick').click(function() {
-                        /*normal file pick*/
-                        document.getElementById('selectfile').click();
-                        document.getElementById('selectfile').onchange = function() {
-                            fileobj = document.getElementById('selectfile').files[0];
-                            var fname = fileobj.name;
-                            var fsize = fileobj.size;
-                            if (fname.length > 0) {
-                                document.getElementById('file_info').innerHTML = "File name : " + fname +
-                                    ' <br>File size : ' + bytesToSize(fsize);
-                            }
-                            document.getElementById('btn_upload').style.display = "inline";
 
-                        };
-                    });
-                    $
+                    };
+                });
+                $
 
-                    $('#btn_upload').click(function() {
-                        if (fileobj == "" || fileobj == null) {
-                            alert("Please select a file");
-                            return false;
-                        } else {
-                            ajax_file_upload(fileobj);
+                $('#btn_upload').click(function() {
+                    if (fileobj == "" || fileobj == null) {
+                        alert("Please select a file");
+                        return false;
+                    } else {
+                        ajax_file_upload(fileobj);
+                    }
+                });
+            });
+
+            function ajax_file_upload(file_obj) {
+                if (file_obj != undefined) {
+                    var form_data = new FormData();
+                    form_data.append('upload_file', file_obj);
+                    $.ajax({
+                        type: 'POST',
+                        url: 'upload.php',
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        beforeSend: function(response) {
+                            $('#message_info').html("Uploading your file, please wait...");
+                        },
+                        success: function(response) {
+                            $('#message_info').html(response);
+                            alert(response);
+                            $('#selectfile').val('');
                         }
                     });
-                });
-
-                function ajax_file_upload(file_obj) {
-                    if (file_obj != undefined) {
-                        var form_data = new FormData();
-                        form_data.append('upload_file', file_obj);
-                        $.ajax({
-                            type: 'POST',
-                            url: 'upload.php',
-                            contentType: false,
-                            processData: false,
-                            data: form_data,
-                            beforeSend: function(response) {
-                                $('#message_info').html("Uploading your file, please wait...");
-                            },
-                            success: function(response) {
-                                $('#message_info').html(response);
-                                alert(response);
-                                $('#selectfile').val('');
-                            }
-                        });
-                    }
                 }
+            }
 
-                function bytesToSize(bytes) {
-                    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-                    if (bytes == 0) return '0 Byte';
-                    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-                    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-                }
+            function bytesToSize(bytes) {
+                var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                if (bytes == 0) return '0 Byte';
+                var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+                return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+            }
             </script>
         </div>
-        </div>
-    </section>
+</div>
+</div>
+</section>
 @endsection
