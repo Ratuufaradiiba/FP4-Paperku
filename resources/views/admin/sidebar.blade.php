@@ -5,8 +5,8 @@
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html "
             target="_blank">
-            <img src="{{ url('assets/img/logo-ct-dark.png')}}" class="navbar-brand-img h-100" alt="main_logo">
-            <span class="ms-1 font-weight-bold">Soft UI Dashboard</span>
+            <img src="{{ url('assets/img/1.png')}}" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold">Paperku</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">

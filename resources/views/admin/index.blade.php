@@ -18,8 +18,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ url('assets/img/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('assets/img/12.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('assets/img/12.png') }}">
     <title>
         {{ $title }}
     </title>
@@ -50,11 +50,7 @@
                             <input type="text" class="form-control" placeholder="Type here...">
                         </div>
                     </div>
-                    <ul class="navbar-nav  justify-content-end">
-                        <li class="nav-item d-flex align-items-center">
-                            <a class="btn btn-outline-primary btn-sm mb-0 me-3" target="_blank"
-                                href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard">Online
-                                Builder</a>
+        
                         </li>
                         <li class="nav-item d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
