@@ -9,7 +9,7 @@
         <div class="row gx-4">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="../assets/img/bruce-mars.jpg" alt="profile_image"
+                    <img src="{{ url('assets/img/bruce-mars.jpg')}}" alt="profile_image"
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
@@ -119,7 +119,7 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="../assets/img/home-decor-1.jpg" alt="img-blur-shadow"
+                                <img src="{{ url('assets/img/home-decor-1.jpg')}}" alt="img-blur-shadow"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
@@ -140,19 +140,19 @@
                                 <div class="avatar-group mt-2">
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                        <img alt="Image placeholder" src="../assets/img/team-1.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-1.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                        <img alt="Image placeholder" src="../assets/img/team-2.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-2.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                        <img alt="Image placeholder" src="../assets/img/team-3.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-3.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                        <img alt="Image placeholder" src="../assets/img/team-4.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-4.jpg')}}">
                                     </a>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="../assets/img/home-decor-2.jpg" alt="img-blur-shadow"
+                                <img src="{{ url('assets/img/home-decor-2.jpg')}}" alt="img-blur-shadow"
                                     class="img-fluid shadow border-radius-lg">
                             </a>
                         </div>
@@ -187,19 +187,19 @@
                                 <div class="avatar-group mt-2">
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                        <img alt="Image placeholder" src="../assets/img/team-3.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-3.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                        <img alt="Image placeholder" src="../assets/img/team-4.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-4.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                        <img alt="Image placeholder" src="../assets/img/team-1.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-1.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                        <img alt="Image placeholder" src="../assets/img/team-2.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-2.jpg')}}">
                                     </a>
                                 </div>
                             </div>
@@ -210,7 +210,7 @@
                     <div class="card card-blog card-plain">
                         <div class="position-relative">
                             <a class="d-block shadow-xl border-radius-xl">
-                                <img src="../assets/img/home-decor-3.jpg" alt="img-blur-shadow"
+                                <img src="{{ url('assets/img/home-decor-3.jpg')}}" alt="img-blur-shadow"
                                     class="img-fluid shadow border-radius-xl">
                             </a>
                         </div>
@@ -231,19 +231,19 @@
                                 <div class="avatar-group mt-2">
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                        <img alt="Image placeholder" src="../assets/img/team-4.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-4.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                        <img alt="Image placeholder" src="../assets/img/team-3.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-3.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                        <img alt="Image placeholder" src="../assets/img/team-2.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-2.jpg')}}">
                                     </a>
                                     <a href="javascript:;" class="avatar avatar-xs rounded-circle"
                                         data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                        <img alt="Image placeholder" src="../assets/img/team-1.jpg">
+                                        <img alt="Image placeholder" src="{{ url('assets/img/team-1.jpg')}}">
                                     </a>
                                 </div>
                             </div>
