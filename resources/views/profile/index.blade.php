@@ -11,7 +11,7 @@
                 @endif
                 <a href="{{ route('author.create') }}"
                     class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                          Tambah</a>
+                    Tambah</a>
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Authors Tabel</h6>
