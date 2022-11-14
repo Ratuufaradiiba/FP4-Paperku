@@ -20,7 +20,7 @@ class KategoriController extends Controller
         $kategori = Kategori::all();
         return view('kategori.index',compact('kategori'),[
             "title" => "Kategori Tabel",
-            "active" => "kategori"] );
+            "active" => "Kategori"] );
     }
 
     /**
@@ -30,7 +30,9 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori.form',[
+            "title" => "Kategori Form",
+            "active" => "Kategori"]);
     }
 
     /**
@@ -41,7 +43,14 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required|unique:kategori|max:45'
+        ]);
+      
+        Kategori::create($request->all());
+       
+        return redirect()->route('kategori.index')
+                        ->with('success','Kategori Berhasil Disimpan');
     }
 
     /**

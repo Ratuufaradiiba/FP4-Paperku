@@ -18,8 +18,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('assets/img/apple-icon.png') }}">
-    <link rel="icon" type="image/png" href="{{ url('assets/img/favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ url('assets/img/12.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('assets/img/12.png') }}">
     <title>
         Login Paperku
     </title>
@@ -43,8 +43,9 @@
                 <nav
                     class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid pe-0">
-                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
-                            Soft UI Dashboard
+
+                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('home') }}">
+                            Paperku
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -57,7 +58,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navigation">
                             <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                         href="{{ url('/backend') }}">
                                         <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
@@ -69,7 +70,7 @@
                                         <i class="fa fa-user opacity-6 text-dark me-1"></i>
                                         Profile
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a class="nav-link me-2" href="{{ url('/regis') }}">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
@@ -83,16 +84,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <li class="nav-item d-flex align-items-center">
-                                <a class="btn btn-round btn-sm mb-0 btn-outline-primary me-2" target="_blank"
-                                    href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard">Online
-                                    Builder</a>
-                            </li>
-                            <ul class="navbar-nav d-lg-block d-none">
-                                <li class="nav-item">
-                                    <a href="https://www.creative-tim.com/product/soft-ui-dashboard"
-                                        class="btn btn-sm btn-round mb-0 me-1 bg-gradient-dark">Free download</a>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
@@ -125,7 +117,8 @@
                                                 aria-label="Password" aria-describedby="password-addon">
                                         </div>
                                         <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
+                                            <input class="form-check-input" type="checkbox" id="rememberMe"
+                                                checked="">
                                             <label class="form-check-label" for="rememberMe">Remember me</label>
                                         </div>
                                         <div class="text-center">
@@ -200,9 +193,8 @@
             <div class="row">
                 <div class="col-8 mx-auto text-center mt-1">
                     <p class="mb-0 text-secondary">
-                        Copyright © <script>
-                        document.write(new Date().getFullYear())
-                        </script> Soft by Creative Tim.
+                        Created by: <br>
+                        Kelompok 6.4 - MSIB NF Computer
                     </p>
                 </div>
             </div>
@@ -211,22 +203,22 @@
     <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     <!--   Core JS Files   -->
     <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/core/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.6')}}"></script>
+    <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.6') }}"></script>
 </body>
 
 </html>

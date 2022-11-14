@@ -4,6 +4,14 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success shadow-sm">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
+                <a href="{{ route('kategori.create') }}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    Tambah</a>
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Kategori Tabel</h6>
@@ -18,6 +26,7 @@
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Kategori</th>
+                                        <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,6 +44,12 @@
                                         </td>
                                         <td>
                                             <p class="text-sm font-weight-bold mb-0">{{ $row->nama_kategori}}</p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
+                                                data-toggle="tooltip" data-original-title="Edit user">
+                                                Edit
+                                            </a>
                                         </td>
                                     </tr>
                                     @endforeach

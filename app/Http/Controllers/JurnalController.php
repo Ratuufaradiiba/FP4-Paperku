@@ -20,7 +20,7 @@ class JurnalController extends Controller
         $jurnal = Jurnal::with(['kategori','profile'])->get();
         return view('jurnal.index', compact('jurnal'), [
             "title" => "Jurnal Tabel",
-            "active" => "jurnal"
+            "active" => "Jurnal"
         ]);
     }
 
@@ -53,7 +53,11 @@ class JurnalController extends Controller
      */
     public function show($id)
     {
-        //
+        $row = Jurnal::find($id);
+        return view('jurnal.detail',compact('row'), [
+            "title" => "Detail Jurnal",
+            "active" => "Jurnal"
+        ]);
     }
 
     /**

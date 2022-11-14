@@ -16,7 +16,6 @@ class Jurnal extends Model
     public function kategori(){
         return $this->belongsTo(Kategori::class,'id_kategori','id');
     }
-    
     public function profile(){
         return $this->belongsTo(Profile::class,'id_profile','id');
     }

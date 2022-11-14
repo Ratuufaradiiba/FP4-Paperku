@@ -20,7 +20,7 @@ class ProfileController extends Controller
         $profile = Profile::all();
         return view('profile.index',compact('profile'),[
             "title" => "Author Tabel",
-            "active" => "author"]);
+            "active" => "Author"]);
     }
     /**
      * Show the form for creating a new resource.
@@ -29,7 +29,9 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('profile.form',[
+            "title" => "Author Form",
+            "active" => "Author"]);
     }
 
     /**
@@ -40,7 +42,16 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required|unique:profile|max:45',
+            'username' => 'required|unique:profile|max:45',
+            'email' => 'required|unique:profile|max:45',
+        ]);
+      
+        Profile::create($request->all());
+       
+        return redirect()->route('author.index')
+                        ->with('success','Author Berhasil Disimpan');
     }
 
     /**

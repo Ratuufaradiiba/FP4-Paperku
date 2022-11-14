@@ -32,7 +32,7 @@ Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 Route::get('/backend', function () {
     return view('admin.home', [
         "title" => "Dashboard Admin",
-        "active" => "home"
+        "active" => "Home"
     ]);
 });
 
@@ -53,11 +53,11 @@ Route::get('/tables', function () {
 Route::get('/profile', function () {
     return view('admin.profile', [
         "title" => "Users",
-        "active" => "profile"
+        "active" => "Profile"
     ]);
 });
 // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
 Route::resource('pengguna', PenggunaController::class);
 Route::resource('kategori', KategoriController::class);
-Route::resource('profile', ProfileController::class);
+Route::resource('author', ProfileController::class);
 Route::resource('jurnal', JurnalController::class);

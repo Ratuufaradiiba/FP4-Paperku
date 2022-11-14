@@ -4,6 +4,14 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success shadow-sm">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
+                <a href="{{ route('author.create') }}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                          Tambah</a>
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Authors Tabel</h6>
