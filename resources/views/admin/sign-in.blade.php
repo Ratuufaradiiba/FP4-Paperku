@@ -44,7 +44,7 @@
                     class="navbar navbar-expand-lg blur blur-rounded top-0 z-index-3 shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                     <div class="container-fluid pe-0">
 
-                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="../pages/dashboard.html">
+                        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('home') }}">
                             Paperku
                         </a>
                         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
@@ -58,7 +58,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navigation">
                             <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                                         href="{{ url('/backend') }}">
                                         <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
@@ -70,7 +70,7 @@
                                         <i class="fa fa-user opacity-6 text-dark me-1"></i>
                                         Profile
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
                                     <a class="nav-link me-2" href="{{ url('/regis') }}">
                                         <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
@@ -193,10 +193,8 @@
             <div class="row">
                 <div class="col-8 mx-auto text-center mt-1">
                     <p class="mb-0 text-secondary">
-                        Copyright ©
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> Soft by Creative Tim.
+                        Created by: <br>
+                        Kelompok 6.4 - MSIB NF Computer
                     </p>
                 </div>
             </div>
