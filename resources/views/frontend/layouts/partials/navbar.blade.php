@@ -1,3 +1,4 @@
+<script src="https://kit.fontawesome.com/79c702c45e.js" crossorigin="anonymous"></script>
 <header class="navigation fixed-top">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-white">
@@ -46,7 +47,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/upload') }}">Upload</a>
+                        <a class="nav-link" href="{{ url('/upload') }}"><i
+                                class="fa-solid fa-arrow-up"></i>&nbsp;&nbsp;Upload</a>
                     </li>
 
 
@@ -61,7 +63,8 @@
                 <form class="search-bar">
                     <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
                 </form>
-                <a class="nav-link text-success" href="{{ url('/login') }}"><b>Login</b></a>
+                <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>
+                        Login</b></a>
 
                 <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse"
                     data-target="#navigation">

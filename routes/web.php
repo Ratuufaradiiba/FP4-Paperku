@@ -26,6 +26,7 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/home', [PagesController::class, 'index'])->name('home');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/postdetail', [PagesController::class, 'postdetail'])->name('postdetail');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 
