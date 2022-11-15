@@ -52,8 +52,14 @@
                     <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
                 </form>
 
-                <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>
-                        Login</b></a>
+
+                @auth
+                    <a class="nav-link text-success" href="{{ url('/backend') }}"><b><i class="fa-regular fa-user"></i>
+                            Dashboard</b></a>
+                @else
+                    <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>
+                            Login</b></a>
+                @endauth
 
                 <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse"
                     data-target="#navigation">
