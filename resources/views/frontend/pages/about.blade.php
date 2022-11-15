@@ -4,9 +4,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 mx-auto">
-                    <h1 class="mb-4">About Us</h1>
+                    <h1 class="mb-4">About Paperku</h1>
                     <ul class="list-inline">
-                        <li class="list-inline-item"><a class="text-default" href="">Home
+                        <li class="list-inline-item"><a class="text-default" href="{{ route('home') }}">Home
                                 &nbsp; &nbsp; /</a></li>
                         <li class="list-inline-item text-primary">About Us</li>
                     </ul>

@@ -303,7 +303,7 @@
                         <h4 class="widget-title"><span>Search</span></h4>
                         <form action="#!" class="widget-search">
                             <input class="mb-3" id="search-query" name="proses" type="search"
-                                placeholder="Search someone's journal..">
+                                placeholder="Search for journal or paper..">
                             <i class="ti-search"></i>
                             <button type="submit" class="btn btn-primary btn-block">Search</button>
                         </form>
