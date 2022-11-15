@@ -88,8 +88,10 @@
                             <img src="{{ url('landingpage/images/post/4.jpg') }}" class="card-img-top" alt="post-thumb">
                         </div>
                         <div class="card-body">
-                            <h3 class="mb-3"><a class="post-title" href="post-elements.html">Elements That You Can
-                                    Use In This Template.</a></h3>
+                            <h3 class="mb-3"><a class="post-title" href="{{ route('postdetail') }}">INTERNET OF THINGS
+                                    (IOT)
+                                    SISTEM PENGENDALIAN LAMPU
+                                    MENGGUNAKAN RASPBERRY PI BERBASIS MOBILE</a></h3>
                             <ul class="card-meta list-inline">
                                 <li class="list-inline-item">
                                     <a href="author-single.html" class="card-meta-author">
@@ -112,7 +114,7 @@
                             </ul>
                             <p>Heading example Here is example of hedings. You can use this heading by following
                                 markdownify rules. For example: use # for heading 1 and use ###### for heading 6.</p>
-                            <a href="post-elements.html" class="btn btn-outline-primary">Read More</a>
+                            <a href="{{ route('postdetail') }}" class="btn btn-outline-primary">Read More</a>
                         </div>
                     </article>
 
@@ -301,7 +303,7 @@
                         <h4 class="widget-title"><span>Search</span></h4>
                         <form action="#!" class="widget-search">
                             <input class="mb-3" id="search-query" name="proses" type="search"
-                                placeholder="Search someone's journal..">
+                                placeholder="Search for journal or paper..">
                             <i class="ti-search"></i>
                             <button type="submit" class="btn btn-primary btn-block">Search</button>
                         </form>
