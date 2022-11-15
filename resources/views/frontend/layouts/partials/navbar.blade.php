@@ -3,7 +3,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-white">
             <a class="navbar-brand order-1" href="{{ route('home') }}">
-                <img class="img-fluid" width="60%" src="{{ asset('landingpage/images/1.png') }}" alt="Paperku">
+                <img class="img-fluid" width="150px" src="{{ asset('landingpage/images/1.png') }}" alt="Paperku">
             </a>
             <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
                 <ul class="navbar-nav mx-auto">
