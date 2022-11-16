@@ -38,8 +38,13 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="{{url('assets/img/team-2.jpg')}}"
-                                                        class="avatar avatar-sm me-3" alt="user1">
+                                                    @empty($row->foto)
+                                                    <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
+                                                        class="avatar avatar-sm me-3">
+                                                    @else
+                                                    <img src="{{ asset($row->foto)}}" alt="Profile"
+                                                        class="avatar avatar-sm me-3">
+                                                    @endempty
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{ $row->nama }}</h6>
@@ -53,10 +58,21 @@
                                             <span class="text-xs font-weight-bold">{{ $row->email }}</span>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
-                                            </a>
+                                            <form method="POST" action="{{ route('author.destroy',$row->id)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{ route('author.edit',$row->id)}}"
+                                                    class="btn btn-info shadow-sm text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
+                                                    Edit
+                                                </a>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger shadow-sm text-xs"
+                                                    onclick="return confirm('Anda yakin ingin hapus author ini?')"
+                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                    Hapus
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

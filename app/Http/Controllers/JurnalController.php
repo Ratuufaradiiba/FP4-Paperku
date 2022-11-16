@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Jurnal;
+use App\Models\Kategori;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class JurnalController extends Controller
@@ -31,7 +33,11 @@ class JurnalController extends Controller
      */
     public function create()
     {
-        //
+        $kategori = Kategori::all();
+        $penulis = Profile::all();
+        return view('jurnal.form', compact('kategori', 'penulis'), [
+            "title" => "Jurnal Form",
+            "active" => "Jurnal"]);
     }
 
     /**
@@ -42,7 +48,33 @@ class JurnalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul' => 'required|string',
+            'tahun' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ket' => 'required|string',
+            'isi'=> 'required|string', 
+            'id_kategori' => 'required|exists:kategori,id',
+            'id_profile' => 'required|exists:profile,id'
+        ]);
+
+        $jurnal = new Jurnal();
+        $jurnal->judul = $request->judul;
+        $jurnal->tahun = $request->tahun;
+        $jurnal->id_profile = $request->id_profile;
+        $jurnal->ket = $request->ket;
+        $jurnal->isi = $request->isi;
+        $jurnal->id_kategori = $request->id_kategori;
+
+        if ($request->hasFile('foto')) {
+            $filename = $request->file('foto')->hashName();
+            $request->file('foto')->move('assets/img/jurnals', $filename);
+            $jurnal->foto = 'assets/img/jurnals/'.$filename;
+        }
+
+        $jurnal->save();
+
+        return redirect()->route('jurnal.index')->with('success', 'Jurnal berhasil ditambahkan');
     }
 
     /**
@@ -68,7 +100,13 @@ class JurnalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jurnal = Jurnal::findOrFail($id);
+        $kategori = Kategori::all();
+        $penulis = Profile::all();
+        return view('jurnal.edit', compact('jurnal', 'kategori', 'penulis'), [
+            "title" => "Edit Jurnal",
+            "active" => "Jurnal"
+        ]);
     }
 
     /**
@@ -80,7 +118,36 @@ class JurnalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'judul' => 'required|string',
+            'tahun' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'ket' => 'required|string',
+            'isi'=> 'required|string', 
+            'id_kategori' => 'required|exists:kategori,id',
+            'id_profile' => 'required|exists:profile,id'
+        ]);
+
+        $jurnal = Jurnal::findOrFail($id);
+        $jurnal->judul = $request->judul;
+        $jurnal->tahun = $request->tahun;
+        $jurnal->id_profile = $request->id_profile;
+        $jurnal->ket = $request->ket;
+        $jurnal->isi = $request->isi;
+        $jurnal->id_kategori = $request->id_kategori;
+
+        if ($request->hasFile('foto')) {
+            if ($jurnal->foto != null) {
+                unlink($jurnal->foto);
+            }
+            $filename = $request->file('foto')->hashName();
+            $request->file('foto')->move('assets/img/jurnals', $filename);
+            $jurnal->foto = 'assets/img/jurnals/'.$filename;
+        }
+
+        $jurnal->save();
+
+        return redirect()->route('jurnal.index')->with('success', 'Jurnal berhasil diubah');
     }
 
     /**
@@ -91,6 +158,9 @@ class JurnalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = Jurnal::find($id);
+        if(!empty($row->foto)) unlink($row->foto);
+        Jurnal::where('id',$id)->delete();
+        return redirect()->route('jurnal.index')->with('success','Data Jurnal Berhasil Di Hapus');
     }
 }
