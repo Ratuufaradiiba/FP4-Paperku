@@ -26,6 +26,7 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/home', [PagesController::class, 'index'])->name('home');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
+Route::get('/postdetail', [PagesController::class, 'postdetail'])->name('postdetail');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 
@@ -36,7 +37,7 @@ Route::get('/backend', function () {
     ]);
 });
 
-Route::get('/login', function () {
+Route::get('/login2', function () {
     return view('admin.sign-in');
 });
 
@@ -61,3 +62,7 @@ Route::resource('pengguna', PenggunaController::class);
 Route::resource('kategori', KategoriController::class);
 Route::resource('author', ProfileController::class);
 Route::resource('jurnal', JurnalController::class);
+
+Auth::routes(); // login bawaan laravel, gapapa ada warning ga masalah!!!
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
