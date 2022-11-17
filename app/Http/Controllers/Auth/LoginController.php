@@ -26,6 +26,7 @@ class LoginController extends Controller
     {
         if (auth()->user()->role === 'admin') {
             return redirect('/backend')->with('success', 'Anda telah berhasil login');
+            // return redirect('/login')->with('failed', 'Maaf, username/password Anda salah');
         } else {
             return redirect('/')->with('success', 'Anda telah berhasil login');
         }

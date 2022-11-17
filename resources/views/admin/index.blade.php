@@ -453,11 +453,13 @@
     {{-- sweet alert --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('success'))
+        {{-- @elseif (session('failed')) --}}
         <script>
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: '{{ session('success') }}',
+                // title: '{{ session('failed') }}',
                 showConfirmButton: true,
                 timer: 1500
             })
