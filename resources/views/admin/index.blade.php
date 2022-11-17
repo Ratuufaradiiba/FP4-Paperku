@@ -62,10 +62,11 @@
 
                     </li>
                     <li class="nav-item d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                            <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Logout</span>
-                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            <a href="#" class="nav-link text-body font-weight-bold px-0">
+                                <span class="d-sm-inline d-none">Dashboard</span>
+                            </a>
+                        </form>
                     </li>
                     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -452,11 +453,13 @@
     {{-- sweet alert --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('success'))
+        {{-- @elseif (session('failed')) --}}
         <script>
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: '{{ session('success') }}',
+                // title: '{{ session('failed') }}',
                 showConfirmButton: true,
                 timer: 1500
             })
