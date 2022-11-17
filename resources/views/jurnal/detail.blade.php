@@ -10,11 +10,11 @@
                     <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
                         class="avatar avatar-xxl position-relative">
                     @else
-                    <img src="{{ asset($row->foto)}}" alt="Profile" class="avatar avatar-xxl position-relative">
+                    <img src="{{ asset($row->foto) }}" alt="Profile" class="avatar avatar-xxl position-relative">
                     @endempty
                     <br>
                     <h2>{{ $row->profile->nama }}</h2>
-                    <h3>{{$row->profile->username}}</h3>
+                    <h3>{{ $row->profile->username }}</h3>
                     <div class=" social-links mt-2">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -34,9 +34,9 @@
                             <h6 class="mb-0">{{ $row->judul }}</h6>
                         </div>
                         <div class="col-md-4 text-end">
-                            <a href="javascript:;">
+                            <a href="{{ route('jurnal.edit',$row->id)}}">
                                 <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="Edit Profile"></i>
+                                    data-bs-placement="top" title="Edit Jurnal"></i>
                             </a>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                             &nbsp; {{ $row->profile->nama }}</li>
                         <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Tahun
                                 Terbit:</strong>
-                            &nbsp; {{$row->tahun}}</li>
+                            &nbsp; {{ $row->tahun }}</li>
                         <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Keterangan:</strong>
                             &nbsp; {{ $row->ket }}</li>
                         <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Kategori:</strong>
@@ -66,7 +66,8 @@
                             </a>
                             <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
                                 <i class="fab fa-instagram fa-lg"></i>
-                            </a>
+                            </a> <br> <br>
+                            <a class="btn btn-info" href="{{ route('jurnal.index') }}">Kembali</a>
                         </li>
                     </ul>
                 </div>
