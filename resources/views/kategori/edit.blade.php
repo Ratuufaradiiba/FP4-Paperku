@@ -30,7 +30,6 @@
 
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Update</button>
-                                <button type="reset" class="btn btn-secondary">Batal</button>
                                 <a class="btn btn-info" href="{{ route('kategori.index') }}">Kembali</a>
                             </div>
                         </form><!-- Vertical Form -->

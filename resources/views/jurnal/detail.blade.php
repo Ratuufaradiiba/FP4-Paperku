@@ -34,9 +34,9 @@
                                 <h6 class="mb-0">{{ $row->judul }}</h6>
                             </div>
                             <div class="col-md-4 text-end">
-                                <a href="javascript:;">
+                                <a href="#">
                                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Profile"></i>
+                                        data-bs-placement="top" title="Edit Jurnal"></i>
                                 </a>
                             </div>
                         </div>
