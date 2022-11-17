@@ -72,7 +72,10 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategori = Kategori::find($id);
+        return view('kategori.edit',compact('kategori'),[
+            "title" => "Kategori Form",
+            "active" => "Kategori"]);
     }
 
     /**
@@ -84,7 +87,16 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required|unique:kategori,nama_kategori,'.$id.'|max:45'
+        ]);
+
+        $kategori = Kategori::find($id);
+        $kategori->nama_kategori = $request->nama_kategori;
+        $kategori->save();
+
+        return redirect()->route('kategori.index')
+                        ->with('success','Kategori Berhasil Diupdate');
     }
 
     /**
@@ -95,6 +107,8 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = Kategori::find($id);
+        Kategori::where('id',$id)->delete();
+        return redirect()->route('kategori.index')->with('success','Data Kategori Berhasil Di Hapus');
     }
 }

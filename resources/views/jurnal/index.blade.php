@@ -4,6 +4,14 @@
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success shadow-sm">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
+                <a href="{{ route('jurnal.create') }}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    Tambah</a>
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <h6>Jurnal Tabel</h6>
@@ -24,7 +32,9 @@
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Kategori</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,8 +43,13 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
-                                                    <img src="{{url('assets/img/team-2.jpg')}}"
-                                                        class="avatar avatar-sm me-3" alt="user1">
+                                                    @empty($row->foto)
+                                                    <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
+                                                        class="avatar avatar-sm me-3">
+                                                    @else
+                                                    <img src="{{ asset($row->foto)}}" alt="Profile"
+                                                        class="avatar avatar-sm me-3">
+                                                    @endempty
                                                 </div>
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm">{{$row->profile->nama}}</h6>
@@ -52,11 +67,27 @@
                                             <p class="text-xs text-secondary">{{ $row->kategori->nama_kategori }}</p>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="{{ route('jurnal.show',$row->id)}}"
-                                                class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                                                data-original-title="Edit user">
-                                                Detail
-                                            </a>
+                                            <form method="POST" action="{{ route('jurnal.destroy',$row->id)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{ route('jurnal.show',$row->id)}}"
+                                                    class=" btn  btn-primary shadow-sm  text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
+                                                    Detail
+                                                </a>
+                                                &nbsp;
+                                                <a href="{{ route('jurnal.edit',$row->id)}}"
+                                                    class="btn btn-info shadow-sm text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
+                                                    Edit
+                                                </a>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger shadow-sm text-xs"
+                                                    onclick="return confirm('Anda yakin ingin hapus jurnal ini?')"
+                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                    Hapus
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

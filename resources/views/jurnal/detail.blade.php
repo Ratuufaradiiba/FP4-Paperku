@@ -6,9 +6,12 @@
 
             <div class="card">
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-                    <img src="{{ url('assets/img/bruce-mars.jpg') }}" alt="Profile"
+                    @empty($row->foto)
+                    <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
                         class="avatar avatar-xxl position-relative">
+                    @else
+                    <img src="{{ asset($row->foto)}}" alt="Profile" class="avatar avatar-xxl position-relative">
+                    @endempty
                     <br>
                     <h2>{{ $row->profile->nama }}</h2>
                     <h3>{{$row->profile->username}}</h3>

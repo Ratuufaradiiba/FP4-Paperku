@@ -26,7 +26,9 @@
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Kategori</th>
-                                        <th class="text-secondary opacity-7"></th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,10 +48,20 @@
                                             <p class="text-sm font-weight-bold mb-0">{{ $row->nama_kategori}}</p>
                                         </td>
                                         <td class="align-middle">
-                                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="tooltip" data-original-title="Edit user">
-                                                Edit
-                                            </a>
+                                            <form method="POST" action="{{ route('kategori.destroy',$row->id)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{ route('kategori.edit',$row->id)}}"
+                                                    class="btn btn-info shadow-sm text-xs" data-toggle="tooltip"
+                                                    data-original-title="Edit user">
+                                                    Edit
+                                                </a>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger shadow-sm text-xs"
+                                                    onclick="return confirm('Anda yakin ingin hapus kategori ini?')"
+                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                    Hapus
+                                                </button>
                                         </td>
                                     </tr>
                                     @endforeach
