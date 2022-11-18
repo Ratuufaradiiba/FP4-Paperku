@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-2 text-center mb-4">
                 <a href="{{ route('home') }}"><img class="img-fluid" width="100%"
-                        src="{{ asset('landingpage/images/1.png') }}" alt="Paperku | Jurnal Profesional"></a>
+                        src="{{ asset('landingpage/images/2.png') }}" alt="Paperku | Jurnal Profesional"></a>
             </div>
             <div class="col-md-5 text-md-right text-center mb-4">
                 <ul class="list-inline footer-list mb-0">
