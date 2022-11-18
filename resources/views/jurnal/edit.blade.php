@@ -80,8 +80,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="inputNanme4" class="form-label">Masukan Isi Jurnal</label>
-                                <input type="text" class="form-control" name="isi"
-                                    value="{{ old('isi', $jurnal->isi) }}">
+                                <textarea class="form-control" name="isi" value="{{ old('isi', $jurnal->isi) }}" rows="20" cols="33"></textarea>
                                 @error('isi')
                                     <p class="text text-danger mb-0">{{ $message }}</p>
                                 @enderror

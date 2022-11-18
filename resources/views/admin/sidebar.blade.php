@@ -215,7 +215,7 @@
                     @csrf
                     <div class="container">
                         <div class="vertical-center">
-                            <button class="btn btn-danger shadow-xl">Logout</button>
+                            <button class="btn btn-danger shadow-sm">Logout</button>
                         </div>
                     </div>
                 </form>
