@@ -6,6 +6,7 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashAdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +30,7 @@ Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/postdetail', [PagesController::class, 'postdetail'])->name('postdetail');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
-
-Route::get('/backend', function () {
-    return view('admin.home', [
-        "title" => "Dashboard Admin",
-        "active" => "Home"
-    ]);
-});
+Route::get('backend', [DashAdController::class, 'index']);
 
 Route::get('/login2', function () {
     return view('admin.sign-in');

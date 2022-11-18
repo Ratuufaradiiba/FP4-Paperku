@@ -5,23 +5,11 @@
         <div class="row">
             <div class="col-lg-9 mx-auto">
                 <h1 class="mb-5">What Would You <br> Like To Read Today?</h1>
+                @foreach ($kategori as $row)
                 <ul class="list-inline widget-list-inline">
-                    <li class="list-inline-item"><a href="tags.html">City</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Creative</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Decorate</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Demo</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Elements</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Fish</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Food</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Nice</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Season</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Taste</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Tasty</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Vlog</a></li>
-                    <li class="list-inline-item"><a href="tags.html">Wow</a></li>
+                    <li class="list-inline-item"><a href="tags.html">{{ $row->nama_kategori }}</a></li>
                 </ul>
+                @endforeach
             </div>
         </div>
     </div>
