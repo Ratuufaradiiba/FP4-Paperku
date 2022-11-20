@@ -7,6 +7,9 @@ use App\Models\Jurnal;
 use App\Models\Kategori;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use DB;
+use App\Exports\jurnalExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class JurnalController extends Controller
 {
@@ -162,5 +165,10 @@ class JurnalController extends Controller
         if(!empty($row->foto)) unlink($row->foto);
         Jurnal::where('id',$id)->delete();
         return redirect()->route('jurnal.index')->with('success','Data Jurnal Berhasil Di Hapus');
+    }
+
+    public function JurnalExcel() 
+    {
+        return Excel::download(new jurnalExport, 'jurnal.xlsx');
     }
 }
