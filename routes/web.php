@@ -65,3 +65,8 @@ Auth::routes(); // login bawaan laravel, gapapa ada warning ga masalah!!!
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //memanggil fungsi export to excel
 Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
+
+//memanggil fungsi  export To PDF
+Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF']);
+Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF']);
+Route::get('profile-pdf', [ProfileController::class, 'profilePDF']);
