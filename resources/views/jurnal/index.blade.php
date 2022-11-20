@@ -62,8 +62,9 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>
+                                                <td style="width: 50px; white-space:normal !important">
                                                     <p class="text-xs font-weight-bold mb-0">{{ $row->judul }}</p>
+                                                    <br>
                                                     <p class="text-xs text-secondary mb-0">{{ $row->tahun }}</p>
                                                 </td>
                                                 <td>
