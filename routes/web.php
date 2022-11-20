@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashAdController;
 use App\Http\Controllers\JurnalController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PagesController;
@@ -31,12 +32,7 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 
 
-Route::get('/backend', function () {
-    return view('admin.home', [
-        "title" => "Dashboard Admin",
-        "active" => "Home"
-    ]);
-});
+Route::get('/backend', [DashAdController::class, 'index']);
 
 Route::get('/login2', function () {
     return view('admin.sign-in');
