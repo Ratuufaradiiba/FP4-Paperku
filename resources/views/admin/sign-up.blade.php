@@ -40,7 +40,7 @@
     <nav
         class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
         <div class="container">
-            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../pages/dashboard.html">
+            <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{{ route('home') }}">
                 Paperku
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
@@ -54,7 +54,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="navbar-nav mx-auto ms-xl-auto me-xl-7">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                             href="{{ url('/backend') }}">
                             <i class="fa fa-chart-pie opacity-6  me-1"></i>
@@ -66,7 +66,7 @@
                             <i class="fa fa-user opacity-6  me-1"></i>
                             Profile
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link me-2" href="{{ url('/regis') }}">
                             <i class="fas fa-user-circle opacity-6  me-1"></i>
@@ -79,7 +79,7 @@
                             Sign In
                         </a>
                     </li>
-                    </ul>
+                </ul>
                 </ul>
             </div>
         </div>
@@ -88,13 +88,14 @@
     <main class="main-content  mt-0">
         <section class="min-vh-100 mb-8">
             <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
-                style="background-image: url('../assets/img/curved-images/bgjurnal.jpg');">
+                style="background-image: url('assets/img/curved-images/curved14.jpg');">
                 <span class="mask bg-gradient-dark opacity-6"></span>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 text-center mx-auto">
                             <h1 class="text-white mb-2 mt-5">Selamat Datang</h1>
-                            <p class="text-lead text-white">Gunakan formulir luar biasa ini untuk masuk atau membuat akun baru </p>
+                            <p class="text-lead text-white">Gunakan formulir luar biasa ini untuk masuk atau membuat
+                                akun baru </p>
                         </div>
                     </div>
                 </div>
@@ -179,20 +180,20 @@
                             <div class="card-body">
                                 <form role="form text-left">
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="Name" aria-label="Name"
-                                            aria-describedby="email-addon">
+                                        <input type="text" class="form-control" placeholder="Name"
+                                            aria-label="Name" aria-describedby="email-addon">
                                     </div>
                                     <div class="mb-3">
-                                        <input type="email" class="form-control" placeholder="Email" aria-label="Email"
-                                            aria-describedby="email-addon">
+                                        <input type="email" class="form-control" placeholder="Email"
+                                            aria-label="Email" aria-describedby="email-addon">
                                     </div>
                                     <div class="mb-3">
                                         <input type="password" class="form-control" placeholder="Password"
                                             aria-label="Password" aria-describedby="password-addon">
                                     </div>
                                     <div class="form-check form-check-info text-left">
-                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                            checked>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="flexCheckDefault" checked>
                                         <label class="form-check-label" for="flexCheckDefault">
                                             I agree the <a href="javascript:;"
                                                 class="text-dark font-weight-bolder">Terms and Conditions</a>
@@ -202,8 +203,8 @@
                                         <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign
                                             up</button>
                                     </div>
-                                    <p class="text-sm mt-3 mb-0">Already have an account? <a href="{{ url('/login') }}"
-                                            class="text-dark font-weight-bolder">Sign
+                                    <p class="text-sm mt-3 mb-0">Already have an account? <a
+                                            href="{{ url('/login') }}" class="text-dark font-weight-bolder">Sign
                                             in</a></p>
                                 </form>
                             </div>
@@ -257,9 +258,8 @@
                 <div class="row">
                     <div class="col-8 mx-auto text-center mt-1">
                         <p class="mb-0 text-secondary">
-                            Copyright © <script>
-                            document.write(new Date().getFullYear())
-                            </script> Soft by Creative Tim.
+                            Created by: <br>
+                            Kelompok 6.4 - MSIB NF Computer
                         </p>
                     </div>
                 </div>
@@ -268,23 +268,23 @@
         <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
     </main>
     <!--   Core JS Files   -->
-    <script src="{{ asset('assets/js/core/popper.min.js')}}"></script>
-    <script src="{{ asset('assets/js/core/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
+    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
     </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="a{{ asset('ssets/js/soft-ui-dashboard.min.js?v=1.0.6')}}"></script>
+    <script src="a{{ asset('ssets/js/soft-ui-dashboard.min.js?v=1.0.6') }}"></script>
 </body>
 
 </html>

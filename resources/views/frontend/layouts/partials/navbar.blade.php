@@ -1,9 +1,9 @@
+<script src="https://kit.fontawesome.com/79c702c45e.js" crossorigin="anonymous"></script>
 <header class="navigation fixed-top">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-white">
             <a class="navbar-brand order-1" href="{{ route('home') }}">
-                <img class="img-fluid" width="100px" src="{{ asset('landingpage/images/1.png') }}"
-                    alt="Reader | Hugo Personal Blog Template">
+                <img class="img-fluid" width="150px" src="{{ asset('landingpage/images/1.png') }}" alt="Paperku">
             </a>
             <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
                 <ul class="navbar-nav mx-auto">
@@ -24,44 +24,42 @@
 
                             <a class="dropdown-item" href="#">Author Single</a>
 
-                            <a class="dropdown-item" href="#">Advertise</a>
-
                             <a class="dropdown-item" href="#">Post Details</a>
-
-                            <a class="dropdown-item" href="#">Post Elements</a>
 
                             <a class="dropdown-item" href="#">Tags</a>
 
                             <a class="dropdown-item" href="#">Search Result</a>
 
                             <a class="dropdown-item" href="#">Search Not Found</a>
-
-                            <a class="dropdown-item" href="#">Privacy Policy</a>
-
-                            <a class="dropdown-item" href="#">Terms Conditions</a>
-
-                            <a class="dropdown-item" href="#">404 Page</a>
-
                         </div>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/upload')}}">Upload</a>
+                        <a class="nav-link" href="{{ url('/upload') }}"><i
+                                class="fa-solid fa-arrow-up"></i>&nbsp;&nbsp;Upload</a>
                     </li>
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/login') }}">Login</a>
+
                     </li>
                 </ul>
             </div>
 
             <div class="order-2 order-lg-3 d-flex align-items-center">
-
                 <!-- search -->
                 <form class="search-bar">
                     <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
                 </form>
+
+
+                @auth
+                    <a class="nav-link text-success" href="{{ url('/backend') }}"><b><i class="fa-regular fa-user"></i>
+                            Dashboard</b></a>
+                @else
+                    <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>
+                            Login</b></a>
+                @endauth
 
                 <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse"
                     data-target="#navigation">

@@ -3,7 +3,11 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '80807b1cd673a7f5e3d9e731b3c48cec4d3069af',
+<<<<<<< HEAD
+        'reference' => 'cb15e09cb4984595cffd633f4ea4aa811a09481b',
+=======
+        'reference' => 'c2a614d47b8a59efafbadb2f6dad6e273a35efdc',
+>>>>>>> fea856c670bacf4165d84b98ad437d6c658d5f18
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -367,7 +371,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '80807b1cd673a7f5e3d9e731b3c48cec4d3069af',
+<<<<<<< HEAD
+            'reference' => 'cb15e09cb4984595cffd633f4ea4aa811a09481b',
+=======
+            'reference' => 'c2a614d47b8a59efafbadb2f6dad6e273a35efdc',
+>>>>>>> fea856c670bacf4165d84b98ad437d6c658d5f18
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -415,6 +423,15 @@
             'reference' => 'dff39b661e827dae6e092412f976658df82dbac5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/tinker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'laravel/ui' => array(
+            'pretty_version' => 'v4.1.0',
+            'version' => '4.1.0.0',
+            'reference' => 'f2f879e9f0947a1ede12b0ff7446ce4e249479cd',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/ui',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
