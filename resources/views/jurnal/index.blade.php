@@ -79,7 +79,7 @@
                                                     </p>
                                                 </td>
                                                 <td class="align-middle">
-                                                    <form method="POST" action="{{ route('jurnal.destroy', $row->id) }}">
+                                                    <form method="POST" id="formDelete">
                                                         @csrf
                                                         @method('DELETE')
                                                         <a href="{{ route('jurnal.show', $row->id) }}"
@@ -94,8 +94,9 @@
                                                             Edit
                                                         </a>
                                                         &nbsp;
-                                                        <button type="submit" class="btn btn-danger shadow-sm text-xs"
-                                                            onclick="return confirm('Anda yakin ingin hapus jurnal ini?')"
+                                                        <button type="button"
+                                                            class="btn btn-danger shadow-sm text-xs btnDelete"
+                                                            data-action="{{ route('jurnal.destroy', $row->id) }}"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             Hapus
                                                         </button>
