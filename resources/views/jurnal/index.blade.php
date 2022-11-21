@@ -20,7 +20,11 @@
                                 Tambah</a>
                             <a href="{{ url('jurnal-excel') }}"
                                 class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
-                                Export To Excel</a>
+                                XLS</a>
+                            <a href="{{ url('jurnal-pdf') }}"
+                                class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" i
+                                class="bi bi-filetype-pdf" title="Export To PDF">
+                                </i>PDF</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
