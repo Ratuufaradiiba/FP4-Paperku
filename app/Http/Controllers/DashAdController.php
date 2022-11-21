@@ -13,7 +13,8 @@ class DashAdController extends Controller
     {
         $download = DB::table('jurnal')->select(['judul', 'download'])->get();
         //dd($coba);
-        return view('admin.home', compact('download'), [
+        return view('admin.home',  [
+            "download" => $download,
             "title" => "Home",
             "active" => "Home"
         ]);

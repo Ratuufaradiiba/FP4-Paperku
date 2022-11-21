@@ -9,12 +9,22 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+
+
                     <div class="card mb-4">
                         <div class="card-header pb-0">
                             <h6>Jurnal Tabel</h6>
                             <br>
-                            <a href="{{ route('jurnal.create') }}" class="btn btn-sm btn-primary shadow-sm">
+                            <a href="{{ route('jurnal.create') }}"
+                                class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                                 Tambah</a>
+                            <a href="{{ url('jurnal-excel') }}"
+                                class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
+                                XLS</a>
+                            <a href="{{ url('jurnal-pdf') }}"
+                                class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" i
+                                class="bi bi-filetype-pdf" title="Export To PDF">
+                                </i>PDF</a>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -56,9 +66,8 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td style="width: 50px; white-space: normal !important">
-                                                    <p class="text-xs font-weight-bold mb-0">
-                                                        {{ $row->judul }}</p>
+                                                <td style="width: 50px; white-space:normal !important">
+                                                    <p class="text-xs font-weight-bold mb-0">{{ $row->judul }}</p>
                                                     <br>
                                                     <p class="text-xs text-secondary mb-0">{{ $row->tahun }}</p>
                                                 </td>
