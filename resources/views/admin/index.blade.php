@@ -33,6 +33,7 @@
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.6') }}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -238,11 +239,12 @@
                         onclick="navbarFixed(this)">
                 </div>
                 <hr class="horizontal dark my-sm-4">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button class="btn btn-danger w-100">Logout</button>
-                </form>
-                <br>
+                <a class="btn bg-gradient-dark w-100"
+                    href="https://www.creative-tim.com/product/soft-ui-dashboard">Free
+                    Download</a>
+                <a class="btn btn-outline-dark w-100"
+                    href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard">View
+                    documentation</a>
                 <div class="w-100 text-center">
                     <a class="github-button" href="#" data-icon="octicon-star" data-size="large"
                         data-show-count="true"
@@ -450,7 +452,6 @@
     {{-- sweet alert --}}
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @if (session('success'))
-        {{-- @elseif (session('failed')) --}}
         <script>
             Swal.fire({
                 position: 'center',
@@ -462,6 +463,27 @@
             })
         </script>
     @endif
+    <script>
+        $('body').on('click', '.btnDelete', function(e) {
+            e.preventDefault();
+            var action = $(this).data('action');
+            Swal.fire({
+                title: 'Yakin ingin menghapus data ini?',
+                text: "Data yang sudah dihapus tidak bisa dikembalikan lagi",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Yakin'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#formDelete').attr('action', action);
+                    $('#formDelete').submit();
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>

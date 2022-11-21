@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashAdController;
 use App\Http\Controllers\JurnalController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PagesController;
@@ -30,12 +31,8 @@ Route::get('/postdetail', [PagesController::class, 'postdetail'])->name('postdet
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 
-Route::get('/backend', function () {
-    return view('admin.home', [
-        "title" => "Dashboard Admin",
-        "active" => "Home"
-    ]);
-});
+
+Route::get('/backend', [DashAdController::class, 'index']);
 
 Route::get('/login2', function () {
     return view('admin.sign-in');
@@ -66,3 +63,10 @@ Route::resource('jurnal', JurnalController::class);
 Auth::routes(); // login bawaan laravel, gapapa ada warning ga masalah!!!
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//memanggil fungsi export to excel
+Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
+
+//memanggil fungsi  export To PDF
+Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF']);
+Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF']);
+Route::get('profile-pdf', [ProfileController::class, 'profilePDF']);

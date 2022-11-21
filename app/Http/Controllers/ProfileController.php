@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProfileController extends Controller
 {
@@ -140,5 +141,13 @@ class ProfileController extends Controller
         if(!empty($row->foto)) unlink($row->foto);
         Profile::where('id',$id)->delete();
         return redirect()->route('author.index')->with('success','Data Author Berhasil Di Hapus');
+    }
+
+    public function profilePDF()
+    { 
+        $profile= Profile ::all();           
+        $pdf = PDF::loadView('profile.profilePDF',['profile' => $profile]);
+     
+        return $pdf->download('profile.pdf');
     }
 }

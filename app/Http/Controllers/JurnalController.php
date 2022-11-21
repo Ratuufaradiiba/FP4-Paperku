@@ -7,6 +7,11 @@ use App\Models\Jurnal;
 use App\Models\Kategori;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use DB;
+use App\Exports\jurnalExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
 
 class JurnalController extends Controller
 {
@@ -162,5 +167,17 @@ class JurnalController extends Controller
         if(!empty($row->foto)) unlink($row->foto);
         Jurnal::where('id',$id)->delete();
         return redirect()->route('jurnal.index')->with('success','Data Jurnal Berhasil Di Hapus');
+    }
+
+    public function JurnalExcel() 
+    {
+        return Excel::download(new jurnalExport, 'jurnal.xlsx');
+    }
+    public function jurnalPDF()
+    { 
+        $jurnal = Jurnal ::all();           
+        $pdf = PDF::loadView('jurnal.jurnalPDF',['jurnal' => $jurnal]);
+     
+        return $pdf->download('datajurnal.pdf');
     }
 }
