@@ -97,7 +97,8 @@
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(-1869.000000, -293.000000)" fill="#FFFFFF"
+                                    fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g id="office" transform="translate(153.000000, 2.000000)">
                                             <path class="color-background opacity-6"
@@ -126,7 +127,8 @@
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF"
+                                    fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g transform="translate(1.000000, 0.000000)">
                                             <path class="color-background opacity-6"
@@ -147,7 +149,10 @@
                     <span class="nav-link-text ms-1">Profile</span>
                 </a>
             </li>
-            <li class="nav-item">
+
+            {{-- SIGN IN DAN SIGN UP SIDE BAR  --}}
+
+            {{-- <li class="nav-item">
                 <a class="nav-link  " href="{{ url('/login') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -204,7 +209,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Sign Up</span>
                 </a>
-            </li>
+            </li> --}}
             <br>
             <li class="nav-item">
                 <form action="{{ route('logout') }}" method="POST">
