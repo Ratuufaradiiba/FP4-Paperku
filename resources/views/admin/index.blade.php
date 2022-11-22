@@ -65,7 +65,9 @@
                     <li class="nav-item d-flex align-items-center">
                         <form method="POST" action="{{ route('logout') }}">
                             <a href="#" class="nav-link text-body font-weight-bold px-0">
-                                <span class="d-sm-inline d-none">Dashboard</span>
+                                <span class="d-sm-inline d-none"> Selamat Datang, <br>
+                                    <p style="color: rgb(199, 0, 133);">{{ Auth::user()->name }}!</p>
+                                </span>
                             </a>
                         </form>
                     </li>

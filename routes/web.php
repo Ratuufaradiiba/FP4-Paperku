@@ -20,53 +20,45 @@ use App\Http\Controllers\ProfileController;
 */
 
 
-
+Auth::routes(); // login bawaan laravel
 // Route::get('/', function () {
 //     return view('frontend.pages.home');
 // })->name('home');
 Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/home', [PagesController::class, 'index'])->name('home');
+// Pak nasrul home ini diganti home1
+
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/postdetail', [PagesController::class, 'postdetail'])->name('postdetail');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 
+Route::middleware('auth')->prefix('admin')->group(function () {
+    // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
+    Route::get('/', [DashAdController::class, 'index']);
+    Route::resource('pengguna', PenggunaController::class);
+    Route::resource('kategori', KategoriController::class);
+    Route::resource('author', ProfileController::class);
+    Route::resource('jurnal', JurnalController::class);
 
-Route::get('/backend', [DashAdController::class, 'index']);
+    //memanggil fungsi export to excel
+    Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
 
-Route::get('/login2', function () {
-    return view('admin.sign-in');
+    //memanggil fungsi  export To PDF
+    Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF']);
+    Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF']);
+    Route::get('profile-pdf', [ProfileController::class, 'profilePDF']);
+
+    Route::get('/tables', function () {
+        return view('admin.tables', [
+            "title" => "Tables",
+            "active" => "tables"
+        ]);
+    });
+    Route::get('/profile', function () {
+        return view('admin.profile', [
+            "title" => "Users",
+            "active" => "Profile"
+        ]);
+    });
 });
-
-Route::get('/regis', function () {
-    return view('admin.sign-up');
-});
-
-Route::get('/tables', function () {
-    return view('admin.tables', [
-        "title" => "Tables",
-        "active" => "tables"
-    ]);
-});
-Route::get('/profile', function () {
-    return view('admin.profile', [
-        "title" => "Users",
-        "active" => "Profile"
-    ]);
-});
-// Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
-Route::resource('pengguna', PenggunaController::class);
-Route::resource('kategori', KategoriController::class);
-Route::resource('author', ProfileController::class);
-Route::resource('jurnal', JurnalController::class);
-
-Auth::routes(); // login bawaan laravel, gapapa ada warning ga masalah!!!
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//memanggil fungsi export to excel
-Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
-
-//memanggil fungsi  export To PDF
-Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF']);
-Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF']);
-Route::get('profile-pdf', [ProfileController::class, 'profilePDF']);
