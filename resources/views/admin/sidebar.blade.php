@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ $active === 'Home' ? 'active' : '' }}" href="{{ url('backend') }}">
+                <a class="nav-link {{ $active === 'Home' ? 'active' : '' }}" href="{{ url('admin') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ $active === 'Jurnal' ? 'active' : '' }} " href="{{ url('/jurnal') }}">
+                <a class="nav-link {{ $active === 'Jurnal' ? 'active' : '' }} " href="{{ url('admin/jurnal') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ $active === 'Kategori' ? 'active' : '' }} " href="{{ url('/kategori') }}">
+                <a class="nav-link {{ $active === 'Kategori' ? 'active' : '' }} " href="{{ url('admin/kategori') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -90,7 +90,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ $active === 'Author' ? 'active' : '' }} " href="{{ url('/author') }}">
+                <a class="nav-link {{ $active === 'Author' ? 'active' : '' }} " href="{{ url('admin/author') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -120,7 +120,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link   {{ $active === 'Profile' ? 'active' : '' }}" href="{{ url('/profile') }}">
+                <a class="nav-link   {{ $active === 'Profile' ? 'active' : '' }}" href="{{ url('admin/profile') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"

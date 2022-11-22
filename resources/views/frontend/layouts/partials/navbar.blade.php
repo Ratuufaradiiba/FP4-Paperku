@@ -54,7 +54,7 @@
 
 
                 @auth
-                    <a class="nav-link text-success" href="{{ url('/backend') }}"><b><i class="fa-regular fa-user"></i>
+                    <a class="nav-link text-success" href="{{ url('/admin') }}"><b><i class="fa-regular fa-user"></i>
                             Dashboard</b></a>
                 @else
                     <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>

@@ -25,7 +25,7 @@ class LoginController extends Controller
     protected function authenticated() // ketika user berhasil login, return
     {
         if (auth()->user()->role === 'admin') {
-            return redirect('/backend')->with('success', 'Anda telah berhasil login');
+            return redirect('/admin')->with('success', 'Anda telah berhasil login');
             // return redirect('/login')->with('failed', 'Maaf, username/password Anda salah');
         } else {
             return redirect('/')->with('success', 'Anda telah berhasil login');
@@ -37,6 +37,8 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = 'backend';
+    // setelah login ^diatas^ harusnya ke dashboard
 
     /**
      * Create a new controller instance.
