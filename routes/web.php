@@ -33,10 +33,6 @@ Route::get('/postdetail', [PagesController::class, 'postdetail'])->name('postdet
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
 
-
-
-
-
 Route::middleware('auth')->prefix('admin')->group(function () {
     // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
     Route::get('/', [DashAdController::class, 'index']);
