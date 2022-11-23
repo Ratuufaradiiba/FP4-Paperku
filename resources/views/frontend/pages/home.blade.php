@@ -386,25 +386,11 @@
                     <div class="widget widget-categories">
                         <h4 class="widget-title"><span>Categories</span></h4>
                         <ul class="list-unstyled widget-list">
-                            <li><a href="tags.html" class="d-flex">Creativity <small class="ml-auto">(4)</small></a>
-                            </li>
-                            <li><a href="tags.html" class="d-flex">Demo <small class="ml-auto">(1)</small></a></li>
-                            <li><a href="tags.html" class="d-flex">Elements <small class="ml-auto">(1)</small></a>
-                            </li>
-                            <li><a href="tags.html" class="d-flex">Food <small class="ml-auto">(1)</small></a></li>
-                            <li><a href="tags.html" class="d-flex">Microwave <small class="ml-auto">(1)</small></a>
-                            </li>
-                            <li><a href="tags.html" class="d-flex">Natural <small class="ml-auto">(3)</small></a>
-                            </li>
-                            <li><a href="tags.html" class="d-flex">Newyork city <small class="ml-auto">(1)</small></a>
-                            </li>
-                            <li><a href="tags.html" class="d-flex">Nice <small class="ml-auto">(1)</small></a></li>
-                            <li><a href="tags.html" class="d-flex">Tech <small class="ml-auto">(2)</small></a></li>
-                            <li><a href="tags.html" class="d-flex">Videography <small class="ml-auto">(1)</small></a>
-                            </li>
-                            <li><a href="tags.html" class="d-flex">Vlog <small class="ml-auto">(1)</small></a></li>
-                            <li><a href="tags.html" class="d-flex">Wondarland <small class="ml-auto">(1)</small></a>
-                            </li>
+                            @foreach ($kategori as $row)
+                                <li><a href="tags.html" class="d-flex">{{ $row->nama_kategori }}<small
+                                            class="ml-auto">(4)</small></a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div><!-- tags -->
                     <div class="widget">

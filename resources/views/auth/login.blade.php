@@ -109,13 +109,28 @@
                                         @csrf
                                         <label>Email</label>
                                         <div class="mb-3">
-                                            <input type="email" class="form-control" placeholder="Email"
-                                                name="email" aria-label="Email" aria-describedby="email-addon">
+                                            <input type="email"
+                                                class="form-control 
+                                                @error('email') is-invalid
+                                            @enderror"
+                                                placeholder="Email" name="email" aria-label="Email"
+                                                aria-describedby="email-addon">
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <label>Password</label>
                                         <div class="mb-3">
-                                            <input type="password" class="form-control" placeholder="Password"
-                                                name="password" aria-label="Password" aria-describedby="password-addon">
+                                            <input type="password"
+                                                class="form-control  
+                                                @error('password') is-invalid
+                                            @enderror"
+                                                placeholder="Password" name="password" aria-label="Password"
+                                                aria-describedby="password-addon">
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+
                                         </div>
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" id="rememberMe"
