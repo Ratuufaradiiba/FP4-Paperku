@@ -25,13 +25,12 @@ Auth::routes(); // login bawaan laravel
 //     return view('frontend.pages.home');
 // })->name('home');
 Route::get('/', [PagesController::class, 'index'])->name('home');
-Route::get('/home', [PagesController::class, 'index'])->name('home');
-// Pak nasrul home ini diganti home1
+
 
 Route::get('/about', [PagesController::class, 'about'])->name('about');
-Route::get('/postdetail', [PagesController::class, 'postdetail'])->name('postdetail');
+Route::get('/postdetail/{id}', [PagesController::class, 'postdetail'])->name('postdetail');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
-Route::get('/upload', [PagesController::class, 'upload'])->name('upload');
+Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middleware('auth');
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 
 

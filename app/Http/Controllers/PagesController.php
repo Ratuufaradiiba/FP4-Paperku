@@ -8,16 +8,20 @@ use App\Models\Kategori;
 use App\Models\Profile;
 use App\Models\Jurnal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Psy\VersionUpdater\Downloader;
 
 class PagesController extends Controller
 {
     public function index()
     {
-        $jurnal = Jurnal::with(['kategori','profile'])->get();
+        $jurnal = Jurnal::with(['kategori', 'profile'])->get();
         $kategori = Kategori::all();
         $profile = Profile::all();
-        return view('frontend.pages.home', compact('kategori','profile','jurnal'));
+        $data = DB::table('jurnal')->select('kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
+            ->join('kategori', 'jurnal.id_kategori', '=', 'kategori.id', 'right')
+            ->groupBy('kategori.id')->get();
+        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data'));
     }
 
     public function about()
@@ -40,7 +44,7 @@ class PagesController extends Controller
     public function postdetail($id)
     {
         $row = Jurnal::find($id);
-        return view('frontend.pages.postdetail',compact('row'));
+        return view('frontend.pages.postdetail', compact('row'));
     }
 
     public function upload()
