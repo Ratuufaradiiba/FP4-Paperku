@@ -83,8 +83,11 @@
                                 So, this article looks at</p>
                         </div>
                     </article>
-                    <a href="{{ route('postdetail') }}" class="btn btn-outline-primary"><i class="fa-solid fa-download"></i>
-                        Download</a>
+                    <form method="POST" action="{{ route('download') }}" class="d-inline">
+                        @csrf
+                        <input type="hidden" name="jurnal_id" value="11">
+                        <button class="btn btn-outline-primary"><i class="fa-solid fa-download"></i> Download</button>
+                    </form>
                     <a href="{{ route('postdetail') }}" class="btn btn-outline-primary"><i
                             class="fa-solid fa-share-from-square"></i> Share</a>
                 </div>
