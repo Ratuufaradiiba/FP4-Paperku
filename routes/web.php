@@ -34,6 +34,7 @@ Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middl
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 
 
+
 // Route group
 Route::middleware('auth')->prefix('admin')->group(function () {
     // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
@@ -64,3 +65,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         ]);
     });
 });
+
+Route::get('/after_register', function () {
+    return view('frontend.pages.after_register');
+});
+

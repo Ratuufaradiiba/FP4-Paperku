@@ -65,15 +65,20 @@
                                         @csrf
                                         <div class="container">
                                             <div class="vertical-center">
+                                                <button class="btn btn-danger">Profile</button>
+                                            </div>
+                                            <div class="vertical-center">
                                                 <button class="btn btn-danger">Logout</button>
                                             </div>
                                         </div>
                                     </form>
+                                    
                                 @else
                                     <a class="nav-link text-success" href="{{ url('/admin') }}"><b>
                                             Dashboard</b></a>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
+
                                         <div class="container">
                                             <div class="vertical-center">
                                                 <button class="btn btn-danger">Logout</button>

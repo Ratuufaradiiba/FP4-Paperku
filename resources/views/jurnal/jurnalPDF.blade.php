@@ -1,3 +1,6 @@
+@extends('admin.index')
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +25,7 @@
         </thead>
         <tbody>
             @php $no=1; @endphp
-            @foreach ($jurnal as $row )
+            @foreach ($Jurnal as $row )
             <tr>
                 <th>{{$no++}}</th>
                 <td>{{$row->profile->nama}}</td>
@@ -39,3 +42,4 @@
 </body>
 
 </html>
+@endsection
