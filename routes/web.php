@@ -43,6 +43,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
+    Route::get('profile-me', [ProfileUserController::class. 'profileUser']);
 
     //memanggil fungsi export to excel
     Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
