@@ -29,6 +29,7 @@ Route::get('/', [PagesController::class, 'index'])->name('home');
 
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/postdetail/{id}', [PagesController::class, 'postdetail'])->name('postdetail');
+Route::get('/authordetail/{id}', [PagesController::class, 'authordetail'])->name('authordetail');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middleware('auth');
 Route::post('/download', [PagesController::class, 'download'])->name('download');
