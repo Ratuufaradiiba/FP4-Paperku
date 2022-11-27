@@ -28,6 +28,11 @@ class PagesController extends Controller
     {
         return view('frontend.pages.about');
     }
+    
+    // public function after_register()
+    // {
+    //     return view('frontend.pages.after_register');
+    // }
 
     public function contact()
     {

@@ -11,7 +11,8 @@ use DB;
 use App\Exports\jurnalExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Barryvdh\DomPDF\PDF as DomPDF;
+
 
 class JurnalController extends Controller
 {
@@ -173,10 +174,11 @@ class JurnalController extends Controller
     {
         return Excel::download(new jurnalExport, 'jurnal.xlsx');
     }
+   
     public function jurnalPDF()
     { 
-        $jurnal = Jurnal ::all();           
-        $pdf = PDF::loadView('jurnal.jurnalPDF',['jurnal' => $jurnal]);
+        $Jurnal = Jurnal ::all();           
+        $pdf = PDF::loadView('jurnal.jurnalPDF',['Jurnal' => $Jurnal]);
      
         return $pdf->download('datajurnal.pdf');
     }

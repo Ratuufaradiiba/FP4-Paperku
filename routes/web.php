@@ -34,14 +34,17 @@ Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middl
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 
 
+
 // Route group
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
     Route::get('/', [DashAdController::class, 'index']);
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kategori', KategoriController::class);
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
+
+
 
     //memanggil fungsi export to excel
     Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
@@ -64,3 +67,11 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         ]);
     });
 });
+
+Route::get('/after_register', function () {
+    return view('frontend.pages.after_register');
+});
+
+Route::get('/access_denied', function () {
+    return view('frontend.layouts.partials.acces_denied');
+})->middleware('auth')->name('denied');
