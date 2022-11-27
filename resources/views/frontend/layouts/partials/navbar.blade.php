@@ -15,7 +15,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages <i class="ti-angle-down ml-1"></i>
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Pages <i class="ti-angle-down ml-1"></i>
                         </a>
                         <div class="dropdown-menu">
 
@@ -34,7 +35,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/upload') }}"><i class="fa-solid fa-arrow-up"></i>&nbsp;&nbsp;Upload</a>
+                        <a class="nav-link" href="{{ url('/upload') }}"><i
+                                class="fa-solid fa-arrow-up"></i>&nbsp;&nbsp;Upload</a>
                     </li>
 
 
@@ -52,43 +54,45 @@
 
 
                 @auth
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <i class="ti-angle-down ml-1"></i>
-                        </a>
-                        <div class="dropdown-menu">
-                        @if (auth()->user()->role === 'user')
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <div class="container">
-                                    <div class="vertical-center">
-                                        <button class="btn btn-danger">Logout</button>
-                                    </div>
-                                </div>
-                            </form>
-
-                            @else
-                            <a class="nav-link text-success" href="{{ url('/admin') }}"><b>
-                                    Dashboard</b></a>
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-
-                                <div class="container">
-                                    <div class="vertical-center">
-                                        <button class="btn btn-danger">Logout</button>
-                                    </div>
-                                </div>
-                            </form>
-                            @endif
-                        </div>
-                    </li>
-                </ul>
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">{{ Auth::user()->name }} <i class="ti-angle-down ml-1"></i>
+                            </a>
+                            <div class="dropdown-menu">
+                                @if (auth()->user()->role === 'user')
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <div class="container">
+                                            <div class="vertical-center">
+                                                <button class="btn btn-danger">Logout</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                @else
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">
+                                        <center>
+                                            Dashboard</center>
+                                    </a> &nbsp;
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <div class="container">
+                                            <div class="vertical-center">
+                                                <button class="btn btn-danger">Logout</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                @endif
+                            </div>
+                        </li>
+                    </ul>
                 @else
-                <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>
-                        Login</b></a>
+                    <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>
+                            Login</b></a>
                 @endauth
 
-                <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
+                <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse"
+                    data-target="#navigation">
                     <i class="ti-menu"></i>
                 </button>
             </div>

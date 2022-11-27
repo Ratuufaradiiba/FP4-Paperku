@@ -17,7 +17,7 @@
                     <h1 class="h2">{{ $row->judul}}</h1>
                     <ul class="card-meta my-3 list-inline">
                         <li class="list-inline-item">
-                            <a href="author-single.html" class="card-meta-author">
+                            <a href="{{ url('authordetail', $row->profile->id) }}" class="card-meta-author">
                                 @empty($row->profile->foto)
                                 <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="avatar avatar-sm me-3">
                                 @else

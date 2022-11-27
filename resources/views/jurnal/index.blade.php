@@ -71,7 +71,7 @@
                                                     <br>
                                                     <p class="text-xs text-secondary mb-0">{{ $row->tahun }}</p>
                                                 </td>
-                                                <td>
+                                                <td style="width: 50px; white-space:normal !important">
                                                     <p class="text-xs text-secondary">{{ $row->ket }}</p>
                                                 </td>
                                                 <td>

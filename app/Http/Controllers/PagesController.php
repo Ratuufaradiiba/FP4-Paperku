@@ -52,6 +52,13 @@ class PagesController extends Controller
         return view('frontend.pages.postdetail', compact('row'));
     }
 
+    public function authordetail($id)
+    {
+        $jurnal = Jurnal::with('profile')->get();
+        $row = Profile::find($id);
+        return view('frontend.pages.author', compact('row','jurnal'));
+    }
+
     public function upload()
     {
         return view('frontend.pages.upload');
