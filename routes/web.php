@@ -25,7 +25,6 @@ Auth::routes(); // login bawaan laravel
 //     return view('frontend.pages.home');
 // })->name('home');
 Route::get('/', [PagesController::class, 'index'])->name('home');
-Route::get('/home', [PagesController::class, 'index'])->name('home');
 
 
 Route::get('/about', [PagesController::class, 'about'])->name('about');
@@ -37,14 +36,15 @@ Route::post('/download', [PagesController::class, 'download'])->name('download')
 
 
 // Route group
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
     Route::get('/', [DashAdController::class, 'index']);
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kategori', KategoriController::class);
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
-    
+
+
 
     //memanggil fungsi export to excel
     Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
@@ -74,5 +74,4 @@ Route::get('/after_register', function () {
 
 Route::get('/access_denied', function () {
     return view('frontend.layouts.partials.acces_denied');
-})->middleware('auth');
-
+})->middleware('auth')->name('denied');
