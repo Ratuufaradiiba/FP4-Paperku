@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+@if(Auth::user()->role == 'admin')
     <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
@@ -166,4 +167,5 @@
             </div>
         </div>
     </section>
+    @endif
 @endsection

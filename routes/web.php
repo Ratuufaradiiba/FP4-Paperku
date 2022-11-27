@@ -29,19 +29,23 @@ Route::get('/', [PagesController::class, 'index'])->name('home');
 
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/postdetail/{id}', [PagesController::class, 'postdetail'])->name('postdetail');
+Route::get('/authordetail/{id}', [PagesController::class, 'authordetail'])->name('authordetail');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middleware('auth');
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 
 
+
 // Route group
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
     Route::get('/', [DashAdController::class, 'index']);
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kategori', KategoriController::class);
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
+
+
 
     //memanggil fungsi export to excel
     Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
@@ -64,3 +68,11 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         ]);
     });
 });
+
+Route::get('/after_register', function () {
+    return view('frontend.pages.after_register');
+});
+
+Route::get('/access_denied', function () {
+    return view('frontend.layouts.partials.acces_denied');
+})->middleware('auth')->name('denied');

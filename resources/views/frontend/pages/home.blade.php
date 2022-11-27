@@ -71,7 +71,7 @@
                         <h3 class="mb-3"><a class="post-title" href="{{ route('postdetail', $row->id) }}">{{ $row->judul }}</a></h3>
                         <ul class="card-meta list-inline">
                             <li class="list-inline-item">
-                                <a href="author-single.html" class="card-meta-author">
+                                <a href="{{ url('authordetail', $row->profile->id) }}" class="card-meta-author">
                                     @empty($row->profile->foto)
                                     <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="avatar avatar-sm me-3">
                                     @else
@@ -155,7 +155,7 @@
                             @endempty
                         </div>
                         <div class="media-body">
-                            <h5 class="mb-1"><a class="post-title" href="author-single.html">{{ $row->nama }}</a>
+                            <h5 class="mb-1"><a class="post-title" href="{{ url('authordetail', $row->id) }}">{{ $row->nama }}</a>
                             </h5>
                             <span>{{ $row->username }}</span>
                         </div>

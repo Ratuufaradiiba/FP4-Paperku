@@ -28,6 +28,11 @@ class PagesController extends Controller
     {
         return view('frontend.pages.about');
     }
+    
+    // public function after_register()
+    // {
+    //     return view('frontend.pages.after_register');
+    // }
 
     public function contact()
     {
@@ -45,6 +50,13 @@ class PagesController extends Controller
     {
         $row = Jurnal::find($id);
         return view('frontend.pages.postdetail', compact('row'));
+    }
+
+    public function authordetail($id)
+    {
+        $jurnal = Jurnal::with('profile')->get();
+        $row = Profile::find($id);
+        return view('frontend.pages.author', compact('row','jurnal'));
     }
 
     public function upload()
