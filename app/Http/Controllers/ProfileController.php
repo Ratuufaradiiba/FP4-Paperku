@@ -19,9 +19,10 @@ class ProfileController extends Controller
         //menampilkan seluruh data profile
         //INI ORM 
         $profile = Profile::all();
-        return view('profile.index',compact('profile'),[
+        return view('profile.index', compact('profile'), [
             "title" => "Author Tabel",
-            "active" => "Author"]);
+            "active" => "Author"
+        ]);
     }
     /**
      * Show the form for creating a new resource.
@@ -30,9 +31,10 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.form',[
+        return view('profile.form', [
             "title" => "Author Form",
-            "active" => "Author"]);
+            "active" => "Author"
+        ]);
     }
 
     /**
@@ -49,7 +51,7 @@ class ProfileController extends Controller
             'email' => 'required|unique:profile|max:45',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-      
+
         $profile = new Profile();
         $profile->nama = $request->nama;
         $profile->username = $request->username;
@@ -58,13 +60,13 @@ class ProfileController extends Controller
         if ($request->hasFile('foto')) {
             $filename = $request->file('foto')->hashName();
             $request->file('foto')->move('assets/img/authors', $filename);
-            $profile->foto = 'assets/img/authors/'.$filename;
+            $profile->foto = 'assets/img/authors/' . $filename;
         }
 
         $profile->save();
-       
+
         return redirect()->route('author.index')
-                        ->with('success','Author Berhasil Disimpan');
+            ->with('success', 'Author Berhasil Disimpan');
     }
 
     /**
@@ -87,9 +89,10 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::find($id);
-        return view('profile.edit',compact('profile'),[
+        return view('profile.edit', compact('profile'), [
             "title" => "Author Form",
-            "active" => "Author"]);
+            "active" => "Author"
+        ]);
     }
 
     /**
@@ -102,9 +105,9 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|max:45|unique:profile,nama,'.$id,
-            'username' => 'required|max:45|unique:profile,username,'.$id,
-            'email' => 'required|max:45|unique:profile,email,'.$id,
+            'nama' => 'required|max:45|unique:profile,nama,' . $id,
+            'username' => 'required|max:45|unique:profile,username,' . $id,
+            'email' => 'required|max:45|unique:profile,email,' . $id,
             'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -120,13 +123,13 @@ class ProfileController extends Controller
 
             $filename = $request->file('foto')->hashName();
             $request->file('foto')->move('assets/img/authors/', $filename);
-            $profile->foto = 'assets/img/authors/'.$filename;
+            $profile->foto = 'assets/img/authors/' . $filename;
         }
 
         $profile->save();
 
         return redirect()->route('author.index')
-                        ->with('success','Author Berhasil Diupdate');
+            ->with('success', 'Author Berhasil Diupdate');
     }
 
     /**
@@ -138,16 +141,20 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         $row = Profile::find($id);
-        if(!empty($row->foto)) unlink($row->foto);
-        Profile::where('id',$id)->delete();
-        return redirect()->route('author.index')->with('success','Data Author Berhasil Di Hapus');
+        if (!empty($row->foto)) unlink($row->foto);
+        Profile::where('id', $id)->delete();
+        return redirect()->route('author.index')->with('success', 'Data Author Berhasil Di Hapus');
     }
 
     public function profilePDF()
-    { 
-        $profile= Profile ::all();           
-        $pdf = PDF::loadView('profile.profilePDF',['profile' => $profile]);
-     
+    {
+        $profile = Profile::all();
+        $pdf = PDF::loadView('profile.profilePDF', [
+            'title' => 'profilePDF',
+            'profile' => $profile
+
+        ]);
+
         return $pdf->download('profile.pdf');
     }
 }

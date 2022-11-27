@@ -726,7 +726,10 @@
                 </div>
                 <div class="col-lg-8 col-md-9">
                     <h1 class="mb-4">
-                        ACCESS DENIED!</h1>
+                        :: 404 ERROR ::</h1>
+                    <h2 class="mb-4">
+                        ACCESS DENIED!
+                    </h2>
                     <h3 class="mb-4">Mohon Maaf, Anda dilarang untuk akses halaman ini.<span class="text-primary"></span>
                     </h3>
                     <a href="{{ route('home') }}" class="btn btn-primary">Back To Home</a>

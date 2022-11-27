@@ -532,8 +532,7 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: '{{ session('
-                                                                                                                success ') }}',
+                    title: '{{ session('success') }}',
                     // title: '{{ session('failed') }}',
                     showConfirmButton: true,
                     timer: 1500
