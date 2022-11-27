@@ -57,13 +57,7 @@
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <i class="ti-angle-down ml-1"></i>
                         </a>
                         <div class="dropdown-menu">
-                            <div class="container">
-                                <div class="vertical-center" >
-                                    <a href="{{url('profile-me')}}">
-                                    <button class="btn btn-danger">Profile</button></a>
-                                </div>
-                            </div>
-                            @if (auth()->user()->role === 'user')
+                        @if (auth()->user()->role === 'user')
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <div class="container">

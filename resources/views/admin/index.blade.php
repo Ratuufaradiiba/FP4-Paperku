@@ -12,6 +12,10 @@
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
+
+
+
+@if(Auth::user()->role == 'admin')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -528,3 +532,7 @@
 </body>
 
 </html>
+@else 
+<!-- <href="{{url('/access_denied')}}"> -->
+@include ('frontend.layouts.partials.acces_denied')
+@endif

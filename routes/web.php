@@ -25,6 +25,7 @@ Auth::routes(); // login bawaan laravel
 //     return view('frontend.pages.home');
 // })->name('home');
 Route::get('/', [PagesController::class, 'index'])->name('home');
+Route::get('/home', [PagesController::class, 'index'])->name('home');
 
 
 Route::get('/about', [PagesController::class, 'about'])->name('about');
@@ -43,7 +44,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
-    Route::get('profile-me', [ProfileUserController::class. 'profileUser']);
+    
 
     //memanggil fungsi export to excel
     Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
@@ -70,4 +71,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 Route::get('/after_register', function () {
     return view('frontend.pages.after_register');
 });
+
+Route::get('/access_denied', function () {
+    return view('frontend.layouts.partials.acces_denied');
+})->middleware('auth');
 
