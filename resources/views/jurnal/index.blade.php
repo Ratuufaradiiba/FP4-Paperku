@@ -18,10 +18,10 @@
                             <a href="{{ route('jurnal.create') }}"
                                 class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                                 Tambah</a>
-                            <a href="{{ url('jurnal-excel') }}"
+                            <a href="{{ route('jurnal.excel') }}"
                                 class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">
                                 XLS</a>
-                            <a href="{{ url('jurnal-pdf') }}"
+                            <a href="{{ route('jurnal.PDF') }}"
                                 class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" i
                                 class="bi bi-filetype-pdf" title="Export To PDF">
                                 </i>PDF</a>

@@ -94,7 +94,7 @@ class KategoriController extends Controller
 
         $kategori = Kategori::find($id);
         $kategori->nama_kategori = $request->nama_kategori;
-        $kategori->save();
+        $kategori->save();  
 
         return redirect()->route('kategori.index')
                         ->with('success','Kategori Berhasil Diupdate');

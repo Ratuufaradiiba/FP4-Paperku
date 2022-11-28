@@ -35,8 +35,9 @@ Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middl
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 
 
+
 // Route group
-Route::middleware('auth')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     // Untuk memanggil fungsi CRUD menggunakan ROUTE RESOURCE
     Route::get('/', [DashAdController::class, 'index']);
     Route::resource('pengguna', PenggunaController::class);
@@ -44,13 +45,15 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
 
+
+
     //memanggil fungsi export to excel
-    Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
+    Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel'])->name('jurnal.excel');
 
     //memanggil fungsi  export To PDF
-    Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF']);
-    Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF']);
-    Route::get('profile-pdf', [ProfileController::class, 'profilePDF']);
+    Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF'])->name('jurnal.PDF');
+    Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF'])->name('jurnal.kategoriPDF');
+    Route::get('profile-pdf', [ProfileController::class, 'profilePDF'])->name('jurnal.profilePDF');
 
     Route::get('/tables', function () {
         return view('admin.tables', [
@@ -65,3 +68,11 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         ]);
     });
 });
+
+Route::get('/after_register', function () {
+    return view('frontend.pages.after_register');
+});
+
+Route::get('/access_denied', function () {
+    return view('frontend.layouts.partials.acces_denied');
+})->middleware('auth')->name('denied');

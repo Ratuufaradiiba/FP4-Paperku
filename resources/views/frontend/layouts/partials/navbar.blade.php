@@ -70,8 +70,10 @@
                                         </div>
                                     </form>
                                 @else
-                                    <a class="dropdown-item" href="{{ url('/admin') }}"><center>
-                                            Dashboard</center></a> &nbsp;
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">
+                                        <center>
+                                            Dashboard</center>
+                                    </a> &nbsp;
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <div class="container">

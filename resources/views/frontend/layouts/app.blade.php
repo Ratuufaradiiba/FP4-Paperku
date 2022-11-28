@@ -9,6 +9,7 @@
     <!-- navigation -->
     @include('frontend.layouts.partials.navbar')
     <!-- /navigation -->
+    
 
     <!-- start of banner -->
     {{-- <div class="banner text-center">
@@ -230,8 +231,11 @@
         </div>
     </section> --}}
 
+   
 
     @yield('content')
+
+    
 
 
     @include('frontend.layouts.partials.footer')
