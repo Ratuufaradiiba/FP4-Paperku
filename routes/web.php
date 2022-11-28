@@ -48,12 +48,12 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
 
 
     //memanggil fungsi export to excel
-    Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel']);
+    Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel'])->name('jurnal.excel');
 
     //memanggil fungsi  export To PDF
-    Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF']);
-    Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF']);
-    Route::get('profile-pdf', [ProfileController::class, 'profilePDF']);
+    Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF'])->name('jurnal.PDF');
+    Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF'])->name('jurnal.kategoriPDF');
+    Route::get('profile-pdf', [ProfileController::class, 'profilePDF'])->name('jurnal.profilePDF');
 
     Route::get('/tables', function () {
         return view('admin.tables', [

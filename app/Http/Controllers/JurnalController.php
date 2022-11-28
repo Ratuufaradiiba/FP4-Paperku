@@ -25,7 +25,7 @@ class JurnalController extends Controller
     {
         //menampilkan seluruh data jurnal
         //INI ORM 
-        $jurnal = Jurnal::with(['kategori','profile'])->get();
+        $jurnal = Jurnal::with(['kategori', 'profile'])->get();
         return view('jurnal.index', compact('jurnal'), [
             "title" => "Jurnal Tabel",
             "active" => "Jurnal"
@@ -43,7 +43,8 @@ class JurnalController extends Controller
         $penulis = Profile::all();
         return view('jurnal.form', compact('kategori', 'penulis'), [
             "title" => "Jurnal Form",
-            "active" => "Jurnal"]);
+            "active" => "Jurnal"
+        ]);
     }
 
     /**
@@ -56,10 +57,10 @@ class JurnalController extends Controller
     {
         $request->validate([
             'judul' => 'required|string',
-            'tahun' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ket' => 'required|string',
-            'isi'=> 'required|string', 
+            'isi' => 'required|string',
             'id_kategori' => 'required|exists:kategori,id',
             'id_profile' => 'required|exists:profile,id'
         ]);
@@ -75,7 +76,7 @@ class JurnalController extends Controller
         if ($request->hasFile('foto')) {
             $filename = $request->file('foto')->hashName();
             $request->file('foto')->move('assets/img/jurnals', $filename);
-            $jurnal->foto = 'assets/img/jurnals/'.$filename;
+            $jurnal->foto = 'assets/img/jurnals/' . $filename;
         }
 
         $jurnal->save();
@@ -92,7 +93,7 @@ class JurnalController extends Controller
     public function show($id)
     {
         $row = Jurnal::find($id);
-        return view('jurnal.detail',compact('row'), [
+        return view('jurnal.detail', compact('row'), [
             "title" => "Detail Jurnal",
             "active" => "Jurnal"
         ]);
@@ -126,10 +127,10 @@ class JurnalController extends Controller
     {
         $request->validate([
             'judul' => 'required|string',
-            'tahun' => 'required|digits:4|integer|min:1900|max:'.(date('Y')+1),
+            'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'ket' => 'required|string',
-            'isi'=> 'required|string', 
+            'isi' => 'required|string',
             'id_kategori' => 'required|exists:kategori,id',
             'id_profile' => 'required|exists:profile,id'
         ]);
@@ -148,7 +149,7 @@ class JurnalController extends Controller
             }
             $filename = $request->file('foto')->hashName();
             $request->file('foto')->move('assets/img/jurnals', $filename);
-            $jurnal->foto = 'assets/img/jurnals/'.$filename;
+            $jurnal->foto = 'assets/img/jurnals/' . $filename;
         }
 
         $jurnal->save();
@@ -165,21 +166,25 @@ class JurnalController extends Controller
     public function destroy($id)
     {
         $row = Jurnal::find($id);
-        if(!empty($row->foto)) unlink($row->foto);
-        Jurnal::where('id',$id)->delete();
-        return redirect()->route('jurnal.index')->with('success','Data Jurnal Berhasil Di Hapus');
+        if (!empty($row->foto)) unlink($row->foto);
+        Jurnal::where('id', $id)->delete();
+        return redirect()->route('jurnal.index')->with('success', 'Data Jurnal Berhasil Di Hapus');
     }
 
-    public function JurnalExcel() 
+    public function JurnalExcel()
     {
         return Excel::download(new jurnalExport, 'jurnal.xlsx');
     }
-   
+
     public function jurnalPDF()
-    { 
-        $Jurnal = Jurnal ::all();           
-        $pdf = PDF::loadView('jurnal.jurnalPDF',['Jurnal' => $Jurnal]);
-     
+    {
+        $Jurnal = Jurnal::all();
+        $pdf = PDF::loadView('jurnal.jurnalPDF', [
+            'Jurnal' => $Jurnal,
+            'title' => 'jurnalPDF',
+            "active" => "Jurnal"
+        ]);
+
         return $pdf->download('datajurnal.pdf');
     }
 }
