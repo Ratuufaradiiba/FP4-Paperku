@@ -533,7 +533,17 @@
                     position: 'center',
                     icon: 'success',
                     title: '{{ session('success') }}',
-                    // title: '{{ session('failed') }}',
+                    showConfirmButton: true,
+                    timer: 1500
+                })
+            </script>
+        @endif
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: '{{ session('error') }}',
                     showConfirmButton: true,
                     timer: 1500
                 })

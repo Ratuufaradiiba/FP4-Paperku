@@ -15,7 +15,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $jurnal = Jurnal::with(['kategori', 'profile'])->get();
+        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->get();
         $kategori = Kategori::all();
         $profile = Profile::all();
         $data = DB::table('jurnal')->select('kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
@@ -28,7 +28,7 @@ class PagesController extends Controller
     {
         return view('frontend.pages.about');
     }
-    
+
     // public function after_register()
     // {
     //     return view('frontend.pages.after_register');
@@ -56,7 +56,7 @@ class PagesController extends Controller
     {
         $jurnal = Jurnal::with('profile')->get();
         $row = Profile::find($id);
-        return view('frontend.pages.author', compact('row','jurnal'));
+        return view('frontend.pages.author', compact('row', 'jurnal'));
     }
 
     public function upload()

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use PhpParser\Node\Stmt\TryCatch;
 
 class KategoriController extends Controller
 {
@@ -19,9 +20,10 @@ class KategoriController extends Controller
         //menampilkan seluruh data kategori
         //INI ORM 
         $kategori = Kategori::all();
-        return view('kategori.index',compact('kategori'),[
+        return view('kategori.index', compact('kategori'), [
             "title" => "Kategori Tabel",
-            "active" => "Kategori"] );
+            "active" => "Kategori"
+        ]);
     }
 
     /**
@@ -31,9 +33,10 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('kategori.form',[
+        return view('kategori.form', [
             "title" => "Kategori Form",
-            "active" => "Kategori"]);
+            "active" => "Kategori"
+        ]);
     }
 
     /**
@@ -47,11 +50,11 @@ class KategoriController extends Controller
         $request->validate([
             'nama_kategori' => 'required|unique:kategori|max:45'
         ]);
-      
+
         Kategori::create($request->all());
-       
+
         return redirect()->route('kategori.index')
-                        ->with('success','Kategori Berhasil Disimpan');
+            ->with('success', 'Kategori Berhasil Disimpan');
     }
 
     /**
@@ -74,9 +77,10 @@ class KategoriController extends Controller
     public function edit($id)
     {
         $kategori = Kategori::find($id);
-        return view('kategori.edit',compact('kategori'),[
+        return view('kategori.edit', compact('kategori'), [
             "title" => "Kategori Form",
-            "active" => "Kategori"]);
+            "active" => "Kategori"
+        ]);
     }
 
     /**
@@ -89,15 +93,15 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_kategori' => 'required|unique:kategori,nama_kategori,'.$id.'|max:45'
+            'nama_kategori' => 'required|unique:kategori,nama_kategori,' . $id . '|max:45'
         ]);
 
         $kategori = Kategori::find($id);
         $kategori->nama_kategori = $request->nama_kategori;
-        $kategori->save();  
+        $kategori->save();
 
         return redirect()->route('kategori.index')
-                        ->with('success','Kategori Berhasil Diupdate');
+            ->with('success', 'Kategori Berhasil Diupdate');
     }
 
     /**
@@ -108,16 +112,20 @@ class KategoriController extends Controller
      */
     public function destroy($id)
     {
-        $row = Kategori::find($id);
-        Kategori::where('id',$id)->delete();
-        return redirect()->route('kategori.index')->with('success','Data Kategori Berhasil Di Hapus');
+        try {
+            $row = Kategori::find($id);
+            Kategori::where('id', $id)->delete();
+            return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Di Hapus');
+        } catch (\Throwable $th) {
+            return redirect()->route('kategori.index')->with('error', 'Data Kategori Tidak Bisa Dihapus Karena Dipakai Di Transaksi Lain');
+        }
     }
 
     public function kategoriPDF()
-    { 
-        $kategori= Kategori ::all();           
-        $pdf = PDF::loadView('kategori.kategoriPDF',['kategori' => $kategori]);
-     
+    {
+        $kategori = Kategori::all();
+        $pdf = PDF::loadView('kategori.kategoriPDF', ['kategori' => $kategori]);
+
         return $pdf->download('kategori.pdf');
     }
 }
