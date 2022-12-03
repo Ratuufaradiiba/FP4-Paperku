@@ -48,8 +48,8 @@
 
             <div class="order-2 order-lg-3 d-flex align-items-center">
                 <!-- search -->
-                <form class="search-bar">
-                    <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
+                <form class="search-bar" action="{{ route('jurnal.search') }}">
+                    <input id="search-query" name="keyword" type="search" placeholder="Type &amp; Hit Enter...">
                 </form>
 
 

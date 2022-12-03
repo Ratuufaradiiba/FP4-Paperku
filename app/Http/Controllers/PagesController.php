@@ -72,4 +72,17 @@ class PagesController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function search(Request $request)
+    {
+        $keyword = request('keyword');
+        if ($keyword) {
+            $jurnal = Jurnal::where('judul', 'LIKE', '%' . $keyword . '%')->get();
+        } else {
+            $jurnal = Jurnal::all();
+        }
+
+
+        return view('frontend.pages.searchResult', ['jurnal' => $jurnal, 'keyword' => $keyword]);
+    }
 }

@@ -33,6 +33,7 @@ Route::get('/authordetail/{id}', [PagesController::class, 'authordetail'])->name
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middleware('auth');
 Route::post('/download', [PagesController::class, 'download'])->name('download');
+Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.search');
 
 
 

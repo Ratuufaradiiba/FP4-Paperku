@@ -157,4 +157,15 @@ class ProfileController extends Controller
 
         return $pdf->download('profile.pdf');
     }
+
+    // public function search(Request $request)
+    // {
+    //     $keyword = request('keyword');
+    //     if ($keyword) {
+    //         $profile = Profile::where('nama', 'LIKE', '%' . $keyword . '%')->get();
+    //     } else {
+    //         $profile = Profile::all();
+    //     }
+    //     return view('frontend.pages.searchResult', ['profile' => $profile, 'keyword' => $keyword]);
+    // }
 }
