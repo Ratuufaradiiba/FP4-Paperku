@@ -192,50 +192,25 @@
                     <h4 class="widget-title">Recent Post</h4>
 
                     <!-- post-item -->
+                    @foreach ($jurnal as $row)
                     <article class="widget-card">
                         <div class="d-flex">
-                            <img class="card-img-sm" src="{{ asset('landingpage/images/post/post-10.jpg') }}">
+                            @empty($row->foto)
+                            <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="card-img-sm">
+                            @else
+                            <img src="{{ asset($row->foto) }}" alt="Profile" class="card-img-sm">
+                            @endempty
                             <div class="ml-3">
-                                <h5><a class="post-title" href="post/elements/">Elements That You Can Use In This
-                                        Template.</a></h5>
+                                <h5><a class="post-title" href="{{ route('postdetail', $row->id) }}">{{ $row->judul }}</a></h5>
                                 <ul class="card-meta list-inline mb-0">
                                     <li class="list-inline-item mb-0">
-                                        <i class="ti-calendar"></i>15 jan, 2020
+                                        <i class="ti-calendar"></i>{{ $row->tahun }}
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </article>
-
-                    <article class="widget-card">
-                        <div class="d-flex">
-                            <img class="card-img-sm" src="{{ asset('landingpage/images/post/post-3.jpg') }}">
-                            <div class="ml-3">
-                                <h5><a class="post-title" href="post-details.html">Advice From a Twenty
-                                        Something</a></h5>
-                                <ul class="card-meta list-inline mb-0">
-                                    <li class="list-inline-item mb-0">
-                                        <i class="ti-calendar"></i>14 jan, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="widget-card">
-                        <div class="d-flex">
-                            <img class="card-img-sm" src="{{ asset('landingpage/images/post/post-7.jpg') }}">
-                            <div class="ml-3">
-                                <h5><a class="post-title" href="post-details.html">Advice From a Twenty
-                                        Something</a></h5>
-                                <ul class="card-meta list-inline mb-0">
-                                    <li class="list-inline-item mb-0">
-                                        <i class="ti-calendar"></i>14 jan, 2020
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
+                    @endforeach
                 </div>
 
                 <!-- Social -->
