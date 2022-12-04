@@ -88,7 +88,7 @@
                     </ul>
                 @else
                     <a class="nav-link text-success" href="{{ url('/login') }}"><b><i class="fa-regular fa-user"></i>
-                            Login</b></a>
+                            Login/Register</b></a>
                 @endauth
 
                 <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse"

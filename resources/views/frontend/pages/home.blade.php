@@ -8,7 +8,8 @@
 
                     <ul class="list-inline widget-list-inline">
                         @foreach ($kategori as $row)
-                            <li class="list-inline-item"><a href="tags.html">{{ $row->nama_kategori }}</a></li>
+                            <li class="list-inline-item"><a
+                                    href="{{ route('filter_kategori', $row->id) }}">{{ $row->nama_kategori }}</a></li>
                         @endforeach
                     </ul>
 
@@ -86,7 +87,7 @@
                                         href="{{ route('postdetail', $row->id) }}">{{ $row->judul }}</a></h3>
                                 <ul class="card-meta list-inline">
                                     <li class="list-inline-item">
-                                        <a href="{{ url('authordetail', $row->profile->id) }}" class="card-meta-author">
+                                        <a href="{{ route('authordetail', $row->profile->id) }}" class="card-meta-author">
                                             @empty($row->profile->foto)
                                                 <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
                                                     class="avatar avatar-sm me-3">
@@ -103,7 +104,8 @@
                                     <li class="list-inline-item">
                                         <ul class="card-meta-tag list-inline">
                                             <li class="list-inline-item"><a
-                                                    href="tags.html">{{ $row->kategori->nama_kategori }}</a></li>
+                                                    href="{{ route('filter_kategori', $row->kategori->id) }}">{{ $row->kategori->nama_kategori }}</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -189,7 +191,8 @@
                         <h4 class="widget-title"><span>Categories</span></h4>
                         <ul class="list-unstyled widget-list">
                             @foreach ($data as $row)
-                                <li><a href="tags.html" class="d-flex">{{ $row->nama_kategori }}<small
+                                <li><a href="{{ route('filter_kategori', $row->idKategori) }}"
+                                        class="d-flex">{{ $row->nama_kategori }}<small
                                             class="ml-auto">{{ $row->jml_kategori }}</small></a>
                                 </li>
                             @endforeach

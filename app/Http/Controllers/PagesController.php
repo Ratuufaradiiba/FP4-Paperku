@@ -18,7 +18,7 @@ class PagesController extends Controller
         $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->get();
         $kategori = Kategori::all();
         $profile = Profile::all();
-        $data = DB::table('jurnal')->select('kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
+        $data = DB::table('jurnal')->select('kategori.id as idKategori', 'kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
             ->join('kategori', 'jurnal.id_kategori', '=', 'kategori.id', 'right')
             ->groupBy('kategori.id')->get();
         return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data'));
@@ -54,7 +54,7 @@ class PagesController extends Controller
 
     public function authordetail($id)
     {
-        $jurnal = Jurnal::with('profile')->get();
+        $jurnal = Jurnal::with('profile')->where('id_profile', $id)->get();
         $row = Profile::find($id);
         return view('frontend.pages.author', compact('row', 'jurnal'));
     }
@@ -84,5 +84,12 @@ class PagesController extends Controller
 
 
         return view('frontend.pages.searchResult', ['jurnal' => $jurnal, 'keyword' => $keyword]);
+    }
+
+    public function filter_kategori($id)
+    {
+        $jurnal = Jurnal::with('kategori')->where('id_kategori', $id)->get();
+        $row = Kategori::find($id);
+        return view('frontend.pages.filter_kategori', compact('row', 'jurnal'));
     }
 }
