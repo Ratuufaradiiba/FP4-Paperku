@@ -93,9 +93,8 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 text-center mx-auto">
-                            <h1 class="text-white mb-2 mt-5">Selamat Datang</h1>
-                            <p class="text-lead text-white">Gunakan formulir luar biasa ini untuk masuk atau membuat
-                                akun baru </p>
+                            <h1 class="text-white mb-2 mt-5">Welcome</h1>
+                            <p class="text-lead text-white">Fill in this form to register your account.</p>
                         </div>
                     </div>
                 </div>

@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\DownloadJurnal;
 use App\Models\Kategori;
+use App\Models\Profile;
+use App\Models\Jurnal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Psy\VersionUpdater\Downloader;
 
 class PagesController extends Controller
 {
     public function index()
     {
+        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->get();
         $kategori = Kategori::all();
-        return view('frontend.pages.home', compact('kategori'));
+        $profile = Profile::all();
+        $data = DB::table('jurnal')->select('kategori.id as idKategori', 'kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
+            ->join('kategori', 'jurnal.id_kategori', '=', 'kategori.id', 'right')
+            ->groupBy('kategori.id')->get();
+        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data'));
     }
 
     public function about()
@@ -20,14 +29,34 @@ class PagesController extends Controller
         return view('frontend.pages.about');
     }
 
+    // public function after_register()
+    // {
+    //     return view('frontend.pages.after_register');
+    // }
+
     public function contact()
     {
         return view('frontend.pages.contact');
     }
 
-    public function postdetail()
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function postdetail($id)
     {
-        return view('frontend.pages.postdetail');
+        $row = Jurnal::find($id);
+        return view('frontend.pages.postdetail', compact('row'));
+    }
+
+    public function authordetail($id)
+    {
+        $jurnal = Jurnal::with('profile')->where('id_profile', $id)->get();
+        $row = Profile::find($id);
+        return view('frontend.pages.author', compact('row', 'jurnal'));
     }
 
     public function upload()
@@ -42,5 +71,25 @@ class PagesController extends Controller
             'jurnal_id' => $id
         ]);
         return redirect()->back();
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = request('keyword');
+        if ($keyword) {
+            $jurnal = Jurnal::where('judul', 'LIKE', '%' . $keyword . '%')->get();
+        } else {
+            $jurnal = Jurnal::all();
+        }
+
+
+        return view('frontend.pages.searchResult', ['jurnal' => $jurnal, 'keyword' => $keyword]);
+    }
+
+    public function filter_kategori($id)
+    {
+        $jurnal = Jurnal::with('kategori')->where('id_kategori', $id)->get();
+        $row = Kategori::find($id);
+        return view('frontend.pages.filter_kategori', compact('row', 'jurnal'));
     }
 }
