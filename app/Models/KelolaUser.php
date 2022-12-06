@@ -9,9 +9,9 @@ class KelolaUser extends Model
 {
     use HasFactory;
     // mapping ke table
-    protected $table = 'profile';
+    protected $table = 'users';
     // mapping ke kolom/field
-    protected $fillable = ['nama', 'username', 'email', 'foto'];
+    protected $fillable = ['name', 'email', 'username', 'foto', 'role'];
     public function jurnal(){
         return $this->hasMany(Jurnal::class);
     }

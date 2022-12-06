@@ -46,24 +46,25 @@ class KelolaUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|unique:profile|max:45',
-            'username' => 'required|unique:profile|max:45',
-            'email' => 'required|unique:profile|max:45',
+            'name' => 'required|unique:users|max:45',
+            'username' => 'required|unique:users|max:45',
+            'email' => 'required|unique:users|max:45',
+            'role' => 'required|unique:users|max:45',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        $profile = new Profile();
-        $profile->nama = $request->nama;
-        $profile->username = $request->username;
-        $profile->email = $request->email;
+        $kelola_user = new Users();
+        $kelola_user->nama = $request->name;
+        $kelola_user->username = $request->username;
+        $kelola_user->email = $request->email;
 
         if ($request->hasFile('foto')) {
             $filename = $request->file('foto')->hashName();
             $request->file('foto')->move('assets/img/authors', $filename);
-            $profile->foto = 'assets/img/authors/' . $filename;
+            $kelola_user->foto = 'assets/img/authors/' . $filename;
         }
 
-        $profile->save();
+        $kelola_user->save();
 
         return redirect()->route('author.index')
             ->with('success', 'Author Berhasil Disimpan');
@@ -105,16 +106,18 @@ class KelolaUserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|max:45|unique:profile,nama,' . $id,
-            'username' => 'required|max:45|unique:profile,username,' . $id,
-            'email' => 'required|max:45|unique:profile,email,' . $id,
+            'name' => 'required|max:45|unique:users,name,' . $id,
+            'username' => 'required|max:45|unique:users,username,' . $id,
+            'email' => 'required|max:45|unique:users,email,' . $id,
+            'role' => 'required|max:45|unique:users,role,' . $id,
             'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $kelola_user = KelolaUser::find($id);
-        $kelola_user->nama = $request->nama;
+        $kelola_user->name = $request->name;
         $kelola_user->username = $request->username;
         $kelola_user->email = $request->email;
+        $kelola_user->role = $request->role;
 
         if ($request->hasFile('foto')) {
             if ($kelola_user->foto != null) {
@@ -129,7 +132,7 @@ class KelolaUserController extends Controller
         $kelola_user->save();
 
         return redirect()->route('kelola_user.index')
-            ->with('success', 'Author Berhasil Diupdate');
+            ->with('success', 'User Berhasil Diupdate');
     }
 
     /**
@@ -140,10 +143,10 @@ class KelolaUserController extends Controller
      */
     public function destroy($id)
     {
-        $row = Profile::find($id);
+        $row = KelolaUser::find($id);
         if (!empty($row->foto)) unlink($row->foto);
-        Profile::where('id', $id)->delete();
-        return redirect()->route('author.index')->with('success', 'Data Author Berhasil Di Hapus');
+        KelolaUser::where('id', $id)->delete();
+        return redirect()->route('kelola_user.index')->with('success', 'Data User Berhasil Di Hapus');
     }
 
     public function profilePDF()

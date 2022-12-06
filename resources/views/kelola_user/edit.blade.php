@@ -21,10 +21,10 @@
                             @csrf
                             @method('PATCH')
                             <div class="col-6">
-                                <label for="inputNanme4" class="form-label">Masukan Nama Author</label>
-                                <input type="text" class="form-control" name="nama"
-                                    value="{{ old('nama', $kelola_user->nama) }}">
-                                @error('nama')
+                                <label for="inputNanme4" class="form-label">Masukan Nama User</label>
+                                <input type="text" class="form-control" name="name"
+                                    value="{{ old('name', $kelola_user->name) }}">
+                                @error('name')
                                     <p class="text text-danger mb-0">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -48,6 +48,14 @@
                                 <label for="inputNanme4" class="form-label">Masukan Foto Baru</label>
                                 <input type="file" class="form-control" name="foto" accept=".png,.jpg,.jpeg">
                                 @error('foto')
+                                    <p class="text text-danger mb-0">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-6">
+                                <label for="inputNanme4" class="form-label">Bagian</label>
+                                <input type="option" class="form-control" name="role"
+                                    value="{{ old('role', $kelola_user->role) }}">
+                                @error('role')
                                     <p class="text text-danger mb-0">{{ $message }}</p>
                                 @enderror
                             </div>

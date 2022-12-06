@@ -20,13 +20,19 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                Author</th>
+                                                foto</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Nama</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Email</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Username</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Email</th>
+                                                Role</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
@@ -44,16 +50,18 @@
                                                                     class="avatar avatar-sm me-3">
                                                             @endempty
                                                         </div>
-                                                        <div class="d-flex flex-column justify-content-center">
-                                                            <h6 class="mb-0 text-sm">{{ $row->nama }}</h6>
-                                                        </div>
-                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span class="text-xs font-weight-bold">{{ $row->name }}</span>
+                                                </td>
+                                                <td>
+                                                    <span class="text-xs font-weight-bold">{{ $row->email }}</span>
                                                 </td>
                                                 <td>
                                                     <span class="text-xs font-weight-bold">{{ $row->username }}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-xs font-weight-bold">{{ $row->email }}</span>
+                                                    <span class="text-xs font-weight-bold">{{ $row->role }}</span>
                                                 </td>
                                                 <td class="align-middle">
                                                     <form method="POST" id="formDelete">
@@ -67,7 +75,7 @@
                                                         &nbsp;
                                                         <button type="button"
                                                             class="btn btn-danger shadow-sm text-xs btnDelete"
-                                                            data-action="{{ route('author.destroy', $row->id) }}"
+                                                            data-action="{{ route('kelola_user.destroy', $row->id) }}"
                                                             data-toggle="tooltip" data-original-title="Edit user">
                                                             Hapus
                                                         </button>
