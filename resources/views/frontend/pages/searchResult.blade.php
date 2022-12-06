@@ -42,7 +42,8 @@
                                     <li class="list-inline-item">
                                         <ul class="card-meta-tag list-inline">
                                             <li class="list-inline-item"><a
-                                                    href="tags.html">{{ $item->kategori->nama_kategori }}</a></li>
+                                                    href="{{ route('filter_kategori', $item->kategori->id) }}">{{ $item->kategori->nama_kategori }}</a>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>

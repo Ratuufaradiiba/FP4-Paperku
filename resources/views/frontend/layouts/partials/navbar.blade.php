@@ -14,7 +14,7 @@
                         <a class="nav-link" href="{{ route('about') }}">About</a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">Pages <i class="ti-angle-down ml-1"></i>
                         </a>
@@ -32,7 +32,7 @@
 
                             <a class="dropdown-item" href="#">Search Not Found</a>
                         </div>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/upload') }}"><i
