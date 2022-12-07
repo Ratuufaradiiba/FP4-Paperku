@@ -109,7 +109,7 @@ class KelolaUserController extends Controller
             'name' => 'required|max:45|unique:users,name,' . $id,
             'username' => 'required|max:45|unique:users,username,' . $id,
             'email' => 'required|max:45|unique:users,email,' . $id,
-            'role' => 'required|max:45|unique:users,role,' . $id,
+            'role' => 'required|max:45|:users,role,' . $id,
             'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
