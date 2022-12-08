@@ -132,7 +132,7 @@
 
                     <!-- about me -->
                     <div class="widget widget-about">
-                        <h4 class="widget-title">Hi, I am David!</h4>
+                        <h4 class="widget-title">Hi, I am Rizky!</h4>
                         <img class="img-fluid" src="{{ asset('landingpage/images/author.jpg') }}" alt="Themefisher">
                         <br>
                         <p>Saya sedang mengikuti Studi Independen Akademi Fullstack Web Developer di NF Computer

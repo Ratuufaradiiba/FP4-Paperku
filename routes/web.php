@@ -36,13 +36,13 @@ Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middl
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.search');
 
-// REST API
-Route::get('/api-jurnal', [PagesController::class, 'apiJurnal']);
-Route::get('/api-jurnal/{id}', [PagesController::class, 'apiJurnalDetail']);
-Route::get('/api-kategori', [PagesController::class, 'apiKategori']);
-Route::get('/api-kategori/{id}', [PagesController::class, 'apiKategoriDetail']);
-Route::get('/api-profile', [PagesController::class, 'apiProfile']); // AUTHORS BUKAN USERS
-Route::get('/api-profile/{id}', [PagesController::class, 'apiProfileDetail']); // AUTHORS BUKAN USERS
+// PEMBELAJARAN REST API MANUAL JSON
+// ----- Route::get('/api-jurnal', [PagesController::class, 'apiJurnal']);
+// ----- Route::get('/api-jurnal/{id}', [PagesController::class, 'apiJurnalDetail']);
+// ----- Route::get('/api-kategori', [PagesController::class, 'apiKategori']);
+// ----- Route::get('/api-kategori/{id}', [PagesController::class, 'apiKategoriDetail']);
+// ----- Route::get('/api-profile', [PagesController::class, 'apiProfile']); // AUTHORS BUKAN USERS
+// ----- Route::get('/api-profile/{id}', [PagesController::class, 'apiProfileDetail']); // AUTHORS BUKAN USERS
 
 
 // Route group
