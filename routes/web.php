@@ -7,6 +7,9 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KelolaUserController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,16 +37,24 @@ Route::get('/kategori/{id}', [PagesController::class, 'filter_kategori'])->name(
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middleware('auth');
 Route::post('/download', [PagesController::class, 'download'])->name('download');
+Route::get('/kelola_user', [PagesController::class, 'kelola_user'])->name('kelola_user');
 Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.search');
+<<<<<<< HEAD
 Route::get('/profileuser', [PagesController::class, 'profileuser'])->name('profileuser');
+=======
+Route::get('/kelola_user/{id}', [PagesController::class, 'kelola_user'])->name('kelola_user');
+>>>>>>> a71ebcf5972b882ea2e06855f825f3bb47cd910c
 
-// REST API
-Route::get('/api-jurnal', [PagesController::class, 'apiJurnal']);
-Route::get('/api-jurnal/{id}', [PagesController::class, 'apiJurnalDetail']);
-Route::get('/api-kategori', [PagesController::class, 'apiKategori']);
-Route::get('/api-kategori/{id}', [PagesController::class, 'apiKategoriDetail']);
-Route::get('/api-profile', [PagesController::class, 'apiProfile']); // AUTHORS BUKAN USERS
-Route::get('/api-profile/{id}', [PagesController::class, 'apiProfileDetail']); // AUTHORS BUKAN USERS
+
+
+
+// PEMBELAJARAN REST API MANUAL JSON
+// ----- Route::get('/api-jurnal', [PagesController::class, 'apiJurnal']);
+// ----- Route::get('/api-jurnal/{id}', [PagesController::class, 'apiJurnalDetail']);
+// ----- Route::get('/api-kategori', [PagesController::class, 'apiKategori']);
+// ----- Route::get('/api-kategori/{id}', [PagesController::class, 'apiKategoriDetail']);
+// ----- Route::get('/api-profile', [PagesController::class, 'apiProfile']); // AUTHORS BUKAN USERS
+// ----- Route::get('/api-profile/{id}', [PagesController::class, 'apiProfileDetail']); // AUTHORS BUKAN USERS
 
 
 // Route group
@@ -54,6 +65,8 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::resource('kategori', KategoriController::class);
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
+    Route::resource('kelola_user', KelolaUserController::class);
+
 
 
 
@@ -77,6 +90,7 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
             "active" => "Profile"
         ]);
     });
+    
 });
 
 Route::get('/after_register', function () {

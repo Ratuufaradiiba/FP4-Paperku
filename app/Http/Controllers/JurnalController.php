@@ -59,6 +59,7 @@ class JurnalController extends Controller
             'judul' => 'required|string',
             'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'required|mimes:pdf',
             'ket' => 'required|string',
             'isi' => 'required|string',
             'id_kategori' => 'required|exists:kategori,id',
@@ -77,6 +78,11 @@ class JurnalController extends Controller
             $filename = $request->file('foto')->hashName();
             $request->file('foto')->move('assets/img/jurnals', $filename);
             $jurnal->foto = 'assets/img/jurnals/' . $filename;
+        }
+        if ($request->hasFile('file')) {
+            $filename = $request->file('file')->hashName();
+            $request->file('file')->move('assets/img/jurnals', $filename);
+            $jurnal->file = 'assets/img/jurnals/' . $filename;
         }
 
         $jurnal->save();
@@ -129,6 +135,7 @@ class JurnalController extends Controller
             'judul' => 'required|string',
             'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
             'foto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'required|mimes:pdf',
             'ket' => 'required|string',
             'isi' => 'required|string',
             'id_kategori' => 'required|exists:kategori,id',
@@ -151,6 +158,14 @@ class JurnalController extends Controller
             $request->file('foto')->move('assets/img/jurnals', $filename);
             $jurnal->foto = 'assets/img/jurnals/' . $filename;
         }
+        if ($request->hasFile('file')) {
+            if ($jurnal->file != null) {
+                unlink($jurnal->file);
+            }
+            $filename = $request->file('file')->hashName();
+            $request->file('file')->move('assets/img/jurnals', $filename);
+            $jurnal->file = 'assets/img/jurnals/' . $filename;
+        }
 
         $jurnal->save();
 
@@ -167,6 +182,7 @@ class JurnalController extends Controller
     {
         $row = Jurnal::find($id);
         if (!empty($row->foto)) unlink($row->foto);
+        if (!empty($row->file)) unlink($row->file);
         Jurnal::where('id', $id)->delete();
         return redirect()->route('jurnal.index')->with('success', 'Data Jurnal Berhasil Di Hapus');
     }

@@ -24,122 +24,6 @@ class PagesController extends Controller
         return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data'));
     }
 
-    public function apiJurnal()
-    {
-        $jurnal = Jurnal::all();
-
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'Data Jurnal',
-                'data' => $jurnal,
-            ],
-            200
-        );
-    }
-
-    public function apiJurnalDetail($id)
-    {
-        // menampilkan detail data tiap jurnal
-        $jurnal = Jurnal::find($id);
-        if ($jurnal) { // jika data jurnal ditemukan maka tampilkan
-            return response()->json(
-                [
-                    'success' => true,
-                    'message' => 'Detail Jurnal',
-                    'data' => $jurnal,
-                ],
-                200 // kode success
-            );
-        } else { // jika data jurnal tidak ditemukan
-            return response()->json(
-                [
-                    'success' => false,
-                    'message' => 'Detail Jurnal Tidak Ditemukan',
-                    'data' => $jurnal,
-                ],
-                404 // kode error
-            );
-        }
-    }
-
-    public function apiKategori()
-    {
-        $kategori = Kategori::all();
-
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'Data Kategori',
-                'data' => $kategori,
-            ],
-            200
-        );
-    }
-
-    public function apiKategoriDetail($id)
-    {
-        // menampilkan detail data tiap Kategori
-        $kategori = Kategori::find($id);
-        if ($kategori) { // jika data Kategori ditemukan maka tampilkan
-            return response()->json(
-                [
-                    'success' => true,
-                    'message' => 'Detail Kategori',
-                    'data' => $kategori,
-                ],
-                200 // kode success
-            );
-        } else { // jika data kategori tidak ditemukan
-            return response()->json(
-                [
-                    'success' => false,
-                    'message' => 'Detail Kategori Tidak Ditemukan',
-                    'data' => $kategori,
-                ],
-                404 // kode error
-            );
-        }
-    }
-    public function apiProfile()
-    {
-        $profile = Profile::all();
-
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'Data Profile',
-                'data' => $profile,
-            ],
-            200
-        );
-    }
-
-    public function apiProfileDetail($id)
-    {
-        // menampilkan detail data tiap Profile
-        $profile = Profile::find($id);
-        if ($profile) { // jika data Profile ditemukan maka tampilkan
-            return response()->json(
-                [
-                    'success' => true,
-                    'message' => 'Detail Profile',
-                    'data' => $profile,
-                ],
-                200 // kode success
-            );
-        } else { // jika data Profile tidak ditemukan
-            return response()->json(
-                [
-                    'success' => false,
-                    'message' => 'Detail Profile Tidak Ditemukan',
-                    'data' => $profile,
-                ],
-                404 // kode error
-            );
-        }
-    }
-
     public function about()
     {
         return view('frontend.pages.about');
@@ -216,3 +100,122 @@ class PagesController extends Controller
 
     
 }
+    // --------------------- PEMBELAJARAN REST API MANUAL JSON --------------------- NOTE: TAROH DIDALAM CLASS DIATAS JIKA INGIN DIGUNAKAN
+    
+    // public function apiJurnal()
+    // {
+    //     $jurnal = Jurnal::all();
+
+    //     return response()->json(
+    //         [
+    //             'success' => true,
+    //             'message' => 'Data Jurnal',
+    //             'data' => $jurnal,
+    //         ],
+    //         200
+    //     );
+    // }
+
+    // public function apiJurnalDetail($id)
+    // {
+    //     // menampilkan detail data tiap jurnal
+    //     $jurnal = Jurnal::find($id);
+    //     if ($jurnal) { // jika data jurnal ditemukan maka tampilkan
+    //         return response()->json(
+    //             [
+    //                 'success' => true,
+    //                 'message' => 'Detail Jurnal',
+    //                 'data' => $jurnal,
+    //             ],
+    //             200 // kode success
+    //         );
+    //     } else { // jika data jurnal tidak ditemukan
+    //         return response()->json(
+    //             [
+    //                 'success' => false,
+    //                 'message' => 'Detail Jurnal Tidak Ditemukan',
+    //                 'data' => $jurnal,
+    //             ],
+    //             404 // kode error
+    //         );
+    //     }
+    // }
+
+    // public function apiKategori()
+    // {
+    //     $kategori = Kategori::all();
+
+    //     return response()->json(
+    //         [
+    //             'success' => true,
+    //             'message' => 'Data Kategori',
+    //             'data' => $kategori,
+    //         ],
+    //         200
+    //     );
+    // }
+
+    // public function apiKategoriDetail($id)
+    // {
+    //     // menampilkan detail data tiap Kategori
+    //     $kategori = Kategori::find($id);
+    //     if ($kategori) { // jika data Kategori ditemukan maka tampilkan
+    //         return response()->json(
+    //             [
+    //                 'success' => true,
+    //                 'message' => 'Detail Kategori',
+    //                 'data' => $kategori,
+    //             ],
+    //             200 // kode success
+    //         );
+    //     } else { // jika data kategori tidak ditemukan
+    //         return response()->json(
+    //             [
+    //                 'success' => false,
+    //                 'message' => 'Detail Kategori Tidak Ditemukan',
+    //                 'data' => $kategori,
+    //             ],
+    //             404 // kode error
+    //         );
+    //     }
+    // }
+    // public function apiProfile()
+    // {
+    //     $profile = Profile::all();
+
+    //     return response()->json(
+    //         [
+    //             'success' => true,
+    //             'message' => 'Data Profile',
+    //             'data' => $profile,
+    //         ],
+    //         200
+    //     );
+    // }
+
+    // public function apiProfileDetail($id)
+    // {
+    //     // menampilkan detail data tiap Profile
+    //     $profile = Profile::find($id);
+    //     if ($profile) { // jika data Profile ditemukan maka tampilkan
+    //         return response()->json(
+    //             [
+    //                 'success' => true,
+    //                 'message' => 'Detail Profile',
+    //                 'data' => $profile,
+    //             ],
+    //             200 // kode success
+    //         );
+    //     } else { // jika data Profile tidak ditemukan
+    //         return response()->json(
+    //             [
+    //                 'success' => false,
+    //                 'message' => 'Detail Profile Tidak Ditemukan',
+    //                 'data' => $profile,
+    //             ],
+    //             404 // kode error
+    //         );
+    //     }
+    // }
+
+    // --------------------- END // PEMBELAJARAN REST API MANUAL JSON // END ---------------------
