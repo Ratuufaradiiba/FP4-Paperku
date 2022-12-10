@@ -35,6 +35,7 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middleware('auth');
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.search');
+Route::get('/profileuser', [PagesController::class, 'profileuser'])->name('profileuser');
 
 // REST API
 Route::get('/api-jurnal', [PagesController::class, 'apiJurnal']);
@@ -81,6 +82,11 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
 Route::get('/after_register', function () {
     return view('frontend.pages.after_register');
 });
+
+// Route::get('/profile_user', function () {
+//     return view('frontend.pages.profile_user');
+// });
+
 
 Route::get('/access_denied', function () {
     return view('frontend.layouts.partials.acces_denied');

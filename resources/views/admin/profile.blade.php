@@ -265,3 +265,11 @@
         </div>
     </div>
 @endsection
+
+
+<!-- <h5 class="mb-1">
+                    {{ Auth::user()->name }}
+                    </h5>
+                    <p class="mb-0 font-weight-bold text-sm">
+                    {{ Auth::user()->role }}
+                    </p> -->
