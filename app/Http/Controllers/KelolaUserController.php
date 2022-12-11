@@ -53,7 +53,7 @@ class KelolaUserController extends Controller
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        $kelola_user = new Users();
+        $kelola_user = new KelolaUser();
         $kelola_user->nama = $request->name;
         $kelola_user->username = $request->username;
         $kelola_user->email = $request->email;
@@ -125,8 +125,8 @@ class KelolaUserController extends Controller
             }
 
             $filename = $request->file('foto')->hashName();
-            $request->file('foto')->move('assets/img/authors/', $filename);
-            $kelola_user->foto = 'assets/img/authors/' . $filename;
+            $request->file('foto')->move('assets/img/users/', $filename);
+            $kelola_user->foto = 'assets/img/users/' . $filename;
         }
 
         $kelola_user->save();
@@ -151,7 +151,7 @@ class KelolaUserController extends Controller
 
     public function profilePDF()
     {
-        $profile = Profile::all();
+        $profile = KelolaUser::all();
         $pdf = PDF::loadView('profile.profilePDF', [
             'title' => 'profilePDF',
             'profile' => $profile
