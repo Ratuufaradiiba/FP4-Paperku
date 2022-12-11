@@ -204,7 +204,7 @@
                         <h4 class="widget-title">Recent Post</h4>
 
                         <!-- post-item -->
-                        @foreach ($jurnal as $row)
+                        @foreach ($jurnalkanan as $row)
                             <article class="widget-card">
                                 <div class="d-flex">
                                     @empty($row->foto)

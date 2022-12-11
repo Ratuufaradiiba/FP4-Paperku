@@ -15,13 +15,14 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->get();
+        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->limit(10)->get();
+        $jurnalkanan = Jurnal::with(['kategori', 'profile'])->latest()->limit(3)->get();
         $kategori = Kategori::all();
         $profile = Profile::all();
         $data = DB::table('jurnal')->select('kategori.id as idKategori', 'kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
             ->join('kategori', 'jurnal.id_kategori', '=', 'kategori.id', 'right')
             ->groupBy('kategori.id')->get();
-        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data'));
+        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data','jurnalkanan'));
     }
 
     public function about()
@@ -54,9 +55,9 @@ class PagesController extends Controller
 
     public function authordetail($id)
     {
-        $jurnal = Jurnal::with('profile')->where('id_profile', $id)->get();
-        $row = Profile::find($id);
-        return view('frontend.pages.author', compact('row', 'jurnal'));
+        //$jurnal = Jurnal::with('profile')->where('id_profile', $id)->get();
+        $row = Profile::with('jurnal')->withCount('jurnal')->find($id);
+        return view('frontend.pages.author', compact('row'));
     }
 
     public function upload()

@@ -19,7 +19,7 @@
                         </div>
 
                         <a class="post-count mb-1" href="#"><i class="ti-pencil-alt mr-2"></i><span
-                                class="text-primary">2</span> Jurnals Posts by this author</a>
+                                class="text-primary">{{ $row->jurnal_count}} </span>Posts by this author</a>
                         <ul class="list-inline social-icons">
 
                             <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
@@ -85,7 +85,7 @@
                 stroke-width="2" />
         </svg>
     </div>
-    @foreach ($jurnal as $row)
+    @foreach ($row->jurnal as $jrnl)
         <section class="section-sm" id="post">
 
             <div class="container">
@@ -95,44 +95,44 @@
                         <article class="card mb-4">
 
                             <div class="post-slider">
-                                @empty($row->foto)
+                                @empty($jrnl->foto)
                                     <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
                                         class="avatar avatar-sm me-3">
                                 @else
-                                    <img src="{{ asset($row->foto) }}" alt="Profile" class="avatar avatar-sm me-3">
+                                    <img src="{{ asset($jrnl->foto) }}" alt="Profile" class="avatar avatar-sm me-3">
                                 @endempty
                             </div>
 
 
                             <div class="card-body">
                                 <h3 class="mb-3"><a class="post-title"
-                                        href="{{ route('postdetail', $row->id) }}">{{ $row->judul }}</a></h3>
+                                        href="{{ route('postdetail', $jrnl->id) }}">{{ $jrnl->judul }}</a></h3>
                                 <ul class="card-meta list-inline">
                                     <li class="list-inline-item">
-                                        <a href="{{ url('authordetail', $row->profile->id) }}" class="card-meta-author">
-                                            @empty($row->profile->foto)
+                                        <a href="{{ url('authordetail', $jrnl->profile->id) }}" class="card-meta-author">
+                                            @empty($jrnl->profile->foto)
                                                 <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
                                                     class="avatar avatar-sm me-3">
                                             @else
-                                                <img src="{{ asset($row->profile->foto) }}" alt="Profile"
+                                                <img src="{{ asset($jrnl->profile->foto) }}" alt="Profile"
                                                     class="avatar avatar-sm me-3">
                                             @endempty
-                                            <span>{{ $row->profile->nama }}</span>
+                                            <span>{{ $jrnl->profile->nama }}</span>
                                         </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <i class="ti-calendar"></i>{{ $row->tahun }}
+                                        <i class="ti-calendar"></i>{{ $jrnl->tahun }}
                                     </li>
                                     <li class="list-inline-item">
                                         <ul class="card-meta-tag list-inline">
                                             <li class="list-inline-item"><a
-                                                    href="{{ route('filter_kategori', $row->kategori->id) }}">{{ $row->kategori->nama_kategori }}</a>
+                                                    href="{{ route('filter_kategori', $jrnl->kategori->id) }}">{{ $jrnl->kategori->nama_kategori }}</a>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
-                                <p>{{ $row->ket }}</p>
-                                <a href="{{ url('postdetail', $row->id) }}" class="btn btn-outline-primary">Read More</a>
+                                <p>{{ $jrnl->ket }}</p>
+                                <a href="{{ url('postdetail', $jrnl->id) }}" class="btn btn-outline-primary">Read More</a>
                             </div>
                         </article>
                     </div>
