@@ -18,8 +18,8 @@
 
                         </div>
 
-                        <a class="post-count mb-1" href="author-single.html#post"><i class="ti-pencil-alt mr-2"></i><span
-                                class="text-primary">2</span> Posts by this author</a>
+                        <a class="post-count mb-1" href="#"><i class="ti-pencil-alt mr-2"></i><span
+                                class="text-primary">2</span> Jurnals Posts by this author</a>
                         <ul class="list-inline social-icons">
 
                             <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
