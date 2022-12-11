@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document PDF Profile</title>
 </head>
 
 <body>
@@ -21,14 +21,14 @@
         </thead>
         <tbody>
             @php $no=1; @endphp
-            @foreach ($profile as $row )
-            <tr>
-                <th>{{$no++}}</th>
-                <td>{{ $row->nama }}</td>
-                <td>{{ $row->username }}</td>
-                <td>{{ $row->email }}</td>
-                
-            </tr>
+            @foreach ($profile as $row)
+                <tr>
+                    <th>{{ $no++ }}</th>
+                    <td>{{ $row->nama }}</td>
+                    <td>{{ $row->username }}</td>
+                    <td>{{ $row->email }}</td>
+
+                </tr>
             @endforeach
         </tbody>
 

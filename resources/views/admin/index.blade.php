@@ -13,8 +13,6 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 
-
-
 @if (Auth::user()->role == 'admin')
     <!DOCTYPE html>
     <html lang="en">
@@ -107,17 +105,17 @@
                                                     <hr class="dropdown-divider">
                                                 </li>
 
-                                                <li>
+                                                {{-- <li>
                                                     <a class="dropdown-item d-flex align-items-center"
                                                         href="users-profile.html">
                                                         <i class="material-icons" style="font-size:15px">person</i>
                                                         &nbsp;My Profile
                                                     </a>
-                                                </li>
-                                                <li>
+                                                </li> --}}
+                                                {{-- <li>
                                                     <hr class="dropdown-divider">
-                                                </li>
-                                                @if (Auth::user()->role == 'admin')
+                                                </li> --}}
+                                                {{-- @if (Auth::user()->role == 'admin')
                                                     <li>
                                                         <a class="dropdown-item d-flex align-items-center"
                                                             href="{{ url('kelola_user') }}">
@@ -126,38 +124,21 @@
                                                             &nbsp;Kelola User
                                                         </a>
                                                     </li>
-                                                @endif
+                                                @endif --}}
 
-                                                <li>
+                                                {{-- <li>
                                                     <hr class="dropdown-divider">
                                                 </li>
                                                 <li>
                                                     <hr class="dropdown-divider">
-                                                </li>
-
-
+                                                </li> --}}
 
                                             </ul><!-- End Profile Dropdown Items -->
                                         </li><!-- End Profile Nav -->
-
                                     </ul>
                                 </nav><!-- End Icons Navigation -->
 
                             </form>
-                        </li>
-                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                                <div class="sidenav-toggler-inner">
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                    <i class="sidenav-toggler-line"></i>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="nav-item px-3 d-flex align-items-center">
-                            <a href="javascript:;" class="nav-link text-body p-0">
-                                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                            </a>
                         </li>
                         <li class="nav-item dropdown pe-2 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
@@ -175,7 +156,8 @@
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">New message</span> from Laur
+                                                    <span class="font-weight-bold">New account registered</span>: Ratu
+                                                    Faradiba
                                                 </h6>
                                                 <p class="text-xs text-secondary mb-0 ">
                                                     <i class="fa fa-clock me-1"></i>
@@ -189,12 +171,13 @@
                                     <a class="dropdown-item border-radius-md" href="javascript:;">
                                         <div class="d-flex py-1">
                                             <div class="my-auto">
-                                                <img src="{{ url('../assets/img/small-logos/logo-spotify.svg') }}"
+                                                <img src="{{ url('../assets/img/small-logos/logo-jira.svg') }}"
                                                     class="avatar avatar-sm bg-gradient-dark  me-3 ">
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
-                                                    <span class="font-weight-bold">New album</span> by Travis Scott
+                                                    <span class="font-weight-bold">New journal uploaded</span> by Rizky
+                                                    Darms
                                                 </h6>
                                                 <p class="text-xs text-secondary mb-0 ">
                                                     <i class="fa fa-clock me-1"></i>
@@ -232,7 +215,8 @@
                                             </div>
                                             <div class="d-flex flex-column justify-content-center">
                                                 <h6 class="text-sm font-weight-normal mb-1">
-                                                    Payment successfully completed
+                                                    <span class="font-weight-bold">Kategori</span> successfully
+                                                    updated
                                                 </h6>
                                                 <p class="text-xs text-secondary mb-0 ">
                                                     <i class="fa fa-clock me-1"></i>
@@ -532,9 +516,18 @@
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: '{{ session('
-                                                                                                                success ') }}',
-                    // title: '{{ session('failed') }}',
+                    title: '{{ session('success') }}',
+                    showConfirmButton: true,
+                    timer: 1500
+                })
+            </script>
+        @endif
+        @if (session('error'))
+            <script>
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: '{{ session('error') }}',
                     showConfirmButton: true,
                     timer: 1500
                 })

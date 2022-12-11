@@ -64,9 +64,16 @@
                                 @enderror
                             </div>
                             <div class="col-6">
-                                <label for="inputNanme4" class="form-label">Masukan Foto</label>
+                                <label for="inputNanme4" class="form-label">Masukan Foto Cover</label>
                                 <input type="file" class="form-control" name="foto" accept=".png,.jpg,.jpeg">
                                 @error('foto')
+                                    <p class="text text-danger mb-0">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-6">
+                                <label for="inputNanme4" class="form-label">Masukan File</label>
+                                <input type="file" class="form-control" name="file" accept=".pdf">
+                                @error('file')
                                     <p class="text text-danger mb-0">{{ $message }}</p>
                                 @enderror
                             </div>

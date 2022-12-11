@@ -195,7 +195,7 @@
                         <h2 class="mb-4">We have a great team of great authors</h2>
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                             invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et</p>
-                        <a href="http://demo.themefisher.com/authors" class="btn btn-primary">Our Authors</a>
+                        <a href="#" class="btn btn-primary">Our Authors</a>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-6 mb-4 mb-md-0 order-1 order-md-2">
@@ -228,10 +228,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-8 mx-auto text-center">
-                    <h2 class="mb-4">Join The Team Of Biggest Qualitiful Authors</h2>
+                    <h2 class="mb-4">We would love to hear from you!</h2>
                     <p class="mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, diam nonumy eirmod
                         tempor labore dolore</p>
-                    <a href="contact" class="btn btn-primary">Join Us Now</a>
+                    <a href="contact" class="btn btn-primary">Contact Us</a>
                 </div>
             </div>
         </div>
