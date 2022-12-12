@@ -97,8 +97,6 @@ class PagesController extends Controller
     {
         return view('frontend.pages.profileUser.profile_user');
     }
-
-    
 }
     // --------------------- PEMBELAJARAN REST API MANUAL JSON --------------------- NOTE: TAROH DIDALAM CLASS DIATAS JIKA INGIN DIGUNAKAN
     

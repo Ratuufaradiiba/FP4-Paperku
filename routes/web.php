@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KelolaUserController;
-
+use App\Http\Controllers\ProfileuserController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -39,11 +40,10 @@ Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middl
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 Route::get('/kelola_user', [PagesController::class, 'kelola_user'])->name('kelola_user');
 Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.search');
-<<<<<<< HEAD
-Route::get('/profileuser', [PagesController::class, 'profileuser'])->name('profileuser');
-=======
+Route::get('/profileuser', [ProfileuserController::class, 'profileuser'])->name('profileuser');
 Route::get('/kelola_user/{id}', [PagesController::class, 'kelola_user'])->name('kelola_user');
->>>>>>> a71ebcf5972b882ea2e06855f825f3bb47cd910c
+Route::post('/profileuser', [ProfileuserController::class, 'updateProfile'])->name('updateProfile');
+
 
 
 
@@ -90,7 +90,6 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
             "active" => "Profile"
         ]);
     });
-    
 });
 
 Route::get('/after_register', function () {

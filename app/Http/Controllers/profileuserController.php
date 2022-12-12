@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Jurnal;
+use App\Models\KelolaUser;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileuserController extends Controller
 {
@@ -24,11 +28,14 @@ class ProfileuserController extends Controller
             "active" => "Author"
         ]);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function profileUser()
+    {
+        $jurnal = Jurnal::where('id_user', Auth::user()->id)->latest()->get();
+        $row = Auth::user();
+        return view('frontend.pages.profileUser.profile_user', compact('jurnal', 'row'));
+    }
+
     public function create()
     {
         return view('profile.form', [
@@ -37,12 +44,7 @@ class ProfileuserController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -95,6 +97,37 @@ class ProfileuserController extends Controller
         ]);
     }
 
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|max:45|unique:users,name,' . auth()->user()->id,
+            'username' => 'required|max:45|unique:users,username,' . auth()->user()->id,
+            'foto' => 'image|mimes:jpeg,png,jpg|max:2048',
+            // 'password' => 'password'
+        ]);
+
+        $kelola_user = KelolaUser::find(auth()->user()->id);
+        $kelola_user->name = $request->name;
+        $kelola_user->username = $request->username;
+        // $kelola_user->bcrypt($request->password);
+
+        // dd($request->file('foto')->hashName());
+        if ($request->hasFile('foto')) {
+            if ($kelola_user->foto != null) {
+                // unlink($kelola_user->foto);
+            }
+
+            $filename = $request->file('foto')->hashName();
+            $request->file('foto')->move('assets/img/users/', $filename);
+            $kelola_user->foto = 'assets/img/users/' . $filename;
+        }
+
+
+        $kelola_user->save();
+
+        return redirect()->back()
+            ->with('success', 'Profile Berhasil Diupdate');
+    }
     /**
      * Update the specified resource in storage.
      *

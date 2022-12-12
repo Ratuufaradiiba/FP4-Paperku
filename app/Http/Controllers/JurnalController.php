@@ -12,7 +12,7 @@ use App\Exports\jurnalExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Barryvdh\DomPDF\PDF as DomPDF;
-
+use Illuminate\Support\Facades\Auth;
 
 class JurnalController extends Controller
 {
@@ -73,6 +73,7 @@ class JurnalController extends Controller
         $jurnal->ket = $request->ket;
         $jurnal->isi = $request->isi;
         $jurnal->id_kategori = $request->id_kategori;
+        $jurnal->id_user = Auth::user()->id;
 
         if ($request->hasFile('foto')) {
             $filename = $request->file('foto')->hashName();
