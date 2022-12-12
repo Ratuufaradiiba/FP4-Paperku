@@ -31,7 +31,7 @@ class ProfileuserController extends Controller
 
     public function profileUser()
     {
-        $jurnal = Jurnal::where('id_user', Auth::user()->id)->latest()->get();
+        $jurnal = Jurnal::where('id_profile', Auth::user()->id)->latest()->get();
         $row = Auth::user();
         return view('frontend.pages.profileUser.profile_user', compact('jurnal', 'row'));
     }
