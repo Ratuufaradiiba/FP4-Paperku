@@ -42,7 +42,39 @@ class ProfileController extends Controller
             'nama' => $request->nama,
             'username' => $request->username,
             'email' => $request->email
+            //file
         ]);
         return new ProfileResource(true, 'Data Profile Berhasil Di Input', $profile);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|unique:profile|max:45',
+            'username' => 'required|unique:profile|max:45',
+            'email' => 'required|unique:profile|max:45',
+            // 'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            // file
+        ]);
+
+        // cek error atau tidak
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        $profile = Profile::whereId($id)->update([
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'email' => $request->email
+        ]);
+        return new ProfileResource(true, 'Data Profile Berhasil Di Update', $profile);
+    }
+
+    public function destroy($id)
+    {
+        $profile = Profile::whereId($id)->first();
+        $profile->delete();
+        //return response
+        return new ProfileResource(true, 'Data Profile Berhasil Dihapus!', $profile);
     }
 }

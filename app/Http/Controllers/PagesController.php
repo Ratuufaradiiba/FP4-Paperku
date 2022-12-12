@@ -93,6 +93,11 @@ class PagesController extends Controller
         $row = Kategori::find($id);
         return view('frontend.pages.filter_kategori', compact('row', 'jurnal'));
     }
+
+    public function profileuser()
+    {
+        return view('frontend.pages.profileUser.profile_user');
+    }
 }
     // --------------------- PEMBELAJARAN REST API MANUAL JSON --------------------- NOTE: TAROH DIDALAM CLASS DIATAS JIKA INGIN DIGUNAKAN
     

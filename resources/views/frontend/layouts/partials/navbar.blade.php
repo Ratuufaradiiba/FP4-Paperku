@@ -56,11 +56,15 @@
                 @auth
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            <a class="nav-link" href="{{url('/profileuser')}}" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">{{ Auth::user()->name }} <i class="ti-angle-down ml-1"></i>
                             </a>
                             <div class="dropdown-menu">
                                 @if (auth()->user()->role === 'user')
+                                <a class="dropdown-item" href="{{ url('/profileuser') }}">
+                                        <center>
+                                            Profile</center>
+                                    </a> &nbsp;
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <div class="container">
@@ -70,6 +74,10 @@
                                         </div>
                                     </form>
                                 @else
+                                <a class="dropdown-item" href="{{ url('/profileuser') }}">
+                                        <center>
+                                            Profile</center>
+                                    </a> &nbsp;
                                     <a class="dropdown-item" href="{{ url('/admin') }}">
                                         <center>
                                             Dashboard</center>

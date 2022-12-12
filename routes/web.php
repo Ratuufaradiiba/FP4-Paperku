@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KelolaUserController;
-
+use App\Http\Controllers\ProfileuserController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -39,7 +40,10 @@ Route::get('/upload', [PagesController::class, 'upload'])->name('upload')->middl
 Route::post('/download', [PagesController::class, 'download'])->name('download');
 Route::get('/kelola_user', [PagesController::class, 'kelola_user'])->name('kelola_user');
 Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.search');
+Route::get('/profileuser', [ProfileuserController::class, 'profileuser'])->name('profileuser');
 Route::get('/kelola_user/{id}', [PagesController::class, 'kelola_user'])->name('kelola_user');
+Route::post('/profileuser', [ProfileuserController::class, 'updateProfile'])->name('updateProfile');
+
 
 
 
@@ -86,12 +90,16 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
             "active" => "Profile"
         ]);
     });
-    
 });
 
 Route::get('/after_register', function () {
     return view('frontend.pages.after_register');
 });
+
+// Route::get('/profile_user', function () {
+//     return view('frontend.pages.profile_user');
+// });
+
 
 Route::get('/access_denied', function () {
     return view('frontend.layouts.partials.acces_denied');

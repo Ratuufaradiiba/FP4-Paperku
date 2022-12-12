@@ -11,12 +11,14 @@ class Jurnal extends Model
     // mapping ke table
     protected $table = 'jurnal';
     // mapping ke kolom/field
-    protected $fillable = ['judul','tahun','foto','ket','isi','id_kategori','id_profile'];
+    protected $fillable = ['judul', 'tahun', 'foto', 'ket', 'isi', 'id_kategori', 'id_profile', 'id_user'];
 
-    public function kategori(){
-        return $this->belongsTo(Kategori::class,'id_kategori','id');
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id');
     }
-    public function profile(){
-        return $this->belongsTo(Profile::class,'id_profile','id');
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class, 'id_profile', 'id');
     }
 }

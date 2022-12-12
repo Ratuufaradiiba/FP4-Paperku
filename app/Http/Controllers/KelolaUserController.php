@@ -118,16 +118,17 @@ class KelolaUserController extends Controller
         $kelola_user->username = $request->username;
         $kelola_user->email = $request->email;
         $kelola_user->role = $request->role;
-
+        // dd($request->file('foto')->hashName());
         if ($request->hasFile('foto')) {
             if ($kelola_user->foto != null) {
-                unlink($kelola_user->foto);
+                // unlink($kelola_user->foto);
             }
 
             $filename = $request->file('foto')->hashName();
             $request->file('foto')->move('assets/img/users/', $filename);
             $kelola_user->foto = 'assets/img/users/' . $filename;
         }
+
 
         $kelola_user->save();
 

@@ -14,6 +14,7 @@ class DashAdController extends Controller
 {
     public function index()
     {
+        // dd(auth()->user());
         $tahun = Carbon::now()->format('Y');
 
 
