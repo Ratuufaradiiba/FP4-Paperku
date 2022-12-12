@@ -15,7 +15,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->paginate(2);
+        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->paginate(3);
         $jurnalkanan = Jurnal::with(['kategori', 'profile'])->latest()->limit(3)->get();
         $kategori = Kategori::all();
         $profile = Profile::all();
