@@ -15,14 +15,14 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->paginate(3);
+        $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->paginate(4);
         $jurnalkanan = Jurnal::with(['kategori', 'profile'])->latest()->limit(3)->get();
         $kategori = Kategori::all();
         $profile = Profile::all();
         $data = DB::table('jurnal')->select('kategori.id as idKategori', 'kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
             ->join('kategori', 'jurnal.id_kategori', '=', 'kategori.id', 'right')
             ->groupBy('kategori.id')->get();
-        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data','jurnalkanan'));
+        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data', 'jurnalkanan'));
     }
 
     public function about()

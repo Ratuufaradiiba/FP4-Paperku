@@ -231,7 +231,7 @@
                     <h2 class="mb-4">We would love to hear from you!</h2>
                     <p class="mb-4">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, diam nonumy eirmod
                         tempor labore dolore</p>
-                    <a href="contact" class="btn btn-primary">Contact Us</a>
+                    <a href="#" class="btn btn-primary">Contact Us</a>
                 </div>
             </div>
         </div>

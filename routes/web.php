@@ -44,10 +44,6 @@ Route::get('/profileuser', [ProfileuserController::class, 'profileuser'])->name(
 Route::get('/kelola_user/{id}', [PagesController::class, 'kelola_user'])->name('kelola_user');
 Route::post('/profileuser', [ProfileuserController::class, 'updateProfile'])->name('updateProfile');
 
-
-
-
-
 // PEMBELAJARAN REST API MANUAL JSON
 // ----- Route::get('/api-jurnal', [PagesController::class, 'apiJurnal']);
 // ----- Route::get('/api-jurnal/{id}', [PagesController::class, 'apiJurnalDetail']);
@@ -67,12 +63,8 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::resource('jurnal', JurnalController::class);
     Route::resource('kelola_user', KelolaUserController::class);
 
-
-
-
     //memanggil fungsi export to excel
     Route::get('jurnal-excel', [JurnalController::class, 'JurnalExcel'])->name('jurnal.excel');
-
     //memanggil fungsi  export To PDF
     Route::get('jurnal-pdf', [JurnalController::class, 'jurnalPDF'])->name('jurnal.PDF');
     Route::get('kategori-pdf', [KategoriController::class, 'kategoriPDF'])->name('jurnal.kategoriPDF');
