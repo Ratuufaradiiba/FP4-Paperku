@@ -7,6 +7,7 @@ use App\Models\DownloadJurnal;
 use App\Models\Kategori;
 use App\Models\Profile;
 use App\Models\Jurnal;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Psy\VersionUpdater\Downloader;
@@ -19,10 +20,11 @@ class PagesController extends Controller
         $jurnalkanan = Jurnal::with(['kategori', 'profile'])->latest()->limit(3)->get();
         $kategori = Kategori::all();
         $profile = Profile::all();
+        $profilekanan = Auth::user();
         $data = DB::table('jurnal')->select('kategori.id as idKategori', 'kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
             ->join('kategori', 'jurnal.id_kategori', '=', 'kategori.id', 'right')
             ->groupBy('kategori.id')->get();
-        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data','jurnalkanan'));
+        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data','jurnalkanan','profilekanan'));
     }
 
     public function about()

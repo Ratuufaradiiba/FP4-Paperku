@@ -97,6 +97,9 @@
                 @endforeach
                 {{ $jurnal->links() }}
             </div>
+
+
+            @if (auth()->user())
             <aside class="col-lg-4 @@sidebar">
                 <!-- Search -->
                 <div class="widget">
@@ -110,25 +113,14 @@
 
                 <!-- about me -->
                 <div class="widget widget-about">
-                    <h4 class="widget-title">Hi, I am Rizky!</h4>
-                    <img class="img-fluid" src="{{ asset('landingpage/images/author.jpg') }}" alt="Themefisher">
+                    <h4 class="widget-title">Welcome, {{ Auth::user()->name }}<b></b></h4>
+                    @empty($profilekanan->foto)
+                    <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="img-fluid">
+                    @else
+                    <img src="{{ asset($profilekanan->foto) }}" alt="Profile" class="img-fluid">
+                    @endempty
                     <br>
-                    <p>Saya sedang mengikuti Studi Independen Akademi Fullstack Web Developer di NF Computer
-                        yang disediakan dari Kampus Merdeka.</p>
-                    <ul class="list-inline social-icons mb-3">
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
-
-                        <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
-
-                    </ul>
-                    <a href="about-me.html" class="btn btn-primary mb-2">My profile</a>
+                    <a href="{{url('/profileuser')}}" class="btn btn-primary mb-2">See My profile</a>
                 </div>
 
                 <!-- Promotion -->
@@ -211,6 +203,98 @@
                     </ul>
                 </div>
             </aside>
+            @else
+            <aside class="col-lg-4 @@sidebar">
+                <!-- Search -->
+                <div class="widget">
+                    <h4 class="widget-title"><span>Search</span></h4>
+                    <form action="{{ route('jurnal.search') }}" class="widget-search">
+                        <input class="mb-3" id="search-query" name="keyword" type="search" placeholder="Search for journal or paper..">
+                        <i class="ti-search"></i>
+                        <button type="submit" class="btn btn-primary btn-block">Search</button>
+                    </form>
+                </div>
+                <!-- Promotion -->
+                <div class="promotion">
+                    <img src="{{ asset('landingpage/images/promotion.jpg') }}" class="img-fluid w-100">
+                    <div class="promotion-content">
+                        <h5 class="text-white mb-3">Discover research</h5>
+                        <p class="text-white mb-4">Share your work or research by uploading it to this website</p>
+                        <a href="{{ route('upload') }}" class="btn btn-primary">Upload Now!</a>
+                    </div>
+                </div>
+
+                <!-- authors -->
+                <div class="widget widget-author">
+                    <h4 class="widget-title">Authors</h4>
+                    @foreach ($profile as $row)
+                    <div class="media align-items-center">
+                        <div class="mr-3">
+                            @empty($row->foto)
+                            <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="avatar avatar-sm me-3">
+                            @else
+                            <img src="{{ asset($row->foto) }}" alt="Profile" class="avatar avatar-sm me-3">
+                            @endempty
+                        </div>
+                        <div class="media-body">
+                            <h5 class="mb-1"><a class="post-title" href="{{ url('authordetail', $row->id) }}">{{ $row->nama }}</a>
+                            </h5>
+                            <span>{{ $row->username }}</span>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                <!-- Search -->
+
+                <!-- categories -->
+                <div class="widget widget-categories">
+                    <h4 class="widget-title"><span>Categories</span></h4>
+                    <ul class="list-unstyled widget-list">
+                        @foreach ($data as $row)
+                        <li><a href="{{ route('filter_kategori', $row->idKategori) }}" class="d-flex">{{ $row->nama_kategori }}<small class="ml-auto">{{ $row->jml_kategori }}</small></a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div><!-- tags -->
+                <!-- recent post -->
+                <div class="widget">
+                    <h4 class="widget-title">Recent Post</h4>
+
+                    <!-- post-item -->
+                    @foreach ($jurnalkanan as $row)
+                    <article class="widget-card">
+                        <div class="d-flex">
+                            @empty($row->foto)
+                            <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="card-img-sm">
+                            @else
+                            <img src="{{ asset($row->foto) }}" alt="Profile" class="card-img-sm">
+                            @endempty
+                            <div class="ml-3">
+                                <h5><a class="post-title" href="{{ route('postdetail', $row->id) }}">{{ $row->judul }}</a></h5>
+                                <ul class="card-meta list-inline mb-0">
+                                    <li class="list-inline-item mb-0">
+                                        <i class="ti-calendar"></i>{{ $row->tahun }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </article>
+                    @endforeach
+                </div>
+
+                <!-- Social -->
+                <div class="widget">
+                    <h4 class="widget-title"><span>Social Links</span></h4>
+                    <ul class="list-inline widget-social">
+                        <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </aside>
+            @endif
         </div>
     </div>
 </section>
