@@ -40,6 +40,8 @@ Route::post('/download', [PagesController::class, 'download'])->name('download')
 Route::get('/kelola_user', [PagesController::class, 'kelola_user'])->name('kelola_user');
 Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.search');
 Route::get('/kelola_user/{id}', [PagesController::class, 'kelola_user'])->name('kelola_user');
+Route::post('/upload', [PagesController::class, 'upload_jurnal'])->name('upload.jurnal');
+
 
 
 
@@ -62,6 +64,8 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
     Route::resource('kelola_user', KelolaUserController::class);
+    Route::resource('upload', UploadController::class);
+
 
 
 

@@ -61,7 +61,13 @@ class PagesController extends Controller
 
     public function upload()
     {
-        return view('frontend.pages.upload');
+        if(auth()->user()->role !== 'penulis')
+        {
+            return redirect('/access_denied');
+        }
+        $kategori = Kategori::all();
+        $penulis = Profile::all();
+        return view('frontend.pages.upload',compact('kategori', 'penulis'));
     }
 
     public function download()
@@ -91,6 +97,42 @@ class PagesController extends Controller
         $jurnal = Jurnal::with('kategori')->where('id_kategori', $id)->get();
         $row = Kategori::find($id);
         return view('frontend.pages.filter_kategori', compact('row', 'jurnal'));
+    }
+    public function upload_jurnal(Request $request)
+    {
+        $request->validate([
+            'judul' => 'required|string',
+            'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'required|mimes:pdf',
+            'ket' => 'required|string',
+            'isi' => 'required|string',
+            'id_kategori' => 'required|exists:kategori,id',
+        ]);
+
+        $jurnal = new Jurnal();
+        $jurnal->judul = $request->judul;
+        $jurnal->tahun = $request->tahun;
+        $jurnal->id_profile = auth()->user()->profile->id;
+        $jurnal->id_user = auth()->user()->id;
+        $jurnal->ket = $request->ket;
+        $jurnal->isi = $request->isi;
+        $jurnal->id_kategori = $request->id_kategori;
+
+        if ($request->hasFile('foto')) {
+            $filename = $request->file('foto')->hashName();
+            $request->file('foto')->move('assets/img/jurnals', $filename);
+            $jurnal->foto = 'assets/img/jurnals/' . $filename;
+        }
+        if ($request->hasFile('file')) {
+            $filename = $request->file('file')->hashName();
+            $request->file('file')->move('assets/img/jurnals', $filename);
+            $jurnal->file = 'assets/img/jurnals/' . $filename;
+        }
+
+        $jurnal->save();
+
+        return redirect()->route('home')->with('success', 'Jurnal berhasil ditambahkan');
     }
 }
     // --------------------- PEMBELAJARAN REST API MANUAL JSON --------------------- NOTE: TAROH DIDALAM CLASS DIATAS JIKA INGIN DIGUNAKAN

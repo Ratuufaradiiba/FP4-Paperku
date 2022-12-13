@@ -34,10 +34,14 @@
                         </div>
                     </li> --}}
 
+                   @auth
+                   @if(auth()->user()->role === 'penulis')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/upload') }}"><i
                                 class="fa-solid fa-arrow-up"></i>&nbsp;&nbsp;Upload</a>
                     </li>
+                    @endif
+                   @endauth
 
 
                     <li class="nav-item">
@@ -60,7 +64,7 @@
                                 aria-expanded="false">{{ Auth::user()->name }} <i class="ti-angle-down ml-1"></i>
                             </a>
                             <div class="dropdown-menu">
-                                @if (auth()->user()->role === 'user')
+                                @if (auth()->user()->role === 'user' || auth()->user()->role === 'penulis')
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
                                         <div class="container">
