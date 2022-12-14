@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="mb-3">
                                        <select name="role" id="role" class="form-control">
-                                        <option value="" selected disabled>--Plih Role--</option>
+                                        <option value="" selected disabled>--Pilih Register Sebagai--</option>
                                         <option value="user">User</option>
                                         <option value="penulis">Penulis</option>
                                        </select>
