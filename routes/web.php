@@ -43,6 +43,7 @@ Route::get('/jurnal/search', [PagesController::class, 'search'])->name('jurnal.s
 Route::get('/profileuser', [ProfileuserController::class, 'profileuser'])->name('profileuser');
 Route::get('/kelola_user/{id}', [PagesController::class, 'kelola_user'])->name('kelola_user');
 Route::post('/profileuser', [ProfileuserController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/upload', [PagesController::class, 'upload_jurnal'])->name('upload.jurnal');
 
 
 
@@ -66,6 +67,8 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
     Route::resource('author', ProfileController::class);
     Route::resource('jurnal', JurnalController::class);
     Route::resource('kelola_user', KelolaUserController::class);
+    Route::resource('upload', UploadController::class);
+
 
 
 
@@ -93,7 +96,8 @@ Route::middleware(['auth', 'isAdmin'])->prefix('admin')->group(function () {
 });
 
 Route::get('/after_register', function () {
-    return view('frontend.pages.after_register');
+    return view('frontend.pages.after_register', [
+        'title' => 'After Register']);
 });
 
 // Route::get('/profile_user', function () {
@@ -102,5 +106,6 @@ Route::get('/after_register', function () {
 
 
 Route::get('/access_denied', function () {
-    return view('frontend.layouts.partials.acces_denied');
+    return view('frontend.layouts.partials.acces_denied', [
+        'title' => 'Akses di Tolak']);
 })->middleware('auth')->name('denied');

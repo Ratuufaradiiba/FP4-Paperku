@@ -19,17 +19,23 @@ class PagesController extends Controller
         $jurnal = Jurnal::with(['kategori', 'profile'])->latest()->paginate(3);
         $jurnalkanan = Jurnal::with(['kategori', 'profile'])->latest()->limit(3)->get();
         $kategori = Kategori::all();
-        $profile = Profile::all();
+        $profile = Profile::latest()->limit(5)->get();
         $profilekanan = Auth::user();
         $data = DB::table('jurnal')->select('kategori.id as idKategori', 'kategori.nama_kategori', DB::raw('COUNT(jurnal.id) as jml_kategori'))
             ->join('kategori', 'jurnal.id_kategori', '=', 'kategori.id', 'right')
             ->groupBy('kategori.id')->get();
-        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data','jurnalkanan','profilekanan'));
+        return view('frontend.pages.home', compact('kategori', 'profile', 'jurnal', 'data','jurnalkanan','profilekanan'),[
+            "title" => "Paperku | Home",
+            "active" => "Home"
+        ]);
     }
 
     public function about()
     {
-        return view('frontend.pages.about');
+        return view('frontend.pages.about',[
+            "title" => "Paperku | About",
+            "active" => "About"
+        ]);
     }
 
     // public function after_register()
@@ -52,19 +58,32 @@ class PagesController extends Controller
     public function postdetail($id)
     {
         $row = Jurnal::find($id);
-        return view('frontend.pages.postdetail', compact('row'));
+        return view('frontend.pages.postdetail', compact('row'),[
+            "title" => "Paperku | Post Detail"
+        ]);
     }
 
     public function authordetail($id)
     {
         //$jurnal = Jurnal::with('profile')->where('id_profile', $id)->get();
         $row = Profile::with('jurnal')->withCount('jurnal')->find($id);
-        return view('frontend.pages.author', compact('row'));
+        return view('frontend.pages.author', compact('row'),[
+            "title" => "Paperku | Authors"
+        ]);
     }
 
     public function upload()
     {
-        return view('frontend.pages.upload');
+        if(auth()->user()->role !== 'penulis')
+        {
+            return redirect('/access_denied');
+        }
+        $kategori = Kategori::all();
+        $penulis = Profile::all();
+        return view('frontend.pages.upload',compact('kategori', 'penulis'),[
+            "title" => "Paperku | Upload",
+            "active" => "Upload"
+        ]);
     }
 
     public function download()
@@ -86,19 +105,54 @@ class PagesController extends Controller
         }
 
 
-        return view('frontend.pages.searchResult', ['jurnal' => $jurnal, 'keyword' => $keyword]);
+        return view('frontend.pages.searchResult', ['jurnal' => $jurnal, 'keyword' => $keyword],[
+            "title" => "Search Jurnal"
+        ]);
     }
 
     public function filter_kategori($id)
     {
         $jurnal = Jurnal::with('kategori')->where('id_kategori', $id)->get();
         $row = Kategori::find($id);
-        return view('frontend.pages.filter_kategori', compact('row', 'jurnal'));
+        return view('frontend.pages.filter_kategori', compact('row', 'jurnal'),[
+            "title" => "Paperku | Kategori"
+        ]);
     }
-
-    public function profileuser()
+    public function upload_jurnal(Request $request)
     {
-        return view('frontend.pages.profileUser.profile_user');
+        $request->validate([
+            'judul' => 'required|string',
+            'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'file' => 'required|mimes:pdf',
+            'ket' => 'required|string',
+            'isi' => 'required|string',
+            'id_kategori' => 'required|exists:kategori,id',
+        ]);
+
+        $jurnal = new Jurnal();
+        $jurnal->judul = $request->judul;
+        $jurnal->tahun = $request->tahun;
+        $jurnal->id_profile = auth()->user()->profile->id;
+        $jurnal->id_user = auth()->user()->id;
+        $jurnal->ket = $request->ket;
+        $jurnal->isi = $request->isi;
+        $jurnal->id_kategori = $request->id_kategori;
+
+        if ($request->hasFile('foto')) {
+            $filename = $request->file('foto')->hashName();
+            $request->file('foto')->move('assets/img/jurnals', $filename);
+            $jurnal->foto = 'assets/img/jurnals/' . $filename;
+        }
+        if ($request->hasFile('file')) {
+            $filename = $request->file('file')->hashName();
+            $request->file('file')->move('assets/img/jurnals', $filename);
+            $jurnal->file = 'assets/img/jurnals/' . $filename;
+        }
+
+        $jurnal->save();
+
+        return redirect()->route('home')->with('success', 'Jurnal berhasil ditambahkan');
     }
 }
     // --------------------- PEMBELAJARAN REST API MANUAL JSON --------------------- NOTE: TAROH DIDALAM CLASS DIATAS JIKA INGIN DIGUNAKAN

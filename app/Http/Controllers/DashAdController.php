@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\DownloadJurnal;
 use App\Models\Jurnal;
+use App\Models\Profile;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +16,11 @@ class DashAdController extends Controller
 {
     public function index()
     {
-        // dd(auth()->user());
+        $row = Jurnal::count();
+        $profile  = Profile::count();
+        $user = User::count();
+        $djurnal = DownloadJurnal::count();
+        //dd($djurnal);
         $tahun = Carbon::now()->format('Y');
 
 
@@ -32,7 +38,7 @@ class DashAdController extends Controller
             $november = DownloadJurnal::WhereYear('created_at', $tahun)->WhereMonth('created_at', '11')->count(),
             $desember = DownloadJurnal::WhereYear('created_at', $tahun)->WhereMonth('created_at', '12')->count()
         ];
-        return view('admin.home',  [
+        return view('admin.home', compact('row','profile','user','djurnal'), [
             "title" => "Home",
             "active" => "Home",
             "data" => $data

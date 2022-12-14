@@ -11,7 +11,7 @@ class Profile extends Model
     // mapping ke table
     protected $table = 'profile';
     // mapping ke kolom/field
-    protected $fillable = ['nama', 'username', 'email', 'foto'];
+    protected $fillable = ['nama', 'username', 'email', 'foto','id_user'];
     public function jurnal(){
         return $this->hasMany(Jurnal::class,'id_profile','id');
     }

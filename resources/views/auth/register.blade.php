@@ -120,6 +120,13 @@
                                             name="username" aria-label="Name" aria-describedby="email-addon">
                                     </div>
                                     <div class="mb-3">
+                                       <select name="role" id="role" class="form-control">
+                                        <option value="" selected disabled>--Pilih Register Sebagai--</option>
+                                        <option value="user">User</option>
+                                        <option value="penulis">Penulis</option>
+                                       </select>
+                                    </div>
+                                    <div class="mb-3">
                                         <input type="email" class="form-control" placeholder="Email" name="email"
                                             aria-label="Email" aria-describedby="email-addon">
                                     </div>

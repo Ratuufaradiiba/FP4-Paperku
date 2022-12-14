@@ -10,8 +10,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Jurnal Yang Terdaftar</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        25
-                                        <span class="text-success text-sm font-weight-bolder">+3</span>
+                                        {{ $row }}
                                     </h5>
                                 </div>
                             </div>
@@ -32,8 +31,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Pengguna</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        20
-                                        <span class="text-success text-sm font-weight-bolder">+7</span>
+                                        {{ $user }}
                                     </h5>
                                 </div>
                             </div>
@@ -54,8 +52,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Jumlah Author</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        15
-                                        <span class="text-danger text-sm font-weight-bolder">-1</span>
+                                        {{ $profile }}
                                     </h5>
                                 </div>
                             </div>
@@ -76,8 +73,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Jurnal Di Download</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        40
-                                        <span class="text-success text-sm font-weight-bolder">+5</span>
+                                        {{ $djurnal }}
                                     </h5>
                                 </div>
                             </div>
