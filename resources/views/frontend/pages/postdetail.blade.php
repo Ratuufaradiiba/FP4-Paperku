@@ -7,92 +7,59 @@
                 <div class=" col-lg-9   mb-5 mb-lg-0">
                     <article>
                         <div class="post-slider mb-4">
-                            <img src="{{ asset('landingpage/images/post/iot.png') }}" class="card-img" alt="post-thumb">
+                            @empty($row->foto)
+                                <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="avatar avatar-sm me-3">
+                            @else
+                                <img src="{{ asset($row->foto) }}" alt="Profile" class="avatar avatar-sm me-3">
+                            @endempty
                         </div>
 
-                        <h1 class="h2">INTERNET OF THINGS
-                            (IOT)
-                            SISTEM PENGENDALIAN LAMPU
-                            MENGGUNAKAN RASPBERRY PI BERBASIS MOBILE</h1>
+                        <h1 class="h2">{{ $row->judul }}</h1>
                         <ul class="card-meta my-3 list-inline">
                             <li class="list-inline-item">
-                                <a href="author-single.html" class="card-meta-author">
-                                    <img src="{{ asset('landingpage/images/john-doe.jpg') }}">
-                                    <span>Charls Xaviar</span>
+                                <a href="{{ url('authordetail', $row->profile->id) }}" class="card-meta-author">
+                                    @empty($row->profile->foto)
+                                        <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
+                                            class="avatar avatar-sm me-3">
+                                    @else
+                                        <img src="{{ asset($row->profile->foto) }}" alt="Profile"
+                                            class="avatar avatar-sm me-3">
+                                    @endempty
+                                    <span>{{ $row->profile->nama }}</span>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <i class="ti-timer"></i>2 Min To Read
-                            </li>
-                            <li class="list-inline-item">
-                                <i class="ti-calendar"></i>14 jan, 2020
+                                <i class="ti-calendar"></i>{{ $row->tahun }}
                             </li>
                             <li class="list-inline-item">
                                 <ul class="card-meta-tag list-inline">
-                                    <li class="list-inline-item"><a href="#">Color</a></li>
-                                    <li class="list-inline-item"><a href="#">Recipe</a></li>
-                                    <li class="list-inline-item"><a href="#">Fish</a></li>
+                                    <li class="list-inline-item"><a href="#">{{ $row->kategori->nama_kategori }}</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
                         <br>
                         <div class="content">
-                            <h3> Abstract </h3>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global
-                                brands,
-                                companies are reaching out to digital agencies, responding to the new possibilities
-                                available. However, the industry is fast becoming overcrowded, heaving with agencies
-                                offering similar services — on the surface, at least. Producing creative, fresh projects
-                                is
-                                the key to standing out. Unique side projects are the best place to innovate, but
-                                balancing
-                                commercially and creatively lucrative work is tricky. So, this article looks at</p>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global
-                                brands,
-                                companies
-                                are reaching out to digital agencies, responding to the new possibilities available.
-                                However, the industryis fast becoming overcrowded, heaving with agencies offering
-                                similar
-                                services — on the surface, at least.Producing creative, fresh projects is the key to
-                                standing out. Unique side projects are the best place toinnovate, but balancing
-                                commercially
-                                and creatively lucrative work is tricky. So, this article looks at</p>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global
-                                brands,
-                                companies
-                                are reaching out to digital agencies, responding to the new possibilities available.
-                                However, the industryis fast becoming overcrowded, heaving with agencies offering
-                                similar
-                                services — on the surface, at least.
-                                Producing creative, fresh projects is the key to standing out. Unique side projects are
-                                the
-                                best place toinnovate, but balancing commercially and creatively lucrative work is
-                                tricky.
-                                So, this article looks at</p>
-                            <p>It’s no secret that the digital industry is booming. From exciting startups to global
-                                brands,
-                                companies
-                                are reaching out to digital agencies, responding to the new possibilities available.
-                                However, the industryis fast becoming overcrowded, heaving with agencies offering
-                                similar
-                                services — on the surface, at least.
-                                Producing creative, fresh projects is the key to standing out. Unique side projects are
-                                the
-                                best place toinnovate, but balancing commercially and creatively lucrative work is
-                                tricky.
-                                So, this article looks at</p>
+                            <h3> Keterangan </h3>
+                            <p>{{ $row->ket }}</p>
+                            <br>
+                            <h3> Abstraksi </h3>
+                            <p>{{ $row->isi }}</p>
+                            <br>
+                            <iframe class="w-100" height="1000" src="{{ asset($row->file) }}">
+                            </iframe>
                         </div>
                     </article>
+                    <br>
                     <form method="POST" action="{{ route('download') }}" class="d-inline">
                         @csrf
                         <input type="hidden" name="jurnal_id" value="11">
                         <button class="btn btn-outline-primary"><i class="fa-solid fa-download"></i> Download</button>
                     </form>
-                    <a href="{{ route('postdetail') }}" class="btn btn-outline-primary"><i
-                            class="fa-solid fa-share-from-square"></i> Share</a>
                 </div>
 
-                <div class="col-lg-9 col-md-12">
+                {{--  Comment section --}}
+                {{-- <div class="col-lg-9 col-md-12">
                     <div class="mb-5 border-top mt-4 pt-5">
                         <h3 class="mb-4">Comments</h3>
 
@@ -150,7 +117,7 @@
                             <button class="btn btn-primary" type="submit">Post Your Comment</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
