@@ -102,7 +102,7 @@
                             <div class="card card-plain mt-8">
                                 <div class="card-header pb-0 text-left bg-transparent">
                                     <h3 class="font-weight-bolder text-info text-gradient">Welcome back!</h3>
-                                    <p class="mb-0">Please enter your email and password to sign in</p>
+                                    <p class="mb-0">Please sign in as Author to upload your work.</p>
                                 </div>
                                 <div class="card-body">
                                     <form role="form" action="{{ route('login') }}" method="POST">
@@ -170,36 +170,23 @@
             <div class="row">
                 <div class="col-lg-8 mb-4 mx-auto text-center">
                     <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Company
+                        FAQ
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        About Us
+                    <a href="javascript:;" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;About Us
                     </a>
                     <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
                         Team
                     </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Products
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Blog
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-                        Pricing
-                    </a>
                 </div>
                 <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-dribbble"></span>
-                    </a>
+
                     <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
                         <span class="text-lg fab fa-twitter"></span>
                     </a>
                     <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
                         <span class="text-lg fab fa-instagram"></span>
-                    </a>
-                    <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                        <span class="text-lg fab fa-pinterest"></span>
                     </a>
                     <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
                         <span class="text-lg fab fa-github"></span>

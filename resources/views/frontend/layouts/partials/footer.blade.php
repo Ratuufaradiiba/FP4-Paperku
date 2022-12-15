@@ -26,8 +26,7 @@
         <div class="row align-items-center">
             <div class="col-md-5 text-center text-md-left mb-4">
                 <ul class="list-inline footer-list mb-0">
-                    <li class="list-inline-item"><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li class="list-inline-item"><a href="terms-conditions.html">Terms Conditions</a></li>
+                    <li class="list-inline-item"><a href="#">Frequently Asked Questions (FAQ)</a></li>
                 </ul>
             </div>
             <div class="col-md-2 text-center mb-4">

@@ -71,7 +71,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8  mb-5 mb-lg-0">
-                    <h2 class="h5 section-title">Recent Post</h2>
+                    <h2 class="h5 section-title">Recent Posts</h2>
                     @foreach ($jurnal as $row)
                         <article class="card mb-4">
                             <div class="post-slider">
@@ -191,7 +191,7 @@
                     </div><!-- tags -->
                     <!-- recent post -->
                     <div class="widget">
-                        <h4 class="widget-title">Recent Post</h4>
+                        <h4 class="widget-title">Recent Posts</h4>
 
                         <!-- post-item -->
                         @foreach ($jurnalkanan as $row)
@@ -254,7 +254,7 @@
 
                     <!-- authors -->
                     <div class="widget widget-author">
-                        <h4 class="widget-title">Authors</h4>
+                        <h4 class="widget-title">Newcomers Authors</h4>
                         @foreach ($profile as $row)
                             <div class="media align-items-center">
                                 <div class="mr-3">

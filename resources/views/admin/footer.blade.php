@@ -8,7 +8,7 @@
                         document.write(new Date().getFullYear())
                     </script>,
                     made with <i class="fa fa-heart"></i> by
-                    <a href="https://www.instagram.com/ratuufaradiiba" class="font-weight-bold" target="_blank">Kelompok
+                    <a href="#" class="font-weight-bold" target="_blank">Kelompok
                         6.4</a>
                 </div>
             </div>
