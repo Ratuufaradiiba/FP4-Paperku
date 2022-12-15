@@ -32,8 +32,10 @@ class ProfileuserController extends Controller
     public function profileUser()
     {
         $jurnal = Jurnal::where('id_user', Auth::user()->id)->latest()->get();
-        $row = Auth::user();
-        return view('frontend.pages.profileUser.profile_user', compact('jurnal', 'row'));
+        $row = auth()->user();
+        return view('frontend.pages.profileUser.profile_user', compact('jurnal', 'row'), [
+            "title" => "My Profile"
+        ]);
     }
 
     public function create()
@@ -97,6 +99,15 @@ class ProfileuserController extends Controller
         ]);
     }
 
+    // public function editJurnal($id)
+    // {
+    //     $profile = Jurnal::find($id);
+    //     return view('profile.edit', compact('profile'), [
+    //         "title" => "Author Form",
+    //         "active" => "Author"
+    //     ]);
+    // }
+
     public function updateProfile(Request $request)
     {
         $request->validate([
@@ -107,8 +118,15 @@ class ProfileuserController extends Controller
         ]);
 
         $kelola_user = KelolaUser::find(auth()->user()->id);
+        if ($request->password) {
+            $password = bcrypt($request->password);
+        } else {
+            $password = $kelola_user->password;
+        }
+
         $kelola_user->name = $request->name;
         $kelola_user->username = $request->username;
+        $kelola_user->password = $password;
         // $kelola_user->bcrypt($request->password);
 
         // dd($request->file('foto')->hashName());
@@ -124,6 +142,12 @@ class ProfileuserController extends Controller
 
 
         $kelola_user->save();
+
+        Profile::where('id_user', $kelola_user->id)->update([
+            'nama' => $kelola_user->name,
+            'username' => $kelola_user->username,
+            'foto' => $kelola_user->foto
+        ]);
 
         return redirect()->back()
             ->with('success', 'Profile Berhasil Diupdate');

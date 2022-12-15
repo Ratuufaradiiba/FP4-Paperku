@@ -8,10 +8,10 @@
             <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link " href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('about') }}">About</a>
+                        <a class="nav-link " href="{{ route('about') }}">About</a>
                     </li>
 
                     {{-- <li class="nav-item dropdown">
@@ -34,10 +34,14 @@
                         </div>
                     </li> --}}
 
+                   @auth
+                   @if(auth()->user()->role === 'penulis')
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/upload') }}"><i
+                        <a class="nav-link " href="{{ url('/upload') }}"><i
                                 class="fa-solid fa-arrow-up"></i>&nbsp;&nbsp;Upload</a>
                     </li>
+                    @endif
+                   @endauth
 
 
                     <li class="nav-item">
@@ -60,7 +64,7 @@
                                 aria-expanded="false">{{ Auth::user()->name }} <i class="ti-angle-down ml-1"></i>
                             </a>
                             <div class="dropdown-menu">
-                                @if (auth()->user()->role === 'user')
+                            @if (auth()->user()->role === 'user' || auth()->user()->role === 'penulis')
                                 <a class="dropdown-item" href="{{ url('/profileuser') }}">
                                         <center>
                                             Profile</center>

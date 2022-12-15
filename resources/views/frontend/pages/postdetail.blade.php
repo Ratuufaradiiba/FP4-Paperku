@@ -54,7 +54,11 @@
                     <form method="POST" action="{{ route('download') }}" class="d-inline">
                         @csrf
                         <input type="hidden" name="jurnal_id" value="11">
-                        <button class="btn btn-outline-primary"><i class="fa-solid fa-download"></i> Download</button>
+                        <h4>
+                            Is this journal useful? &nbsp;
+                            <button class="btn btn-outline-primary"><i class="fa-solid fa-check"></i>
+                                &nbsp;<b>Yes</b></button>
+                        </h4>
                     </form>
                 </div>
 

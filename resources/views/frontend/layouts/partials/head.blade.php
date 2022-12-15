@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Paperku</title>
+<title>{{ $title }}</title>
 
 <!-- mobile responsive meta -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

@@ -41,13 +41,8 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1">
                                                         <div>
-                                                            @empty($row->foto)
-                                                                <img src="{{ url('assets\img\no-image-found.png') }}"
-                                                                    alt="Profile" class="avatar avatar-sm me-3">
-                                                            @else
-                                                                <img src="{{ asset($row->foto) }}" alt="Profile"
-                                                                    class="avatar avatar-sm me-3">
-                                                            @endempty
+                                                            <img src="{{ $row->profile->foto() }}" alt="Profile"
+                                                                class="avatar avatar-sm me-3">
                                                         </div>
                                                         <div class="d-flex flex-column justify-content-center">
                                                             <h6 class="mb-0 text-sm">{{ $row->nama }}</h6>

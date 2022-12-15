@@ -120,6 +120,13 @@
                                             name="username" aria-label="Name" aria-describedby="email-addon">
                                     </div>
                                     <div class="mb-3">
+                                        <select name="role" id="role" class="form-control">
+                                            <option value="" selected disabled>-- Register as --</option>
+                                            <option value="user">Visitor</option>
+                                            <option value="penulis">Author</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
                                         <input type="email" class="form-control" placeholder="Email" name="email"
                                             aria-label="Email" aria-describedby="email-addon">
                                     </div>
@@ -148,7 +155,7 @@
                                             href="{{ url('/login') }}" class="text-dark font-weight-bolder">Sign
                                             in</a></p>
                                 </form>
-                                <div class="card-header text-center pt-4">
+                                {{-- <div class="card-header text-center pt-4">
                                     <p>or register with</p>
                                 </div>
                                 <div class="row px-xl-5 px-sm-4 px-0">
@@ -199,7 +206,7 @@
                                         </a>
                                     </div>
 
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

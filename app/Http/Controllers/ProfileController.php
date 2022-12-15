@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -18,7 +19,7 @@ class ProfileController extends Controller
     {
         //menampilkan seluruh data profile
         //INI ORM 
-        $profile = Profile::all();
+        $profile = User::with('profile')->where('role', 'penulis')->get();
         return view('profile.index', compact('profile'), [
             "title" => "Author Tabel",
             "active" => "Author"
@@ -49,21 +50,35 @@ class ProfileController extends Controller
             'nama' => 'required|unique:profile|max:45',
             'username' => 'required|unique:profile|max:45',
             'email' => 'required|unique:profile|max:45',
+            'password' => ['required', 'min:5'],
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        if ($request->hasFile('foto')) {
+            $filename = $request->file('foto')->hashName();
+            $request->file('foto')->move('assets/img/authors', $filename);
+            $foto = 'assets/img/authors/' . $filename;
+        }
+
+
+        $user =  User::create([
+            'name' => $request->nama,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'foto' => $foto,
+            'role' => 'penulis'
         ]);
 
         $profile = new Profile();
         $profile->nama = $request->nama;
         $profile->username = $request->username;
         $profile->email = $request->email;
-
-        if ($request->hasFile('foto')) {
-            $filename = $request->file('foto')->hashName();
-            $request->file('foto')->move('assets/img/authors', $filename);
-            $profile->foto = 'assets/img/authors/' . $filename;
-        }
-
+        $profile->foto = $user->foto;
+        $profile->id_user = $user->id;
         $profile->save();
+
+
 
         return redirect()->route('author.index')
             ->with('success', 'Author Berhasil Disimpan');
@@ -127,6 +142,12 @@ class ProfileController extends Controller
         }
 
         $profile->save();
+
+        User::where('id', $profile->id_user)->update([
+            'name' => $profile->nama,
+            'username' => $profile->username,
+            'foto' => $profile->foto
+        ]);
 
         return redirect()->route('author.index')
             ->with('success', 'Author Berhasil Diupdate');

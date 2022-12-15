@@ -4,12 +4,22 @@
         <div class="container">
             <div class="row no-gutters justify-content-center">
                 <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
-                    @empty($row->foto)
+                    {{-- @empty($row->foto)
                         <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile" class="author-image">
                     @else
-                        <img src="{{ asset($row->foto) }}" alt="Profile" class="author-image">
-                    @endempty
+                        @if (auth()->user()->role === 'penulis')
+                            <img src="{{ asset(auth()->user()->profile->foto) }}" alt="Profile" class="author-image">
+                        @else
+                            <img src="{{ asset(auth()->user()->foto) }}" alt="Profile" class="author-image">
+                        @endif
+                    @endempty --}}
+                    @auth
 
+                        @if (auth()->user()->role === 'penulis')
+                            <img src="{{ auth()->user()->profile->foto() }}" alt="" class="author-image">
+                        @endif
+
+                    @endauth
                 </div>
                 <div class="col-md-8 col-lg-6 text-center text-md-left">
                     <h3 class="mb-2">{{ Auth::user()->name }} </h2>
@@ -79,104 +89,93 @@
 
     <section class="section-sm" id="post">
 
+        <div class="container">
 
-        <section class="section-sm" id="post">
+            <div class="row">
+                <div class="col-lg-10 mx-auto h-100">
+                    <div class="row">
+                        @foreach ($jurnal as $row)
+                            <div class="col-lg-6">
+                                <article class="card mb-4">
 
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-lg-10 mx-auto h-100">
-                        <div class="row">
-                            @foreach ($jurnal as $row)
-                                <div class="col-lg-6">
-                                    <article class="card mb-4">
-
-                                        <div class="post-slider">
-                                            @empty($row->foto)
-                                                <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
-                                                    class="avatar avatar-sm me-3">
-                                            @else
-                                                <img src="{{ asset($row->foto) }}" alt="Profile"
-                                                    class="avatar avatar-sm me-3">
-                                            @endempty
-                                        </div>
+                                    <div class="post-slider">
+                                        @empty($row->foto)
+                                            <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
+                                                class="avatar avatar-sm me-3">
+                                        @else
+                                            <img src="{{ asset($row->foto) }}" alt="Profile" class="avatar avatar-sm me-3">
+                                        @endempty
+                                    </div>
 
 
-                                        <div class="card-body">
-                                            <h3 class="mb-3"><a class="post-title"
-                                                    href="{{ route('postdetail', $row->id) }}">{{ $row->judul }}</a></h3>
-                                            <ul class="card-meta list-inline">
-                                                <li class="list-inline-item">
-                                                    <a href="{{ url('authordetail', $row->profile->id) }}"
-                                                        class="card-meta-author">
-                                                        @empty($row->profile->foto)
-                                                            <img src="{{ url('assets\img\no-image-found.png') }}"
-                                                                alt="Profile" class="avatar avatar-sm me-3">
-                                                        @else
-                                                            <img src="{{ asset($row->profile->foto) }}" alt="Profile"
-                                                                class="avatar avatar-sm me-3">
-                                                        @endempty
-                                                        <span>{{ $row->profile->nama }}</span>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <i class="ti-calendar"></i>{{ $row->tahun }}
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <ul class="card-meta-tag list-inline">
-                                                        <li class="list-inline-item"><a
-                                                                href="{{ route('filter_kategori', $row->kategori->id) }}">{{ $row->kategori->nama_kategori }}</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                            <p>{{ $row->ket }}</p>
-                                            <a href="{{ url('postdetail', $row->id) }}"
-                                                class="btn btn-outline-primary">Read
-                                                More</a>
-                                            {{-- <form method="POST" id="formDelete">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a href="{{ route('jurnal.edit', $row->id) }}"
-                                                            class="btn btn-info shadow-sm text-xs" data-toggle="tooltip"
-                                                            data-original-title="Edit user">
-                                                            Edit
-                                                        </a>
-                                                        &nbsp;
-                                                        <button type="button"
-                                                            class="btn btn-danger shadow-sm text-xs btnDelete"
-                                                            data-action="{{ route('jurnal.destroy', $row->id) }}"
-                                                            data-toggle="tooltip" data-original-title="Edit user">
-                                                            Hapus
-                                                        </button>
-                                            </form> --}}
-                                        </div>
-                                    </article>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                        <div class="card h-50 card-plain border">
-                            <div class="card-body d-flex flex-column justify-content-center text-center">
-                                <a href="{{ url('/upload') }}">
-                                    <i class="fa fa-plus text-secondary mb-3"></i>
-                                    <h5 class=" text-secondary"> New project </h5>
-                                </a>
+                                    <div class="card-body">
+                                        <h3 class="mb-3"><a class="post-title"
+                                                href="{{ route('postdetail', $row->id) }}">{{ $row->judul }}</a></h3>
+                                        <ul class="card-meta list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="{{ url('authordetail', $row->profile->id) }}"
+                                                    class="card-meta-author">
+                                                    @empty($row->profile->foto)
+                                                        <img src="{{ url('assets\img\no-image-found.png') }}" alt="Profile"
+                                                            class="avatar avatar-sm me-3">
+                                                    @else
+                                                        <img src="{{ asset($row->profile->foto) }}" alt="Profile"
+                                                            class="avatar avatar-sm me-3">
+                                                    @endempty
+                                                    <span>{{ $row->profile->nama }}</span>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="ti-calendar"></i>{{ $row->tahun }}
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <ul class="card-meta-tag list-inline">
+                                                    <li class="list-inline-item"><a
+                                                            href="{{ route('filter_kategori', $row->kategori->id) }}">{{ $row->kategori->nama_kategori }}</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <p>{{ $row->ket }}</p>
+                                        <a href="{{ url('postdetail', $row->id) }}" class="btn btn-outline-primary">Read
+                                            More</a>
+                                        <br>
+                                        <form method="POST" id="formDelete"><br>
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{ route('edit.jurnal', $row->id) }}"
+                                                class="btn btn-info shadow-sm text-xs" data-toggle="tooltip"
+                                                data-original-title="Edit user">
+                                                Edit
+                                            </a>
+                                            &nbsp;
+                                            <button type="button" class="btn btn-danger shadow-sm text-xs btnDelete"
+                                                data-action="{{ route('delete.jurnal', $row->id) }}"
+                                                data-toggle="tooltip" data-original-title="Edit user">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </article>
                             </div>
-                        </div>
-
+                        @endforeach
                     </div>
                 </div>
+                <div class="col-lg-2">
+                    <div class="card h-50 card-plain border">
+                        <div class="card-body d-flex flex-column justify-content-center text-center">
+                            <a href="{{ url('/upload') }}">
+                                <i class="fa fa-plus text-secondary mb-3"></i>
+                                <h5 class=" text-secondary"> New project </h5>
+                            </a>
+                        </div>
+                    </div>
 
+                </div>
             </div>
 
-        </section>
+        </div>
 
-
-        </div>
-        </div>
-        </div>
     </section>
 
     <!-- modal -->
@@ -213,6 +212,13 @@
                             <input type="email" disabled class="form-control" name="email"
                                 value="{{ old('email', auth()->user()->email) }}">
                             @error('email')
+                                <p class="text text-danger mb-0">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNanme4" class="form-label">Change Password</label>
+                            <input type="password" class="form-control" name="password">
+                            @error('password')
                                 <p class="text text-danger mb-0">{{ $message }}</p>
                             @enderror
                         </div>

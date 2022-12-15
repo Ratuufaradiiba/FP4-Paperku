@@ -150,9 +150,6 @@
                                             class="text-info text-gradient font-weight-bold">Sign
                                             up</a>
                                     </p>
-                                    <p class="mb-4 text-sm mx-auto">
-                                        <a href="#">I forgot my password</a>
-                                    </p>
                                 </div>
                             </div>
                         </div>

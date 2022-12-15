@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\KelolaUser;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -131,7 +132,11 @@ class KelolaUserController extends Controller
 
 
         $kelola_user->save();
-
+        Profile::where('id_user', $kelola_user->id)->update([
+            'nama' => $kelola_user->name,
+            'username' => $kelola_user->username,
+            'foto' => $kelola_user->foto
+        ]);
         return redirect()->route('kelola_user.index')
             ->with('success', 'User Berhasil Diupdate');
     }

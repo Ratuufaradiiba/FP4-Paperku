@@ -34,6 +34,13 @@
                                 @enderror
                             </div>
                             <div class="col-6">
+                                <label for="inputNanme4" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password">
+                                @error('password')
+                                    <p class="text text-danger mb-0">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="col-6">
                                 <label for="inputNanme4" class="form-label">Masukan E-mail</label>
                                 <input type="email" class="form-control" name="email">
                                 @error('email')
