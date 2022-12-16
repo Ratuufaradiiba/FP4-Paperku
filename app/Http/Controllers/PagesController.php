@@ -100,7 +100,7 @@ class PagesController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function updateJurnal(Request $request, $id)
     {
         $request->validate([
             'judul' => 'required|string',
@@ -110,13 +110,11 @@ class PagesController extends Controller
             'ket' => 'required|string',
             'isi' => 'required|string',
             'id_kategori' => 'required|exists:kategori,id',
-            'id_profile' => 'required|exists:profile,id'
         ]);
 
         $jurnal = Jurnal::findOrFail($id);
         $jurnal->judul = $request->judul;
         $jurnal->tahun = $request->tahun;
-        $jurnal->id_profile = $request->id_profile;
         $jurnal->ket = $request->ket;
         $jurnal->isi = $request->isi;
         $jurnal->id_kategori = $request->id_kategori;
@@ -140,7 +138,7 @@ class PagesController extends Controller
 
         $jurnal->save();
 
-        return redirect()->route('frontend.pages.home')->with('success', 'Jurnal berhasil diubah');
+        return redirect()->route('profileuser')->with('success', 'Jurnal berhasil diubah');
     }
 
     public function download()

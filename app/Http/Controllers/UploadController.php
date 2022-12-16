@@ -56,7 +56,6 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('jurnal')->insert(
         $request->validate([
             'judul' => 'required|string',
             'tahun' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
@@ -67,7 +66,6 @@ class UploadController extends Controller
             'id_kategori' => 'required|exists:kategori,id',
             'id_profile' => 'required|exists:profile,id'
         ]);
-        );
 
         $jurnal = new Jurnal();
         $jurnal->judul = $request->judul;

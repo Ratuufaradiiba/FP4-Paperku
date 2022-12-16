@@ -16,9 +16,10 @@
                                 </ul>
                             </div>
                         @endif
-                        <form class="row g-3" method="POST" action="{{ route('upload.jurnal') }}"
+                        <form class="row g-3" method="POST" action="{{ route('apdet.jurnal', $jurnal->id) }}"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PATCH')
                             <div class="col-6">
                                 <label for="inputNanme4" class="form-label">Title</label>
                                 <input type="text" class="form-control" name="judul"
@@ -32,7 +33,9 @@
                                 <select id="inputState" class="form-control" name="id_kategori">
                                     <option selected>-- Choose Category --</option>
                                     @foreach ($kategori as $row)
-                                        <option value="{{ $row->id }}">{{ $row->nama_kategori }}</option>
+                                        <option @if ($jurnal->id_kategori == $row->id) selected @endif
+                                            value="{{ $row->id }}">{{ $row->nama_kategori }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 @error('id_kategori')

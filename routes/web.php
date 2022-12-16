@@ -45,6 +45,7 @@ Route::get('/kelola_user/{id}', [PagesController::class, 'kelola_user'])->name('
 Route::post('/profileuser', [ProfileuserController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/upload', [PagesController::class, 'upload_jurnal'])->name('upload.jurnal');
 Route::get('/jurnal/{id}/edit', [PagesController::class, 'editJurnal'])->name('edit.jurnal');
+Route::patch('/jurnal/{id}/edit', [PagesController::class, 'updateJurnal'])->name('apdet.jurnal');
 Route::delete('/jurnal/{id}', [PagesController::class, 'deleteJurnal'])->name('delete.jurnal');
 
 // PEMBELAJARAN REST API MANUAL JSON

@@ -14,11 +14,7 @@
                         @endif
                     @endempty --}}
                     @auth
-
-                        @if (auth()->user()->role === 'penulis')
-                            <img src="{{ auth()->user()->profile->foto() }}" alt="" class="author-image">
-                        @endif
-
+                        <img src="{{ auth()->user()->foto }}" alt="" class="author-image">
                     @endauth
                 </div>
                 <div class="col-md-8 col-lg-6 text-center text-md-left">

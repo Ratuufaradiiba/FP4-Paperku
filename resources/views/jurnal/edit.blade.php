@@ -16,7 +16,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form class="row g-3" method="POST" action="{{ route('jurnal.update', $jurnal->id) }}"
+                        <form class="row g-3" method="POST" action="{{ route('update.jurnal', $jurnal->id) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
